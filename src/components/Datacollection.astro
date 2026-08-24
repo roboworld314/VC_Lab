@@ -1,0 +1,187 @@
+---
+// DemoVideo.astro — Format A Applied (Narrative + Visual)
+---
+
+<section id="demo-video" class="content-section">
+  <div class="section-container">
+
+    <!-- Title -->
+    <h2 class="section-heading reveal">Real-World Experiment</h2>
+
+    <!-- Intro (Format A style) -->
+    <div class="prose reveal">
+      <p>
+        We have evaluated under real-world driving conditions with varying vibration levels and environmental complexity. 
+        These experiments demonstrate how the system maintains perception fidelity, prioritizes informative data, and adapts 
+        to challenging deployment scenarios.
+      </p>
+    </div>
+
+    <!-- Highlights (Format A box) -->
+    <div class="highlight-box reveal">
+
+      <div class="highlight-item">
+        <span class="highlight-number">🚗</span>
+        <div class="highlight-content">
+          <h4>Real Deployment</h4>
+          <p>Evaluation on physical robotic vehicle under real driving conditions.</p>
+        </div>
+      </div>
+
+      <div class="highlight-item">
+        <span class="highlight-number">⚡</span>
+        <div class="highlight-content">
+          <h4>Vibration Impact</h4>
+          <p>Captures sensor degradation under unstable terrain and motion.</p>
+        </div>
+      </div>
+
+      <div class="highlight-item">
+        <span class="highlight-number">📊</span>
+        <div class="highlight-content">
+          <h4>System Response</h4>
+          <p>Demonstrates adaptive filtering and robust perception under stress.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Visual Grid (Refined A- style) -->
+    <div class="media-grid reveal">
+
+      <!-- Video -->
+      <div class="media-item">
+        <div class="video-container">
+          <iframe
+            src="https://drive.google.com/file/d/1XJ6RTKSLHpggS11d33h5RUC6NltZzXkD/preview"
+            allow="autoplay"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="media-label">Real-world Data Collection</div>
+      </div>
+
+      <!-- Image 1 -->
+      <div class="media-item">
+        <img src="https://lh3.googleusercontent.com/d/1_TBdIG1UbyEB6tQ_wzuksS9Ima-5Tifo" alt="Indoor setup"/>
+        <div class="media-label">Indoor Testbed</div>
+      </div>
+
+      <!-- Image 2 -->
+      <div class="media-item">
+        <img src="https://lh3.googleusercontent.com/d/1J_BjOpYJwN7ZVhTn1hiGHkBT1WQkqpal" alt="Outdoor setup"/>
+        <div class="media-label">Outdoor Testbed</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+/* ===== TEXT ===== */
+.prose p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #444;
+  text-align: justify;
+  margin-bottom: 2rem;
+}
+
+/* ===== HIGHLIGHT BOX ===== */
+.highlight-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.highlight-item {
+  display: flex;
+  gap: 0.8rem;
+  padding: 1rem;
+  border-left: 4px solid #c05e3c;
+  background: rgba(0,0,0,0.02);
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+.highlight-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.highlight-number {
+  font-size: 1.2rem;
+}
+
+.highlight-content h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #223253;
+}
+
+.highlight-content p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ===== MEDIA GRID ===== */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ===== CARD ===== */
+.media-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+  aspect-ratio: 16 / 10;
+  transition: all 0.3s ease;
+}
+
+.media-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* ===== MEDIA ===== */
+.media-item img,
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* ===== LABEL ===== */
+.media-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.9rem;
+  font-size: 0.85rem;
+  color: white;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  letter-spacing: 0.5px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .prose p {
+    text-align: left;
+  }
+}
+
+</style>

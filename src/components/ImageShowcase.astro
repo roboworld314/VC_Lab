@@ -1,0 +1,207 @@
+---
+// ImageShowcase.astro — Enhanced (Clean + Attractive + Fixed Layout)
+---
+
+<section id="image-showcase" class="content-section">
+  <div class="section-container">
+
+    <!-- Title -->
+    <h2 class="section-heading">Failure Case: Stale Perception Under Challenging Conditions</h2>
+
+    <!-- Highlighted Intro Box -->
+    <div class="problem-intro-box">
+
+      <p class="section-intro">
+        Under real-world vibration, <strong>low-value, redundant and distorted sensor streams</strong> delay critical observations. 
+        As a result, perception operates on <strong>stale inputs</strong>,leading to missed detections and unsafe decisions.
+      </p>
+
+      <p class="group-description">
+        The left shows failure under vibration-induced stale perception, while the right highlights improved sensing with adaptive filtering.
+      </p>
+
+    </div>
+
+    <!-- Comparison -->
+    <div class="image-pair">
+
+      <!-- BEFORE -->
+      <div class="image-card">
+        <span class="tag tag-bad">Stale Perception</span>
+
+        <iframe 
+          src="https://drive.google.com/file/d/1R2sQOs8LKBlH2kDEpd74cFOKFQpBsW0X/preview"
+          allow="autoplay"
+          title="Failure video">
+        </iframe>
+      </div>
+
+      <!-- AFTER -->
+      <div class="image-card">
+        <span class="tag tag-good">Adaptive Sensing</span>
+
+        <img 
+          src="https://drive.google.com/thumbnail?id=1RfFGE0oFWyu_Y5CMWwD_ZAvSUXCY-Ycw&sz=w1000"
+          alt="Improved sensing"
+        />
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+/* ===== SECTION ===== */
+.content-section {
+  padding: 4rem 2rem 3rem;
+}
+
+.section-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* ===== HEADING ===== */
+.section-heading {
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: #223253;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 55px;
+  height: 3px;
+  background: #c05e3c;
+}
+
+/* ===== INTRO BOX ===== */
+.problem-intro-box {
+  padding: 1.4rem 1.6rem;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(192,94,60,0.06),
+    rgba(34,50,83,0.03)
+  );
+
+  border: 1px solid rgba(192,94,60,0.1);
+
+  margin-bottom: 2rem;
+  transition: all 0.25s ease;
+}
+
+.problem-intro-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+}
+
+/* ===== MAIN TEXT (FIXED WIDTH ISSUE) ===== */
+.section-intro {
+  width: 100%;
+  max-width: 100%;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #444;
+  margin-bottom: 0.8rem;
+
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.section-intro strong {
+  color: #c05e3c;
+  font-weight: 600;
+}
+
+/* ===== DESCRIPTION ===== */
+.group-description {
+  font-size: 0.95rem;
+  color: #666;
+
+  text-align: justify;
+  line-height: 1.7;
+}
+
+/* ===== IMAGE PAIR ===== */
+.image-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+/* ===== CARD ===== */
+.image-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+
+  aspect-ratio: 16 / 9;
+
+  border: 1px solid #e4e8ef;
+  transition: all 0.3s ease;
+}
+
+.image-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+}
+
+/* ===== MEDIA ===== */
+.image-card iframe,
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  transition: transform 0.4s ease;
+}
+
+.image-card:hover img,
+.image-card:hover iframe {
+  transform: scale(1.04);
+}
+
+/* ===== TAGS ===== */
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 20px;
+  color: white;
+  z-index: 2;
+}
+
+.tag-bad {
+  background: rgba(200, 60, 60, 0.9);
+}
+
+.tag-good {
+  background: rgba(40, 140, 90, 0.9);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .image-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .section-intro,
+  .group-description {
+    text-align: left;
+  }
+}
+
+</style>

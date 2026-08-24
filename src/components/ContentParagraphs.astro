@@ -1,0 +1,144 @@
+---
+---
+
+<section id="content-paragraphs" class="content-section">
+  <div class="section-container">
+
+    <h2 class="section-heading">Key Contributions</h2>
+
+    <!-- Intro -->
+    <p class="intro-text">
+      We evaluate SenseGuard in Connected and Autonomous Vehicles (CAVs), a demanding setting with massive sensor data, strict real-time constraints, and safety-critical decisions. Solutions that succeed here generalize naturally to broader robotic systems.
+    </p>
+
+    <!-- Cards -->
+    <div class="contribution-grid">
+
+      <!-- Card 1 -->
+      <div class="contribution-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M13 2L3 14h7l-1 8 10-12h-7z"/>
+          </svg>
+        </div>
+        <h3>Adaptive Sensory Filtering</h3>
+        <p>
+          A vibration- and context-aware policy dynamically removes low-informative redundant data while preserving critical information.
+          Leveraging lightweight semantics and reinforcement learning, it maintains real-time efficiency under tight compute budgets.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="contribution-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M3 5v6c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/>
+            <path d="M3 11v6c0 1.66 4.03 3 9 3s9-1.34 9-3v-6"/>
+          </svg>
+        </div>
+        <h3>Failure-Aligned Data Curation</h3>
+        <p>
+          Instead of logging everything, the system captures compact, high-value data when perception degrades, focusing on critical events that accelerate model improvement.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="contribution-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polyline points="3 17 9 11 13 15 21 7"/>
+          </svg>
+        </div>
+        <h3>Strong Real-World Performance</h3>
+        <p>
+          Achieves up to <strong>+20% accuracy</strong>, <strong>75% lower trajectory error</strong>, reduced latency,
+          and <strong>32% storage savings</strong> across benchmarks and real-world deployments.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+/* ===== INTRO ===== */
+.intro-text {
+  width: 100%;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 2.2rem;
+  text-align: justify;
+}
+
+/* ===== GRID ===== */
+.contribution-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.6rem;
+}
+
+/* ===== CARD ===== */
+.contribution-card {
+  padding: 1.3rem;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e4e8ef;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+/* ===== ICON ===== */
+.icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.6rem;
+  color: #c05e3c;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 2;
+}
+
+/* ===== HOVER ===== */
+.contribution-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+  border-color: #c05e3c;
+}
+
+/* subtle icon animation */
+.contribution-card:hover .icon {
+  transform: scale(1.1);
+  transition: 0.25s ease;
+}
+
+/* ===== TITLE ===== */
+.contribution-card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #223253;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== TEXT ===== */
+.contribution-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .intro-text {
+    text-align: left;
+  }
+}
+
+</style>

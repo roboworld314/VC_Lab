@@ -1,0 +1,299 @@
+---
+// Hero.astro — FINAL FIXED VERSION
+---
+
+<section id="hero" class="hero-section">
+
+  <div class="hero-inner">
+
+    <!-- LEFT CONTENT -->
+    <div class="hero-left">
+
+      <h1 class="hero-title">
+        SenseGuard: Sensor-to-Decision Adaptation for Reliable Agentic AI Robots
+      </h1>
+
+      <p class="hero-subtitle">
+        Real-Time Adaptive Perception Decision Making under Vibration and Resource Constraints
+      </p>
+
+      <!-- Paper Box -->
+      <div class="paper-box">
+
+        <div class="paper-left">
+          <span class="paper-icon">📄</span>
+          <span class="paper-title">Supplementary Materials</span>
+        </div>
+
+        <div class="paper-links">
+
+          <!-- Appendix -->
+          <a href="https://drive.google.com/file/d/1adc8mrF3CoUz2dJ_2IxYwd5p2cFx412H/view"
+             target="_blank" class="paper-btn paper-btn-primary">
+            <svg class="btn-icon" viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            Appendix
+          </a>
+
+          <!-- Code -->
+          <a href="#" class="paper-btn paper-btn-secondary"
+             onclick="alert('We will publish soon!'); return false;">
+            <svg class="btn-icon" viewBox="0 0 24 24">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+            Code
+          </a>
+
+          <!-- Dataset -->
+          <a href="#" class="paper-btn paper-btn-secondary"
+             onclick="alert('We will publish soon!'); return false;">
+            <svg class="btn-icon" viewBox="0 0 24 24">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M3 5v6c0 1.6 4 3 9 3s9-1.4 9-3V5"/>
+            </svg>
+            Dataset
+          </a>
+
+          <!-- Video -->
+          <a href="https://drive.google.com/file/d/1BV0f012GT49ySYrE-zComIcFRSKspdmL/preview"
+             class="paper-btn paper-btn-primary">
+            <svg class="btn-icon" viewBox="0 0 24 24">
+              <polygon points="23 7 16 12 23 17"/>
+              <rect x="1" y="5" width="15" height="14" rx="2"/>
+            </svg>
+            Demo Video
+          </a>
+
+        </div> <!-- ✅ CLOSE paper-links -->
+
+      </div> <!-- ✅ CLOSE paper-box -->
+
+    </div> <!-- ✅ CLOSE hero-left -->
+
+
+    <!-- RIGHT VISUAL -->
+    <div class="hero-right">
+
+      <div class="vehicle-wrapper">
+
+        <div class="road"></div>
+
+        <img 
+          src="https://lh3.googleusercontent.com/d/1Tc_J8SAASOFz-OovA0bAbX3_7NNMOSZW"
+          alt="Autonomous Vehicle"
+          class="vehicle"
+        />
+
+      </div>
+
+    </div> <!-- ✅ CLOSE hero-right -->
+
+  </div> <!-- ✅ CLOSE hero-inner -->
+
+</section>
+
+<style>
+
+/* ===== HERO BASE ===== */
+.hero-section {
+  padding: 2.5rem 2rem 1.8rem;
+  background: linear-gradient(135deg, #f7f5f2, #ece9e3);
+}
+
+/* ===== GRID ===== */
+.hero-inner {
+  max-width: 1100px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+/* ===== LEFT ===== */
+.hero-left {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== TITLE ===== */
+.hero-title {
+  font-size: 2.2rem;
+  line-height: 1.2;
+
+  background: linear-gradient(135deg, #1a2740, #2f4a85);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== SUBTITLE ===== */
+.hero-subtitle {
+  margin-top: 0.6rem;
+  font-size: 1.02rem;
+  color: #5c667a;
+}
+
+/* ===== PAPER BOX ===== */
+.paper-box {
+  margin-top: 1.5rem;
+  
+  padding: 0.5rem 1.4rem;  
+  width: 100%;
+  max-width: 750px;   /* 🔥 controls how wide it goes */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+
+  border-radius: 12px;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+
+  transition: 0.25s ease;
+}
+
+.paper-box:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== BUTTONS ===== */
+/* ICON */
+.btn-icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  fill: none;
+}
+
+/* BUTTON BASE */
+.paper-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.78rem;
+
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* PRIMARY */
+.paper-btn-primary {
+  background: linear-gradient(135deg, #1f2f54, #2f4a85);
+  color: white;
+}
+
+/* PRIMARY HOVER */
+.paper-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(47,74,133,0.35);
+}
+
+/* SECONDARY */
+.paper-btn-secondary {
+  border: 1px solid #d6dbe4;
+  color: #3a445a;
+  background: white;
+}
+
+/* SECONDARY HOVER */
+.paper-btn-secondary:hover {
+  background: #223253;
+  color: white;
+  border-color: #223253;
+  transform: translateY(-2px);
+}
+
+/* ===== RIGHT VEHICLE ===== */
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== VEHICLE SYSTEM ===== */
+.vehicle-wrapper {
+  position: relative;
+  width: 220px;
+  height: 120px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* ROAD */
+.road {
+  position: absolute;
+  bottom: 12px;
+  width: 100%;
+  height: 3px;
+
+  background: repeating-linear-gradient(
+    to right,
+    #bbb,
+    #bbb 20px,
+    transparent 20px,
+    transparent 40px
+  );
+
+  animation: roadMove 1.2s linear infinite;
+}
+
+/* CAR */
+.vehicle {
+  position: absolute;
+  bottom: 18px;
+  left: -120px;
+  width: 150px;
+
+  animation: drive 6s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes drive {
+  from { left: -120px; }
+  to { left: 240px; }
+}
+
+@keyframes roadMove {
+  from { background-position: 0; }
+  to { background-position: 40px; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .vehicle-wrapper {
+    width: 180px;
+    height: 100px;
+  }
+
+  .vehicle {
+    width: 120px;
+  }
+}
+
+</style>

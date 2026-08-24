@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ProblemStatement from '../components/ProblemStatement.astro';
+import ImageShowcase from '../components/ImageShowcase.astro';
+import ContentParagraphs from '../components/ContentParagraphs.astro';
+import DemoVideo from '../components/DemoVideo.astro';
+import Datacollection from '../components/Datacollection.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "vclab";
+---
+
+<Layout title={pageTitle}>
+  <!-- 1. Title -->
+  <Hero />
+
+  <hr class="section-divider" />
+
+  <!-- 2. Problem Statement -->
+  <ProblemStatement />
+
+  <hr class="section-divider" />
+
+  <!-- 3. Images (2/3 groups) -->
+  
+
+  <hr class="section-divider" />
+  <Datacollection />
+ <DemoVideo />
+  <!-- 4. Additional Paragraphs -->
+  <ContentParagraphs />
+
+  <hr class="section-divider" />
+
+ 
+ 
+
+  <hr class="section-divider" />
+
+  <!-- 6. Appendix Link -->
+  
+</Layout>

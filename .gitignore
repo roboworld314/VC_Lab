@@ -1,0 +1,20 @@
+# Astro
+dist/
+.astro/
+node_modules/
+
+# Reference materials (not needed in deployment)
+Reference/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.agents/
+assets/
+*.swp
+*.swo
+prompt
+README.md

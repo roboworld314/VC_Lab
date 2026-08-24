@@ -1,0 +1,178 @@
+---
+// DemoVideo.astro — Format D (Enhanced)
+---
+
+<section id="demo-video" class="content-section">
+  <div class="section-container">
+
+    <!-- Header with action -->
+    <div class="header-with-actions">
+      <h2 class="section-heading">Demo Video</h2>
+
+      <a 
+        href="https://drive.google.com/file/d/1wWTNAS4955ns9qfJYYPXwjy6jgHvF9V2/view"
+        target="_blank"
+        class="external-link-icon"
+        title="Open in new tab"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Caption block (Format D style) -->
+    <div class="video-caption-box">
+      <p>
+        <strong>SenseGuard</strong> demonstrates adaptive storage and perception-aware data selection under 
+        high-vibration conditions. The system prioritizes informative sensor data, reduces redundancy, and 
+        maintains real-time responsiveness while preserving critical decision-time evidence.
+      </p>
+    </div>
+
+    <!-- Video block -->
+    <div class="video-block">
+      <div class="video-container">
+        <iframe
+          src="https://drive.google.com/file/d/1BV0f012GT49ySYrE-zComIcFRSKspdmL/preview"
+          allow="autoplay; fullscreen"
+          loading="lazy"
+          title="CAV Black Box Demo"
+        ></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+/* ===== HEADER ===== */
+.header-with-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.8rem;
+}
+
+.section-heading {
+  font-size: 1.6rem;
+  color: #223253;
+  position: relative;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 55px;
+  height: 3px;
+  background: #c05e3c;
+}
+
+/* ===== EXTERNAL ICON ===== */
+.external-link-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(192,94,60,0.08);
+  border: 1px solid rgba(192,94,60,0.2);
+
+  transition: all 0.25s ease;
+}
+
+.external-link-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+.external-link-icon:hover {
+  transform: translateY(-2px);
+  background: rgba(192,94,60,0.15);
+  border-color: #c05e3c;
+}
+
+/* ===== CAPTION BOX ===== */
+.video-caption-box {
+  padding: 1.5rem;
+  margin-bottom: 1.8rem;
+
+  border-left: 4px solid #c05e3c;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(192,94,60,0.05),
+    rgba(27,42,74,0.03)
+  );
+
+  border: 1px solid rgba(192,94,60,0.1);
+
+  transition: all 0.25s ease;
+}
+
+.video-caption-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+}
+
+.video-caption-box p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: justify;
+}
+
+.video-caption-box strong {
+  color: #c05e3c;
+}
+
+/* ===== VIDEO BLOCK ===== */
+.video-block {
+  border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0 10px 32px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.video-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.12);
+}
+
+.video-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .header-with-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .video-caption-box p {
+    text-align: left;
+  }
+}
+
+</style>

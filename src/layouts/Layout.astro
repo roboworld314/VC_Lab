@@ -1,0 +1,109 @@
+---
+import '../styles/global.css';
+
+const { title = "CAV Black Box Demo" } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="CAV Black Box: Adaptive and Efficient Storage under Vibration — Demo Page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+
+    <style is:global>
+      :root {
+        --color-primary: #1a1a1a;
+        --color-accent: #3498db;
+        --color-text-light: #666;
+        --radius-md: 12px;
+        --font-heading: 'DM Serif Display', serif;
+        --font-body: 'DM Sans', sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html, body {
+        overflow-x: hidden; /* Prevents horizontal scroll on mobile */
+        width: 100%;
+        background-color: #f8f9fa;
+        color: var(--color-primary);
+        font-family: var(--font-body);
+        line-height: 1.6;
+      }
+
+      main {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      @media (max-width: 480px) {
+        main {
+          padding: 0;
+        }
+      }
+
+      @media (min-width: 481px) and (max-width: 768px) {
+        main {
+          padding: 0;
+        }
+      }
+
+      @media (min-width: 769px) {
+        main {
+          padding: 0;
+        }
+      }
+
+      /* Animation Base State */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        main {
+          padding: 1rem 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
