@@ -1,0 +1,164 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'SenseGuard',
+  description = 'SenseGuard: sensor-to-decision adaptation for reliable agentic AI robots under vibration and resource constraints.',
+  image = '/og-image.png',
+} = Astro.props;
+
+const pageTitle = title === 'SenseGuard' ? title : `${title} | SenseGuard`;
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+const socialImage = Astro.site ? new URL(image, Astro.site).toString() : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#152942" />
+    <meta name="color-scheme" content="light" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{pageTitle}</title>
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap"
+    />
+
+    <style is:global>
+      :root {
+        --color-bg: #f4f3ed;
+        --color-surface: #fffef9;
+        --color-primary: #152942;
+        --color-primary-light: #294763;
+        --color-accent: #c05e3c;
+        --color-teal: #0f716b;
+        --color-lime: #c8ee57;
+        --color-text: #263744;
+        --color-text-muted: #637480;
+        --color-text-light: #8a9aa4;
+        --color-border: #d9dfdf;
+        --color-border-light: #e7ebea;
+        --font-heading: 'DM Serif Display', Georgia, serif;
+        --font-body: 'DM Sans', Arial, sans-serif;
+        --radius-md: 14px;
+        --radius-lg: 22px;
+        --shadow-card: 0 14px 40px rgba(21, 41, 66, 0.08);
+        --shadow-elevated: 0 24px 70px rgba(21, 41, 66, 0.14);
+        --transition-smooth: 180ms ease;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; }
+
+      html {
+        width: 100%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        background: var(--color-bg);
+        color: var(--color-text);
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 10% 0%, rgba(15, 113, 107, 0.05), transparent 35rem),
+          var(--color-bg);
+      }
+
+      main { width: 100%; margin: 0; padding: 0; }
+      img, video, iframe { max-width: 100%; }
+      button, input, textarea, select { font: inherit; }
+      a { text-underline-offset: 0.2em; }
+
+      :focus-visible {
+        outline: 3px solid var(--color-lime);
+        outline-offset: 4px;
+        border-radius: 4px;
+      }
+
+      .js .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 600ms ease, transform 600ms ease;
+      }
+
+      .js .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .js .reveal { opacity: 1; transform: none; }
+      }
+    </style>
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <script>
+      const revealElements = document.querySelectorAll<HTMLElement>('.reveal');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reducedMotion || !('IntersectionObserver' in window)) {
+        revealElements.forEach((element) => element.classList.add('visible'));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries, activeObserver) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                activeObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        revealElements.forEach((element) => observer.observe(element));
+      }
+    </script>
+  </body>
+</html>
