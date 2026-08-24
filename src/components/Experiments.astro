@@ -158,7 +158,7 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
   .experiment-video-slot {
     position: relative;
     min-width: 0;
-    aspect-ratio: 16 / 9;
+    min-height: 100%;
     overflow: hidden;
     background: #081d29;
   }
@@ -291,6 +291,11 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
 
     .video-showcase {
       grid-template-columns: 1fr;
+    }
+
+    .experiment-video-slot {
+      min-height: 0;
+      aspect-ratio: 16 / 9;
     }
   }
 
