@@ -1,0 +1,57 @@
+---
+const highlights = [
+  { label: "Physical deployment", text: "Evaluation on a robotic vehicle in real driving conditions." },
+  { label: "Vibration stress", text: "Sensor quality is measured across changing terrain and motion." },
+  { label: "Adaptive response", text: "Filtering reacts online while preserving perception fidelity." },
+];
+---
+
+<section id="real-world-experiment" class="content-section" aria-labelledby="experiment-title">
+  <div class="section-container">
+    <header class="section-header">
+      <div><p class="section-kicker">Real-world evaluation</p><h2 id="experiment-title">From controlled tests to vehicles in motion.</h2></div>
+      <p>We evaluate SenseGuard under changing vibration and environmental complexity to understand how it prioritizes informative data under deployment stress.</p>
+    </header>
+
+    <div class="highlight-grid">
+      {highlights.map((item, index) => (
+        <article><span>0{index + 1}</span><div><h3>{item.label}</h3><p>{item.text}</p></div></article>
+      ))}
+    </div>
+
+    <div class="media-grid">
+      <figure class="media-feature">
+        <iframe src="https://drive.google.com/file/d/1XJ6RTKSLHpggS11d33h5RUC6NltZzXkD/preview" allow="autoplay; fullscreen" loading="lazy" title="Real-world SenseGuard data collection"></iframe>
+        <figcaption>Real-world data collection</figcaption>
+      </figure>
+      <figure>
+        <img src="https://lh3.googleusercontent.com/d/1_TBdIG1UbyEB6tQ_wzuksS9Ima-5Tifo" alt="Indoor vehicle computing testbed" width="900" height="600" loading="lazy" decoding="async" />
+        <figcaption>Indoor testbed</figcaption>
+      </figure>
+      <figure>
+        <img src="https://lh3.googleusercontent.com/d/1J_BjOpYJwN7ZVhTn1hiGHkBT1WQkqpal" alt="Outdoor robotic vehicle experiment" width="900" height="600" loading="lazy" decoding="async" />
+        <figcaption>Outdoor testbed</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .content-section { padding: clamp(4rem, 8vw, 7rem) 1.5rem; }
+  .section-container { width: min(1100px, 100%); margin: 0 auto; }
+  .section-header { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: end; }
+  .section-kicker { margin: 0 0 0.8rem; color: #0f716b; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+  h2 { margin: 0; color: #152942; font-family: var(--font-heading, Georgia, serif); font-size: clamp(2.5rem, 4.7vw, 4.4rem); font-weight: 400; line-height: 1; letter-spacing: -0.045em; }
+  .section-header > p { margin: 0; color: #637480; line-height: 1.75; }
+  .highlight-grid { margin: 2.7rem 0 1.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .highlight-grid article { padding: 1rem; display: flex; gap: 0.9rem; border-top: 2px solid #c05e3c; background: #fff; }
+  .highlight-grid span { color: #c05e3c; font-size: 0.67rem; font-weight: 800; }
+  .highlight-grid h3 { margin: 0; color: #152942; font-size: 0.95rem; }
+  .highlight-grid p { margin: 0.35rem 0 0; color: #637480; font-size: 0.8rem; line-height: 1.55; }
+  .media-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; grid-template-rows: repeat(2, 230px); gap: 0.9rem; }
+  figure { min-width: 0; margin: 0; position: relative; overflow: hidden; border-radius: 15px; background: #12202b; }
+  .media-feature { grid-row: 1 / span 2; }
+  figure iframe, figure img { width: 100%; height: 100%; display: block; border: 0; object-fit: cover; }
+  figcaption { position: absolute; left: 0.9rem; bottom: 0.9rem; padding: 0.45rem 0.65rem; border-radius: 999px; color: #fff; background: rgba(9, 29, 42, 0.78); backdrop-filter: blur(8px); font-size: 0.67rem; font-weight: 700; }
+  @media (max-width: 760px) { .section-header, .highlight-grid, .media-grid { grid-template-columns: 1fr; } .section-header { gap: 1.2rem; } .media-grid { grid-template-rows: repeat(3, 280px); } .media-feature { grid-row: auto; } }
+</style>

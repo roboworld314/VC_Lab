@@ -1,299 +1,178 @@
 ---
-// Hero.astro — FINAL FIXED VERSION
+const appendixUrl = "https://drive.google.com/file/d/1adc8mrF3CoUz2dJ_2IxYwd5p2cFx412H/view";
+const demoUrl = "https://drive.google.com/file/d/1BV0f012GT49ySYrE-zComIcFRSKspdmL/preview";
 ---
 
-<section id="hero" class="hero-section">
-
+<section id="hero" class="hero-section" aria-labelledby="hero-title">
   <div class="hero-inner">
-
-    <!-- LEFT CONTENT -->
-    <div class="hero-left">
-
-      <h1 class="hero-title">
-        SenseGuard: Sensor-to-Decision Adaptation for Reliable Agentic AI Robots
-      </h1>
-
-      <p class="hero-subtitle">
-        Real-Time Adaptive Perception Decision Making under Vibration and Resource Constraints
+    <div class="hero-copy">
+      <p class="eyebrow"><span></span>Vehicle Computing Research</p>
+      <h1 id="hero-title">SenseGuard</h1>
+      <p class="hero-tagline">Sensor-to-decision adaptation for reliable agentic AI robots</p>
+      <p class="hero-summary">
+        Real-time adaptive perception and data selection under vibration and resource constraints.
       </p>
 
-      <!-- Paper Box -->
-      <div class="paper-box">
-
-        <div class="paper-left">
-          <span class="paper-icon">📄</span>
-          <span class="paper-title">Supplementary Materials</span>
-        </div>
-
-        <div class="paper-links">
-
-          <!-- Appendix -->
-          <a href="https://drive.google.com/file/d/1adc8mrF3CoUz2dJ_2IxYwd5p2cFx412H/view"
-             target="_blank" class="paper-btn paper-btn-primary">
-            <svg class="btn-icon" viewBox="0 0 24 24">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-            </svg>
-            Appendix
-          </a>
-
-          <!-- Code -->
-          <a href="#" class="paper-btn paper-btn-secondary"
-             onclick="alert('We will publish soon!'); return false;">
-            <svg class="btn-icon" viewBox="0 0 24 24">
-              <polyline points="16 18 22 12 16 6"/>
-              <polyline points="8 6 2 12 8 18"/>
-            </svg>
-            Code
-          </a>
-
-          <!-- Dataset -->
-          <a href="#" class="paper-btn paper-btn-secondary"
-             onclick="alert('We will publish soon!'); return false;">
-            <svg class="btn-icon" viewBox="0 0 24 24">
-              <ellipse cx="12" cy="5" rx="9" ry="3"/>
-              <path d="M3 5v6c0 1.6 4 3 9 3s9-1.4 9-3V5"/>
-            </svg>
-            Dataset
-          </a>
-
-          <!-- Video -->
-          <a href="https://drive.google.com/file/d/1BV0f012GT49ySYrE-zComIcFRSKspdmL/preview"
-             class="paper-btn paper-btn-primary">
-            <svg class="btn-icon" viewBox="0 0 24 24">
-              <polygon points="23 7 16 12 23 17"/>
-              <rect x="1" y="5" width="15" height="14" rx="2"/>
-            </svg>
-            Demo Video
-          </a>
-
-        </div> <!-- ✅ CLOSE paper-links -->
-
-      </div> <!-- ✅ CLOSE paper-box -->
-
-    </div> <!-- ✅ CLOSE hero-left -->
-
-
-    <!-- RIGHT VISUAL -->
-    <div class="hero-right">
-
-      <div class="vehicle-wrapper">
-
-        <div class="road"></div>
-
-        <img 
-          src="https://lh3.googleusercontent.com/d/1Tc_J8SAASOFz-OovA0bAbX3_7NNMOSZW"
-          alt="Autonomous Vehicle"
-          class="vehicle"
-        />
-
+      <div class="hero-actions" aria-label="Project resources">
+        <a href={appendixUrl} target="_blank" rel="noopener noreferrer" class="button button-primary">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12V8z"></path><path d="M14 2v6h6"></path></svg>
+          Read appendix
+        </a>
+        <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="button button-secondary">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"></path></svg>
+          Watch demo
+        </a>
+        <span class="resource-pending" title="Code will be published after the review period">Code · coming soon</span>
+        <span class="resource-pending" title="Dataset will be published after the review period">Dataset · coming soon</span>
       </div>
+    </div>
 
-    </div> <!-- ✅ CLOSE hero-right -->
-
-  </div> <!-- ✅ CLOSE hero-inner -->
-
+    <div class="hero-visual">
+      <div class="visual-frame">
+        <img
+          src="https://lh3.googleusercontent.com/d/1Tc_J8SAASOFz-OovA0bAbX3_7NNMOSZW"
+          alt="Autonomous research vehicle used to evaluate SenseGuard"
+          width="900"
+          height="600"
+          loading="eager"
+          decoding="async"
+        />
+        <div class="visual-overlay" aria-hidden="true"></div>
+        <p class="visual-label"><span></span>Physical vehicle deployment</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <style>
+  .hero-section {
+    padding: clamp(1rem, 3vw, 2rem);
+  }
 
-/* ===== HERO BASE ===== */
-.hero-section {
-  padding: 2.5rem 2rem 1.8rem;
-  background: linear-gradient(135deg, #f7f5f2, #ece9e3);
-}
-
-/* ===== GRID ===== */
-.hero-inner {
-  max-width: 1100px;
-  margin: auto;
-
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  align-items: center;
-  gap: 1.8rem;
-}
-
-/* ===== LEFT ===== */
-.hero-left {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* ===== TITLE ===== */
-.hero-title {
-  font-size: 2.2rem;
-  line-height: 1.2;
-
-  background: linear-gradient(135deg, #1a2740, #2f4a85);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ===== SUBTITLE ===== */
-.hero-subtitle {
-  margin-top: 0.6rem;
-  font-size: 1.02rem;
-  color: #5c667a;
-}
-
-/* ===== PAPER BOX ===== */
-.paper-box {
-  margin-top: 1.5rem;
-  
-  padding: 0.5rem 1.4rem;  
-  width: 100%;
-  max-width: 750px;   /* 🔥 controls how wide it goes */
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-
-  border-radius: 12px;
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(10px);
-
-  border: 1px solid rgba(0,0,0,0.05);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-
-  transition: 0.25s ease;
-}
-
-.paper-box:hover {
-  transform: translateY(-2px);
-}
-
-/* ===== BUTTONS ===== */
-/* ICON */
-.btn-icon {
-  width: 14px;
-  height: 14px;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  fill: none;
-}
-
-/* BUTTON BASE */
-.paper-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-
-  padding: 0.4rem 0.85rem;
-  border-radius: 8px;
-  font-size: 0.78rem;
-
-  transition: all 0.25s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* PRIMARY */
-.paper-btn-primary {
-  background: linear-gradient(135deg, #1f2f54, #2f4a85);
-  color: white;
-}
-
-/* PRIMARY HOVER */
-.paper-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(47,74,133,0.35);
-}
-
-/* SECONDARY */
-.paper-btn-secondary {
-  border: 1px solid #d6dbe4;
-  color: #3a445a;
-  background: white;
-}
-
-/* SECONDARY HOVER */
-.paper-btn-secondary:hover {
-  background: #223253;
-  color: white;
-  border-color: #223253;
-  transform: translateY(-2px);
-}
-
-/* ===== RIGHT VEHICLE ===== */
-.hero-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ===== VEHICLE SYSTEM ===== */
-.vehicle-wrapper {
-  position: relative;
-  width: 220px;
-  height: 120px;
-  overflow: hidden;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-/* ROAD */
-.road {
-  position: absolute;
-  bottom: 12px;
-  width: 100%;
-  height: 3px;
-
-  background: repeating-linear-gradient(
-    to right,
-    #bbb,
-    #bbb 20px,
-    transparent 20px,
-    transparent 40px
-  );
-
-  animation: roadMove 1.2s linear infinite;
-}
-
-/* CAR */
-.vehicle {
-  position: absolute;
-  bottom: 18px;
-  left: -120px;
-  width: 150px;
-
-  animation: drive 6s linear infinite;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes drive {
-  from { left: -120px; }
-  to { left: 240px; }
-}
-
-@keyframes roadMove {
-  from { background-position: 0; }
-  to { background-position: 40px; }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
   .hero-inner {
-    grid-template-columns: 1fr;
+    width: min(1180px, 100%);
+    min-height: 570px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    overflow: hidden;
+    border-radius: 26px;
+    background: #152942;
+    box-shadow: 0 24px 70px rgba(21, 41, 66, 0.16);
   }
 
-  .hero-title {
-    font-size: 1.8rem;
+  .hero-copy {
+    padding: clamp(2.5rem, 6vw, 5.5rem);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  .vehicle-wrapper {
-    width: 180px;
-    height: 100px;
+  .eyebrow {
+    margin: 0 0 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #cbd8e2;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
 
-  .vehicle {
-    width: 120px;
+  .eyebrow span,
+  .visual-label span {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #c8ee57;
+    box-shadow: 0 0 0 5px rgba(200, 238, 87, 0.14);
   }
-}
 
+  h1 {
+    margin: 0;
+    color: #c8ee57;
+    font-family: var(--font-heading, Georgia, serif);
+    font-size: clamp(3.8rem, 8vw, 7rem);
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+  }
+
+  .hero-tagline {
+    max-width: 640px;
+    margin: 1.4rem 0 0;
+    color: #fff;
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+  }
+
+  .hero-summary {
+    max-width: 570px;
+    margin: 1.4rem 0 0;
+    color: #b8c8d2;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    min-height: 44px;
+    padding: 0 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 180ms ease, background 180ms ease;
+  }
+
+  .button:hover { transform: translateY(-2px); }
+  .button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .button-primary { color: #152942; background: #c8ee57; }
+  .button-secondary { color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); }
+
+  .resource-pending {
+    padding: 0.45rem 0.2rem;
+    color: #8fa4b1;
+    font-size: 0.69rem;
+  }
+
+  .hero-visual { min-width: 0; padding: 1rem; }
+  .visual-frame { height: 100%; min-height: 480px; position: relative; overflow: hidden; border-radius: 18px; background: #263d4a; }
+  .visual-frame img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .visual-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 52%, rgba(8, 25, 37, 0.82)); }
+  .visual-label { position: absolute; left: 1.4rem; bottom: 1.3rem; margin: 0; display: flex; align-items: center; gap: 0.7rem; color: #fff; font-size: 0.75rem; font-weight: 700; }
+
+  @media (max-width: 850px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { min-height: 420px; }
+    .visual-frame { min-height: 400px; }
+  }
+
+  @media (max-width: 560px) {
+    .hero-section { padding: 0.75rem; }
+    .hero-inner { border-radius: 18px; }
+    .hero-copy { padding: 2.5rem 1.5rem; }
+    h1 { font-size: 3.8rem; }
+    .hero-visual { min-height: 330px; }
+    .visual-frame { min-height: 310px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .button { transition: none; }
+  }
 </style>

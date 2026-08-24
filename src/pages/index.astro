@@ -4,40 +4,49 @@ import Hero from '../components/Hero.astro';
 import ProblemStatement from '../components/ProblemStatement.astro';
 import ImageShowcase from '../components/ImageShowcase.astro';
 import ContentParagraphs from '../components/ContentParagraphs.astro';
-import DemoVideo from '../components/DemoVideo.astro';
 import Datacollection from '../components/Datacollection.astro';
+import DemoVideo from '../components/DemoVideo.astro';
 import Footer from '../components/Footer.astro';
 
-const pageTitle = "vclab";
+const pageTitle = 'SenseGuard';
+const pageDescription =
+  'Sensor-to-decision adaptation for reliable agentic AI robots under vibration and resource constraints.';
 ---
 
-<Layout title={pageTitle}>
-  <!-- 1. Title -->
+<Layout title={pageTitle} description={pageDescription}>
+  <a class="skip-link" href="#problem-statement">Skip to main content</a>
+
   <Hero />
-
-  <hr class="section-divider" />
-
-  <!-- 2. Problem Statement -->
   <ProblemStatement />
-
-  <hr class="section-divider" />
-
-  <!-- 3. Images (2/3 groups) -->
-  
-
-  <hr class="section-divider" />
-  <Datacollection />
- <DemoVideo />
-  <!-- 4. Additional Paragraphs -->
+  <ImageShowcase />
   <ContentParagraphs />
-
-  <hr class="section-divider" />
-
- 
- 
-
-  <hr class="section-divider" />
-
-  <!-- 6. Appendix Link -->
-  
+  <Datacollection />
+  <DemoVideo />
+  <Footer />
 </Layout>
+
+<style>
+  .skip-link {
+    position: fixed;
+    z-index: 1000;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    color: #152942;
+    background: #c8ee57;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-decoration: none;
+    transform: translateY(-150%);
+    transition: transform 160ms ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skip-link { transition: none; }
+  }
+</style>

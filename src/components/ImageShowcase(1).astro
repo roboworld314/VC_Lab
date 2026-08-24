@@ -1,0 +1,48 @@
+<section id="failure-comparison" class="content-section" aria-labelledby="comparison-title">
+  <div class="section-container">
+    <header class="section-header">
+      <p class="section-kicker">Failure case</p>
+      <h2 id="comparison-title">Fresh evidence changes the outcome.</h2>
+      <p>Vibration produces redundant and distorted sensor streams that can delay critical observations. The comparison shows stale perception beside the adaptive sensing result.</p>
+    </header>
+
+    <div class="comparison-grid">
+      <figure>
+        <div class="media-frame">
+          <span class="media-status status-bad">Without adaptation</span>
+          <iframe src="https://drive.google.com/file/d/1R2sQOs8LKBlH2kDEpd74cFOKFQpBsW0X/preview" allow="autoplay; fullscreen" loading="lazy" title="Stale perception failure video"></iframe>
+        </div>
+        <figcaption><strong>Stale perception</strong><span>Delayed observations can produce missed detections and unsafe decisions.</span></figcaption>
+      </figure>
+
+      <figure>
+        <div class="media-frame">
+          <span class="media-status status-good">SenseGuard enabled</span>
+          <img src="https://drive.google.com/thumbnail?id=1RfFGE0oFWyu_Y5CMWwD_ZAvSUXCY-Ycw&sz=w1000" alt="Improved perception output produced by adaptive sensing" width="1000" height="563" loading="lazy" decoding="async" />
+        </div>
+        <figcaption><strong>Adaptive sensing</strong><span>Informative, timely evidence remains available for downstream decisions.</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .content-section { padding: clamp(4rem, 8vw, 7rem) 1.5rem; background: #eef2ee; }
+  .section-container { width: min(1100px, 100%); margin: 0 auto; }
+  .section-header { margin-bottom: 2.5rem; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3.5rem; align-items: end; }
+  .section-kicker { margin: 0 0 0.8rem; color: #c05e3c; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+  h2 { margin: 0; color: #152942; font-family: var(--font-heading, Georgia, serif); font-size: clamp(2.5rem, 4.7vw, 4.4rem); font-weight: 400; line-height: 1; letter-spacing: -0.045em; }
+  .section-header > p:last-child { margin: 0; color: #637480; line-height: 1.75; }
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  figure { margin: 0; }
+  .media-frame { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 16px; background: #12202b; }
+  .media-frame iframe, .media-frame img { width: 100%; height: 100%; display: block; border: 0; object-fit: cover; }
+  .media-status { position: absolute; z-index: 2; top: 1rem; left: 1rem; padding: 0.45rem 0.7rem; border-radius: 999px; color: #fff; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; backdrop-filter: blur(8px); }
+  .status-bad { background: rgba(164, 53, 40, 0.88); }
+  .status-good { background: rgba(15, 113, 107, 0.9); }
+  figcaption { padding: 1rem 0.3rem 0; display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 1rem; }
+  figcaption strong { color: #152942; }
+  figcaption span { color: #637480; font-size: 0.84rem; line-height: 1.6; }
+  @media (max-width: 760px) { .section-header, .comparison-grid { grid-template-columns: 1fr; } .section-header { gap: 1.2rem; } }
+  @media (max-width: 480px) { figcaption { grid-template-columns: 1fr; gap: 0.3rem; } }
+</style>

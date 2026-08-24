@@ -1,0 +1,47 @@
+---
+const contributions = [
+  { number: "01", title: "Adaptive sensory filtering", text: "A vibration- and context-aware policy removes low-information redundancy while preserving decision-critical evidence under tight compute budgets." },
+  { number: "02", title: "Failure-aligned data curation", text: "Instead of logging everything, SenseGuard retains compact, high-value context when perception quality degrades." },
+  { number: "03", title: "Validated real-world gains", text: "Evaluation shows gains of up to 20% in accuracy, 75% lower trajectory error, lower latency, and 32% less storage." },
+];
+---
+
+<section id="contributions" class="content-section" aria-labelledby="contributions-title">
+  <div class="section-container">
+    <div class="section-heading-row">
+      <div><p class="section-kicker">What SenseGuard contributes</p><h2 id="contributions-title">Designed for decisions, not data volume.</h2></div>
+      <p>Connected and autonomous vehicles stress every part of the sensing pipeline. SenseGuard focuses limited resources on the evidence that matters most.</p>
+    </div>
+
+    <div class="contribution-grid">
+      {contributions.map((item) => (
+        <article>
+          <span class="card-number">{item.number}</span>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .content-section { padding: clamp(4rem, 8vw, 7rem) 1.5rem; background: #fffef9; }
+  .section-container { width: min(1100px, 100%); margin: 0 auto; }
+  .section-heading-row { margin-bottom: 2.5rem; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: end; }
+  .section-kicker { margin: 0 0 0.8rem; color: #0f716b; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+  h2 { margin: 0; color: #152942; font-family: var(--font-heading, Georgia, serif); font-size: clamp(2.5rem, 4.7vw, 4.4rem); font-weight: 400; line-height: 1; letter-spacing: -0.045em; }
+  .section-heading-row > p { margin: 0; color: #637480; line-height: 1.75; }
+  .contribution-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  article { min-height: 280px; padding: 1.8rem; border-radius: 16px; border: 1px solid #dce2e2; background: #f6f5ef; transition: transform 180ms ease, box-shadow 180ms ease; }
+  article:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(21, 41, 66, 0.09); }
+  article:nth-child(2) { color: #fff; background: #152942; border-color: #152942; }
+  article:nth-child(2) h3 { color: #fff; }
+  article:nth-child(2) p { color: #bccbd3; }
+  .card-number { display: block; color: #c05e3c; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; }
+  article:nth-child(2) .card-number { color: #c8ee57; }
+  h3 { margin: 4.5rem 0 0.8rem; color: #152942; font-size: 1.2rem; letter-spacing: -0.02em; }
+  article p { margin: 0; color: #637480; font-size: 0.92rem; line-height: 1.7; }
+  @media (max-width: 800px) { .section-heading-row { grid-template-columns: 1fr; gap: 1.3rem; } .contribution-grid { grid-template-columns: 1fr; } article { min-height: 230px; } }
+  @media (prefers-reduced-motion: reduce) { article { transition: none; } }
+</style>
