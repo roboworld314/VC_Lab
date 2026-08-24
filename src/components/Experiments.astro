@@ -45,19 +45,27 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
 
   <div class="experiment-showcase-list">
     {experiments.map((experiment) => (
-      <article class="experiment-showcase">
-        <div class:list={["experiment-media", { "video-media": experiment.mediaType === "video" }]}>
-          {experiment.mediaType === "video" ? (
-            experiment.mediaSrcs.map((mediaSrc, mediaIndex) => (
-              <iframe
-                src={mediaSrc}
-                title={`${experiment.mediaLabel} ${mediaIndex + 1}`}
-                loading="lazy"
-                allow="autoplay; fullscreen"
-                allowfullscreen
-              />
-            ))
-          ) : (
+      <article class:list={["experiment-showcase", { "video-showcase": experiment.mediaType === "video" }]}>
+        {experiment.mediaType === "video" ? (
+          <div class="experiment-video-slots">
+            {experiment.mediaSrcs.map((mediaSrc, mediaIndex) => (
+              <div class="experiment-video-slot">
+                <iframe
+                  src={mediaSrc}
+                  title={`${experiment.mediaLabel} ${mediaIndex + 1}`}
+                  loading="lazy"
+                  allow="autoplay; fullscreen"
+                  allowfullscreen
+                />
+                <div class="media-caption">
+                  <span class="media-icon video" aria-hidden="true">▶</span>
+                  <span>Experiment video {mediaIndex + 1}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div class="experiment-media">
             <img
               src={experiment.mediaSrc}
               alt={experiment.mediaLabel}
@@ -65,14 +73,12 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
               width="1200"
               height="800"
             />
-          )}
-          <div class="media-caption">
-            <span class:list={["media-icon", { video: experiment.mediaType === "video" }]} aria-hidden="true">
-              {experiment.mediaType === "video" ? "▶" : "◫"}
-            </span>
-            <span>{experiment.mediaType === "video" ? "Experiment video" : "Field image"}</span>
+            <div class="media-caption">
+              <span class="media-icon" aria-hidden="true">◫</span>
+              <span>Field image</span>
+            </div>
           </div>
-        </div>
+        )}
 
         <div class="experiment-details">
           <div class="experiment-topline">
@@ -122,6 +128,11 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
     grid-column: 1 / -1;
   }
 
+  .video-showcase {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(280px, 0.95fr);
+  }
+
   .experiment-showcase:hover {
     transform: translateY(-4px);
     box-shadow: 0 24px 60px rgba(17, 40, 58, 0.11);
@@ -134,12 +145,19 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
     background: #081d29;
   }
 
-  .video-media {
-    min-height: 0;
+  .experiment-video-slots {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1px;
     background: var(--line);
+  }
+
+  .experiment-video-slot {
+    position: relative;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #081d29;
   }
 
   .experiment-media::after {
@@ -150,20 +168,13 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
     background: linear-gradient(180deg, transparent 58%, rgba(5, 22, 31, 0.68));
   }
 
-  .experiment-media iframe,
-  .experiment-media img {
+  .experiment-media img,
+  .experiment-video-slot iframe {
     width: 100%;
     height: 100%;
     display: block;
     border: 0;
     object-fit: cover;
-  }
-
-  .video-media iframe {
-    min-width: 0;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    background: #081d29;
   }
 
   .media-caption {
@@ -275,9 +286,12 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
       aspect-ratio: 16 / 9;
     }
 
-    .video-media {
-      min-height: 0;
-      aspect-ratio: auto;
+    .video-showcase {
+      grid-template-columns: 1fr;
+    }
+
+    .experiment-video-slots {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
@@ -291,10 +305,8 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
       min-height: 0;
     }
 
-    .video-media {
-      min-height: 0;
+    .experiment-video-slots {
       grid-template-columns: 1fr;
-      aspect-ratio: auto;
     }
 
     .experiment-details {
