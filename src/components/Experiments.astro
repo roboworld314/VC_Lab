@@ -18,10 +18,10 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
     index: "E / 02",
     status: "Active",
     statusClass: "active",
-    title: "Cooperative blind-zone awareness",
+    title: "Obstacle Detection and Tracking",
     description:
-      "Roadside sensing and V2I communication help vehicles reason about pedestrians and traffic hidden from onboard cameras, extending perception beyond the vehicle's direct line of sight.",
-    tags: ["V2I", "Perception", "Safety"],
+    "The system detects and tracks nearby vehicles, pedestrians, and other obstacles in real time using onboard camera data. Continuous position and motion estimates help the autonomous vehicle maintain a safe path and respond quickly to changing surroundings.",
+    tags: ["Object Detection", "Multi-Object Tracking", "Collision Avoidance"],
     metric: "92.3%",
     metricLabel: "blind-zone detection",
     mediaType: "image",
@@ -99,9 +99,9 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
   }
 
   .experiment-showcase {
-    min-height: 350px;
+    min-height: 250px;
     display: grid;
-    grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+    grid-template-columns: minmax(220px, 0.95fr) minmax(0, 1.05fr);
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 24px;
