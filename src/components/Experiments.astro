@@ -11,11 +11,15 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
     // metric: "3.4×",
     // metricLabel: "lower planning delay",
     mediaType: "video",
-    mediaSrcs: [
-      "https://drive.google.com/file/d/1fwhq6onGvsBUNFP7ZJI_Yu9-09Pl-F7E/preview",
-       mediaLabel: "Experiment video",
-      "https://drive.google.com/file/d/1fwhq6onGvsBUNFP7ZJI_Yu9-09Pl-F7E/preview",
-       mediaLabel: "Experiment video",
+    mediaItems: [
+      {
+        src: "https://drive.google.com/file/d/1fwhq6onGvsBUNFP7ZJI_Yu9-09Pl-F7E/preview",
+        label: "Lane detection test",
+      },
+      {
+        src: "https://drive.google.com/file/d/1fwhq6onGvsBUNFP7ZJI_Yu9-09Pl-F7E/preview",
+        label: "Route planning test",
+      },
     ],
     mediaLabel: "Experiment video",
   },
@@ -50,16 +54,16 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
       <article class:list={["experiment-showcase", { "video-showcase": experiment.mediaType === "video" }]}>
         {experiment.mediaType === "video" ? (
           <div class="experiment-video-slots">
-            {experiment.mediaSrcs.map((mediaSrc, mediaIndex) => (
+            {experiment.mediaItems.map((mediaItem, mediaIndex) => (
               <div class="experiment-video-slot">
                 <iframe
-                  src={mediaSrc}
-                  title={`${experiment.mediaLabel} ${mediaIndex + 1}`}
+                  src={mediaItem.src}
+                  title={mediaItem.label}
                   loading="lazy"
                   allow="autoplay; fullscreen"
                   allowfullscreen
                 />
-                <p class="video-caption">Experiment video {mediaIndex + 1}</p>
+                <p class="video-caption">{mediaItem.label}</p>
               </div>
             ))}
           </div>
