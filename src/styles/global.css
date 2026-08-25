@@ -79,10 +79,11 @@ h1 em { color: var(--lime); font-family: Georgia, serif; font-weight: 400; }
 .section-heading-row .section-kicker { margin-bottom: 14px; }
 .section-heading-row h2, .testbed h2, footer h2 { margin: 0; font-size: clamp(2.7rem, 4.8vw, 5rem); letter-spacing: -.06em; line-height: .98; }
 .section-heading-row > p { max-width: 430px; margin: 0 0 4px; color: var(--muted); line-height: 1.65; }
-.fleet-grid { display: grid; grid-template-columns: 1.45fr .75fr .75fr; gap: 16px; }
-.fleet-card { min-height: 430px; position: relative; overflow: hidden; border-radius: 22px; background: #e5e6df; }
+.fleet-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.fleet-card { min-height: 300px; position: relative; overflow: hidden; border-radius: 22px; background: #e5e6df; }
+.fleet-card > img { height: 100%; object-fit: cover; }
 .fleet-card img { width: 100%; height: 100%; object-fit: cover; }
-.fleet-card.featured::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 38%, rgba(7,24,34,.9)); }
+.fleet-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(7,24,34,.86)); }
 .fleet-overlay { position: absolute; z-index: 1; left: 26px; right: 26px; bottom: 26px; color: white; display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: end; }
 .number { font: 700 .75rem/1 Arial; letter-spacing: .12em; opacity: .75; }
 .fleet-overlay p, .fleet-copy p { margin: 0 0 6px; font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; opacity: .75; }
@@ -93,9 +94,10 @@ h1 em { color: var(--lime); font-family: Georgia, serif; font-weight: 400; }
 .fleet-art span { font-size: 5.5rem; font-weight: 900; letter-spacing: -.09em; opacity: .13; }
 .r2-art { background: linear-gradient(135deg, #d8ebcd, #b7d2ca); }
 .sim-art { background: linear-gradient(135deg, #ffd1c3, #f5aa8e); }
-.fleet-copy { padding: 26px; }
+.fleet-copy { position: absolute; z-index: 1; inset: auto 20px 20px; color: white; padding: 0; }
 .fleet-copy .number { display: block; margin-bottom: 25px; }
-.fleet-copy .tag { display: inline-block; margin-top: 22px; }
+.fleet-copy p { margin-bottom: 6px; }
+.fleet-copy .tag { display: inline-block; margin-top: 14px; }
 
 .experiments { padding: 120px 0; }
 .experiment-list { border-top: 1px solid var(--line); }

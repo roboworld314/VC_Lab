@@ -1,3 +1,24 @@
+---
+const fleet = [
+  { number: "01", type: "Omnidirectional platform", name: "ROSMASTER X3", tag: "Jetson Orin NX", image: "https://lh3.googleusercontent.com/d/1_TBdIG1UbyEB6tQ_wzuksS9Ima-5Tifo" },
+  { number: "02", type: "Ackermann steering", name: "ROSMASTER R2", tag: "Vehicle control" },
+  { number: "03", type: "Autonomous vehicle", name: "Research Vehicle 03", tag: "Vehicle platform" },
+  { number: "04", type: "Autonomous vehicle", name: "Research Vehicle 04", tag: "Vehicle platform" },
+  { number: "05", type: "Autonomous vehicle", name: "Research Vehicle 05", tag: "Vehicle platform" },
+  { number: "06", type: "Autonomous vehicle", name: "Research Vehicle 06", tag: "Vehicle platform" },
+  { number: "07", type: "Autonomous vehicle", name: "Research Vehicle 07", tag: "Vehicle platform" },
+  { number: "08", type: "Autonomous vehicle", name: "Research Vehicle 08", tag: "Vehicle platform" },
+  { number: "09", type: "Autonomous vehicle", name: "Research Vehicle 09", tag: "Vehicle platform" },
+  { number: "10", type: "Simulator equipment", name: "CARLA + Driving Rig", tag: "Repeatable scenarios" },
+  { number: "11", type: "Simulator equipment", name: "Simulation Workstation", tag: "Digital twin" },
+  { number: "12", type: "Simulator equipment", name: "Steering Controller", tag: "Vehicle control" },
+  { number: "13", type: "Simulator equipment", name: "Pedal Interface", tag: "Driver input" },
+  { number: "14", type: "Simulator equipment", name: "Motion Platform", tag: "Dynamic testing" },
+  { number: "15", type: "Simulator equipment", name: "Sensor Replay Station", tag: "Data playback" },
+  { number: "16", type: "Simulator equipment", name: "Scenario Display", tag: "Visual simulation" },
+];
+---
+
 <section class="platforms" id="platforms">
   <div class="section-shell">
     <div class="section-heading-row">
@@ -5,14 +26,21 @@
       
     </div>
     <div class="fleet-grid">
-      <article class="fleet-card">
-        <div class="fleet-art r2-art"><span>R2</span></div>
-        <div class="fleet-copy"><span class="number">02</span><p>Ackermann steering</p><h3>ROSMASTER R2</h3><span class="tag dark">Vehicle control</span></div>
-      </article>
-      <article class="fleet-card">
-        <div class="fleet-art sim-art"><span>SIM</span></div>
-        <div class="fleet-copy"><span class="number">03</span><p>Digital proving ground</p><h3>CARLA + Driving Rig</h3><span class="tag dark">Repeatable scenarios</span></div>
-      </article>
+      {fleet.map((item) => (
+        <article class="fleet-card">
+          {item.image ? (
+            <img src={item.image} alt={`${item.name} research vehicle`} width="1200" height="800" loading="lazy" />
+          ) : (
+            <div class:list={["fleet-art", { "sim-art": item.type === "Simulator equipment" }]}><span>{item.number}</span></div>
+          )}
+          <div class="fleet-copy">
+            <span class="number">{item.number}</span>
+            <p>{item.type}</p>
+            <h3>{item.name}</h3>
+            <span class="tag dark">{item.tag}</span>
+          </div>
+        </article>
+      ))}
     </div>
   </div>
 </section>
