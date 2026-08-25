@@ -2,6 +2,11 @@
 const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+
+const logoDevToken = import.meta.env.PUBLIC_LOGO_DEV_TOKEN;
+const wmLogoSrc = logoDevToken
+  ? `https://img.logo.dev/wm.edu?token=${encodeURIComponent(logoDevToken)}&size=160&format=png&retina=true`
+  : `${base}images/william-mary-logo.png`;
 ---
 
 <header class="site-header">
@@ -15,7 +20,7 @@ const base = import.meta.env.BASE_URL.endsWith('/')
     >
       <img
         class="wm-logo"
-        src={`${base}images/william-mary-logo.png`}
+        src={wmLogoSrc}
         alt="William & Mary"
       />
     </a>
