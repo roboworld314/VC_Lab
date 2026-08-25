@@ -3,7 +3,6 @@
     <div>
       <p class="section-kicker">Course instructor</p>
       <h2>Meet your instructor.</h2>
-       <p>Research-led teaching of autonomous systems, edge intelligence, and connected mobility.</p>
     </div>
    
   </div>
@@ -12,7 +11,7 @@
     <div class="portrait-column">
       <div class="portrait-frame">
         <img
-          src="/images/instructor-photo.png"
+          src={`${import.meta.env.BASE_URL}/images/instructor-photo.png`}
           alt="Professor Sidi Lu"
           width="400"
           height="400"
@@ -66,6 +65,7 @@
 
 <style>
   .instructor {
+    width: min(1320px, calc(100% - 48px));
     padding: 120px 0;
   }
 
@@ -312,6 +312,7 @@
 
   @media (max-width: 600px) {
     .instructor {
+      width: min(100% - 28px, 1320px);
       padding: 82px 0;
     }
 
