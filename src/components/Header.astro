@@ -1,3 +1,9 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
 <header class="site-header">
   <div class="header-branding">
     <a
@@ -9,7 +15,7 @@
     >
       <img
         class="wm-logo"
-        src={`${import.meta.env.BASE_URL}images/william-mary-logo.png`}
+        src={`${base}images/william-mary-logo.png`}
         alt="William & Mary"
       />
     </a>
@@ -19,7 +25,7 @@
     <a class="brand" href="#top" aria-label="Vehicle Computing Lab home">
       <img
         class="brand-logo"
-        src={`${import.meta.env.BASE_URL}images/lab-logo.jpg`}
+        src={`${base}images/lab-logo.jpg`}
         alt="Vehicle Computing Lab logo"
         width="528"
         height="395"

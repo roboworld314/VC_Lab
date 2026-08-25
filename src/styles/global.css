@@ -18,19 +18,56 @@ svg { width: 1.05rem; fill: none; stroke: currentColor; stroke-width: 1.8; strok
 .site-header {
   width: min(1320px, calc(100% - 48px));
   margin: 0 auto;
-  height: 88px;
+  min-height: 96px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 32px;
   border-bottom: 1px solid rgba(17,40,58,.16);
 }
-.brand { display: inline-flex; align-items: center; gap: 12px; }
-.brand-logo { width: 42px; height: 42px; display: block; object-fit: cover; border: 1px solid var(--lime); border-radius: 50%; }
+.header-branding {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+.wm-brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+.wm-logo {
+  width: clamp(88px, 7.5vw, 116px);
+  height: 64px;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+.brand-divider {
+  width: 1px;
+  height: 52px;
+  margin: 0 22px;
+  display: block;
+  flex: 0 0 auto;
+  background: rgba(6, 43, 69, .22);
+}
+.brand { min-width: 0; display: inline-flex; align-items: center; gap: 14px; }
+.brand-logo {
+  width: 72px;
+  height: 62px;
+  display: block;
+  flex: 0 0 auto;
+  object-fit: contain;
+  object-position: center;
+  border: 0;
+  border-radius: 0;
+}
+.brand-text { min-width: 0; }
 .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; background: var(--ink); color: var(--lime); border-radius: 50%; font-weight: 800; font-size: .84rem; letter-spacing: .02em; }
 .brand strong, .brand small { display: block; }
-.brand strong { font-size: .9rem; letter-spacing: .01em; }
-.brand small { color: var(--muted); font-size: .72rem; margin-top: 2px; }
-nav { display: flex; gap: 30px; font-size: .78rem; font-weight: 700; letter-spacing: .04em; }
+.brand strong { color: var(--ink); font-size: 1.06rem; line-height: 1.15; letter-spacing: .01em; white-space: nowrap; }
+.brand small { color: var(--muted); font-size: .76rem; line-height: 1.2; margin-top: 4px; }
+nav { display: flex; gap: 26px; flex: 0 0 auto; font-size: .84rem; font-weight: 700; letter-spacing: .04em; }
 nav a { position: relative; }
 nav a::after { content: ""; position: absolute; left: 0; bottom: -7px; width: 0; height: 2px; background: var(--orange); transition: width .2s ease; }
 nav a:hover::after { width: 100%; }
@@ -153,6 +190,12 @@ footer { padding: 90px max(24px, calc((100vw - 1160px)/2)); color: white; backgr
 .footer-bottom { margin-top: 80px; padding-top: 22px; display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.15); color: #8197a1; font-size: .7rem; }
 
 @media (max-width: 1100px) {
+  .site-header { gap: 20px; }
+  .wm-logo { width: 74px; }
+  .brand-divider { margin: 0 14px; }
+  .brand-logo { width: 56px; height: 52px; }
+  .brand strong { font-size: .9rem; }
+  nav { gap: 18px; font-size: .76rem; }
   .quick-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 }
 
@@ -170,8 +213,14 @@ footer { padding: 90px max(24px, calc((100vw - 1160px)/2)); color: white; backgr
 }
 @media (max-width: 600px) {
   .site-header, .section-shell { width: min(100% - 28px, 1320px); }
-  .site-header { height: 76px; }
-  .brand strong { font-size: .8rem; }
+  .site-header { min-height: 82px; gap: 0; }
+  .header-branding { width: 100%; }
+  .wm-logo { width: 64px; height: 46px; }
+  .brand-divider { height: 40px; margin: 0 11px; }
+  .brand { gap: 9px; }
+  .brand-logo { width: 48px; height: 44px; }
+  .brand strong { max-width: 160px; overflow: hidden; font-size: .76rem; text-overflow: ellipsis; white-space: nowrap; }
+  .brand small { font-size: .62rem; }
   .hero { height: 620px; min-height: 0; border-radius: 0; }
   .hero-copy { width: 100%; height: 100%; min-height: 0; padding: 64px 24px 100px; justify-content: center; }
   .eyebrow { max-width: 280px; font-size: .64rem; line-height: 1.5; }
