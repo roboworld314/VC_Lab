@@ -141,6 +141,7 @@ h1 em { display: block; margin-top: 6px; color: var(--lime); font-family: Georgi
 .fleet-copy .tag { margin: 0; }
 
 .experiments { padding: 120px 0; }
+.experiments.section-shell { width: min(1320px, calc(100% - 48px)); }
 .experiment-list { border-top: 1px solid var(--line); }
 .experiment-list article { padding: 34px 4px; display: grid; grid-template-columns: 110px 1fr 150px; gap: 34px; border-bottom: 1px solid var(--line); align-items: start; transition: padding .2s ease, background .2s ease; }
 .experiment-list article:hover { padding-left: 16px; padding-right: 16px; background: rgba(255,255,255,.55); }
