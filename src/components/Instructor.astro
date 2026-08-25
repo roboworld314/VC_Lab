@@ -1,0 +1,344 @@
+<section class="instructor section-shell" id="instructor">
+  <div class="section-heading-row">
+    <div>
+      <p class="section-kicker">Course instructor</p>
+      <h2>Meet your instructor.</h2>
+    </div>
+    <p>Research-led teaching at the intersection of autonomous systems, edge intelligence, and connected mobility.</p>
+  </div>
+
+  <article class="instructor-card">
+    <div class="portrait-column">
+      <div class="portrait-frame">
+        <img
+          src="https://cdsp.wm.edu/computerscience/people/directory_images/lu_sidi_directory-primary-square200x200.jpg"
+          alt="Professor Sidi Lu"
+          width="400"
+          height="400"
+          loading="lazy"
+        />
+      </div>
+      <span class="availability"><i aria-hidden="true"></i> Course instructor</span>
+    </div>
+
+    <div class="instructor-copy">
+      <p class="role">Assistant Professor · Computer Science</p>
+      <h3>Sidi Lu</h3>
+      <p class="pronunciation">Pronounced <strong>“see-dee loo”</strong></p>
+      <p class="bio">
+        Dr. Lu’s research focuses on cyber-physical and intelligent systems, with particular interests in edge computing and enabling technologies for vehicle computing. Her work develops reliable, scalable, secure, and efficient systems for connected vehicles, robots, and other resource-constrained platforms.
+      </p>
+
+      <div class="research-tags" aria-label="Research interests">
+        <span>Vehicle computing</span>
+        <span>Edge intelligence</span>
+        <span>Cyber-physical systems</span>
+      </div>
+
+      <dl class="instructor-details">
+        <div>
+          <dt>Email</dt>
+          <dd><a href="mailto:sidi@wm.edu">sidi@wm.edu</a></dd>
+        </div>
+        <div>
+          <dt>Office</dt>
+          <dd>ISC 1382</dd>
+        </div>
+        <div>
+          <dt>Department</dt>
+          <dd>Computer Science, William &amp; Mary</dd>
+        </div>
+      </dl>
+
+      <div class="instructor-actions">
+        <a class="profile-button" href="https://sidilu.org/" target="_blank" rel="noopener noreferrer">
+          Visit instructor website
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"></path></svg>
+        </a>
+        <a class="university-link" href="https://cdsp.wm.edu/computerscience/people/lu-sidi.php" target="_blank" rel="noopener noreferrer">
+          W&amp;M faculty profile
+        </a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<style>
+  .instructor {
+    padding: 120px 0;
+  }
+
+  .instructor-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(44px, 7vw, 94px);
+    align-items: center;
+    overflow: hidden;
+    padding: clamp(42px, 6vw, 76px);
+    border-radius: 28px;
+    color: white;
+    background:
+      radial-gradient(circle at 12% 20%, rgba(197, 240, 77, 0.15), transparent 30%),
+      linear-gradient(135deg, #0c2534 0%, #11283a 56%, #0c4749 100%);
+    box-shadow: 0 28px 70px rgba(17, 40, 58, 0.16);
+  }
+
+  .instructor-card::after {
+    content: "VC";
+    position: absolute;
+    right: -20px;
+    bottom: -70px;
+    color: rgba(255, 255, 255, 0.035);
+    font-size: clamp(12rem, 24vw, 22rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.12em;
+    pointer-events: none;
+  }
+
+  .portrait-column,
+  .instructor-copy {
+    position: relative;
+    z-index: 1;
+  }
+
+  .portrait-column {
+    display: grid;
+    justify-items: center;
+    gap: 24px;
+  }
+
+  .portrait-frame {
+    width: min(100%, 330px);
+    aspect-ratio: 1;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 55px rgba(2, 17, 25, 0.34);
+  }
+
+  .portrait-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #e7e9e6;
+  }
+
+  .availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #dbe7ea;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .availability i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--lime);
+    box-shadow: 0 0 0 5px rgba(197, 240, 77, 0.12);
+  }
+
+  .role {
+    margin: 0;
+    color: var(--lime);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 12px 0 0;
+    font-size: clamp(3.3rem, 6vw, 6.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.065em;
+  }
+
+  .pronunciation {
+    margin: 18px 0 0;
+    color: #a9bcc4;
+    font-size: 0.82rem;
+  }
+
+  .pronunciation strong {
+    color: white;
+  }
+
+  .bio {
+    max-width: 670px;
+    margin: 28px 0 24px;
+    color: #c5d2d7;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .research-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .research-tags span {
+    padding: 8px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    color: #dbe5e8;
+    font-size: 0.66rem;
+    font-weight: 700;
+  }
+
+  .instructor-details {
+    margin: 32px 0 0;
+    display: grid;
+    grid-template-columns: 0.9fr 0.7fr 1.4fr;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .instructor-details div {
+    min-width: 0;
+    padding: 18px 20px 18px 0;
+  }
+
+  .instructor-details div + div {
+    padding-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .instructor-details dt {
+    margin-bottom: 7px;
+    color: #849ca6;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .instructor-details dd {
+    margin: 0;
+    color: white;
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .instructor-details a:hover {
+    color: var(--lime);
+  }
+
+  .instructor-actions {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .profile-button {
+    min-height: 50px;
+    padding: 0 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    border-radius: 999px;
+    color: var(--ink);
+    background: var(--lime);
+    font-size: 0.76rem;
+    font-weight: 800;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .profile-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(197, 240, 77, 0.18);
+  }
+
+  .profile-button svg {
+    width: 1rem;
+  }
+
+  .university-link {
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    color: #d7e2e5;
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .university-link:hover {
+    color: var(--lime);
+    border-color: var(--lime);
+  }
+
+  @media (max-width: 900px) {
+    .instructor-card {
+      grid-template-columns: 1fr;
+    }
+
+    .portrait-frame {
+      width: min(310px, 72vw);
+    }
+
+    .instructor-copy {
+      text-align: center;
+    }
+
+    .bio {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .research-tags,
+    .instructor-actions {
+      justify-content: center;
+    }
+
+    .instructor-details {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .instructor {
+      padding: 82px 0;
+    }
+
+    .instructor-card {
+      gap: 38px;
+      padding: 38px 24px;
+      border-radius: 20px;
+    }
+
+    .instructor-details {
+      grid-template-columns: 1fr;
+    }
+
+    .instructor-details div,
+    .instructor-details div + div {
+      padding: 15px 0;
+      border-left: 0;
+    }
+
+    .instructor-details div + div {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .instructor-actions {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .profile-button {
+      justify-content: center;
+    }
+  }
+</style>
