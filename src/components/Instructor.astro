@@ -72,6 +72,7 @@
   .instructor-card {
     position: relative;
     display: grid;
+    width: 100%;
     grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
     gap: clamp(32px, 5vw, 64px);
     align-items: center;
@@ -159,9 +160,11 @@
 
   h3 {
     margin: 12px 0 0;
-    font-size: clamp(3.3rem, 6vw, 6.4rem);
+    font-family: inherit;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 650;
     line-height: 0.95;
-    letter-spacing: -0.065em;
+    letter-spacing: -0.055em;
   }
 
   .pronunciation {
