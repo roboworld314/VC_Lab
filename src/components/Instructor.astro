@@ -13,8 +13,8 @@
         <img
           src={`${import.meta.env.BASE_URL}/images/instructor-photo.png`}
           alt="Professor Sidi Lu"
-          width="400"
-          height="400"
+          width="450"
+          height="450"
           loading="lazy"
         />
       </div>
@@ -74,10 +74,10 @@
     display: grid;
     width: 100%;
     grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-    gap: clamp(32px, 5vw, 64px);
+    gap: clamp(24px, 4vw, 48px);
     align-items: center;
     overflow: hidden;
-    padding: clamp(24px, 3.2vw, 40px);
+    padding: clamp(18px, 2.5vw, 32px);
     border-radius: 28px;
     color: white;
     background:
@@ -108,11 +108,11 @@
   .portrait-column {
     display: grid;
     justify-items: center;
-    gap: 16px;
+    gap: 12px;
   }
 
   .portrait-frame {
-    width: min(100%, 220px);
+    width: min(100%, 180px);
     aspect-ratio: 1;
     padding: 10px;
     border: 1px solid rgba(255, 255, 255, 0.28);
@@ -159,16 +159,16 @@
   }
 
   h3 {
-    margin: 12px 0 0;
+    margin: 8px 0 0;
     font-family: inherit;
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(2.6rem, 4vw, 4rem);
     font-weight: 650;
     line-height: 0.95;
     letter-spacing: -0.055em;
   }
 
   .pronunciation {
-    margin: 14px 0 0;
+    margin: 10px 0 0;
     color: #a9bcc4;
     font-size: 0.82rem;
   }
@@ -179,10 +179,10 @@
 
   .bio {
     max-width: 670px;
-    margin: 16px 0 14px;
+    margin: 12px 0 10px;
     color: #c5d2d7;
     font-size: 1rem;
-    line-height: 1.55;
+    line-height: 1.45;
   }
 
   .research-tags {
@@ -201,7 +201,7 @@
   }
 
   .instructor-details {
-    margin: 18px 0 0;
+    margin: 14px 0 0;
     display: grid;
     grid-template-columns: 0.9fr 0.7fr 1.4fr;
     border-top: 1px solid rgba(255, 255, 255, 0.16);
@@ -210,7 +210,7 @@
 
   .instructor-details div {
     min-width: 0;
-    padding: 10px 16px 10px 0;
+    padding: 8px 16px 8px 0;
   }
 
   .instructor-details div + div {
@@ -239,7 +239,7 @@
   }
 
   .instructor-actions {
-    margin-top: 18px;
+    margin-top: 14px;
     display: flex;
     align-items: center;
     gap: 22px;
@@ -247,7 +247,7 @@
   }
 
   .profile-button {
-    min-height: 50px;
+    min-height: 42px;
     padding: 0 22px;
     display: inline-flex;
     align-items: center;
@@ -288,7 +288,7 @@
     }
 
     .portrait-frame {
-      width: min(220px, 58vw);
+      width: min(180px, 52vw);
     }
 
     .instructor-copy {
@@ -317,8 +317,8 @@
     }
 
     .instructor-card {
-      gap: 22px;
-      padding: 22px 22px;
+      gap: 18px;
+      padding: 18px 20px;
       border-radius: 20px;
     }
 
@@ -328,7 +328,7 @@
 
     .instructor-details div,
     .instructor-details div + div {
-      padding: 15px 0;
+      padding: 11px 0;
       border-left: 0;
     }
 
