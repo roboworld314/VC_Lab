@@ -139,6 +139,12 @@ h1 em { display: block; margin-top: 6px; color: var(--lime); font-family: Georgi
 .fleet-copy h3 { font-size: 1.1rem; }
 .fleet-copy small { display: block; margin-top: 12px; color: var(--muted); font-size: .72rem; line-height: 1.5; }
 .fleet-copy .tag { margin: 0; }
+.fleet-resource-slot { margin-top: 16px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px dashed rgba(15,113,107,.35); border-radius: 10px; background: rgba(15,113,107,.04); }
+.fleet-resource-slot span { color: var(--teal); font-size: .62rem; font-weight: 800; letter-spacing: .08em; }
+.fleet-resource-slot small { margin: 0; color: var(--muted); font-size: .62rem; text-align: right; }
+.fleet-details-link { margin-top: 12px; display: inline-flex; align-items: center; gap: 7px; color: var(--teal); font-size: .7rem; font-weight: 800; }
+.fleet-details-link svg { width: .9rem; }
+.fleet-details-link:hover { color: var(--orange); }
 
 .experiments { padding: 120px 0; }
 .experiments.section-shell { width: min(1320px, calc(100% - 48px)); }
