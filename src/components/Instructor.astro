@@ -9,8 +9,8 @@ const guestSpeaker = {
   date: "September 18",
   time: "2:00 PM",
   location: "ISC4 1373",
-  photo: `${import.meta.env.BASE_URL}images/guest-speaker-photo.png`,
-  profileUrl: "#guest-speaker",
+  photo: `${import.meta.env.BASE_URL}/images/guest-speaker-photo.png`,
+  profileUrl: "https://www.linkedin.com/in/johora-akter-polin-577759232/",
   talkUrl: "#experiments",
 };
 ---
@@ -27,7 +27,7 @@ const guestSpeaker = {
     <div class="portrait-column">
       <div class="portrait-frame">
         <img
-          src={`${import.meta.env.BASE_URL}images/instructor-photo.png`}
+          src={`${import.meta.env.BASE_URL}/images/instructor-photo.png`}
           alt="Professor Sidi Lu"
           width="450"
           height="450"
@@ -103,8 +103,8 @@ const guestSpeaker = {
       </dl>
 
       <div class="guest-actions">
-        <a class="profile-button" href={guestSpeaker.profileUrl}>
-          Speaker profile
+        <a class="profile-button" href={guestSpeaker.profileUrl} target="_blank" rel="noopener noreferrer">
+          Connect with Me
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"></path></svg>
         </a>
         <a class="guest-link" href={guestSpeaker.talkUrl}>Talk details</a>
