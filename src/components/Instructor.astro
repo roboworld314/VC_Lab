@@ -6,7 +6,7 @@ const guestSpeaker = {
   institution: "William & Mary",
   talkTitle: "Research Interests",
   bio: "Johora Akter Polin is a Ph.D. student at William & Mary whose research focuses on edge intelligence and dependable connected and autonomous vehicles. Her recent work explores efficient edge AI, safety-aware vehicle control, and VLM-enhanced perception for reliable autonomous driving.",
-  Day: "Tuesday & Thursday",
+  day: "Tuesday & Thursday",
   time: "2:00-3.20 PM",
   location: "ISC4 1373",
   photo: `${import.meta.env.BASE_URL}/images/guest-speaker-photo.png`,
@@ -95,7 +95,7 @@ const guestSpeaker = {
 
     <aside class="guest-event" aria-label="Guest lecture details">
       <dl>
-        <div><dt>Date</dt><dd>{guestSpeaker.date}</dd></div>
+        <div><dt>Day</dt><dd>{guestSpeaker.day}</dd></div>
         <div><dt>Time</dt><dd>{guestSpeaker.time}</dd></div>
         <div><dt>Location</dt><dd>{guestSpeaker.location}</dd></div>
       </dl>
@@ -363,7 +363,7 @@ const guestSpeaker = {
 
   .guest-affiliation { margin: 10px 0 22px; color: #087675; font-size: 0.88rem; font-weight: 700; }
   .guest-copy h4 { margin: 0 0 10px; font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.3; }
-  .guest-bio { max-width: 670px; margin: 0; color: #53666f; font-size: 0.9rem; line-height: 1.65; }
+  .guest-bio { max-width: 670px; margin: 0; color: #53666f; font-size: 0.9rem; line-height: 1.65; text-align: justify; }
 
   .guest-event {
     align-self: stretch;
