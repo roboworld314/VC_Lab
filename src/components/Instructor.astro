@@ -63,6 +63,37 @@
       </div>
     </div>
   </article>
+
+  <article class="instructor-card guest-speaker-card">
+    <div class="portrait-column">
+      <div class="portrait-frame">
+        <img
+          src={`${import.meta.env.BASE_URL}/images/instructor-photo.png`}
+          alt="Guest speaker"
+          width="450"
+          height="450"
+          loading="lazy"
+        />
+      </div>
+      <span class="availability"><i aria-hidden="true"></i> Guest speaker</span>
+    </div>
+
+    <div class="instructor-copy">
+      <p class="role">Special guest · Vehicle computing</p>
+      <h3>Guest Speaker</h3>
+      <p class="bio">A visiting researcher will share practical perspectives on autonomous systems, edge intelligence, and dependable vehicle computing.</p>
+
+      <div class="research-tags" aria-label="Guest speaker topics">
+        <span>Autonomous systems</span>
+        <span>Edge intelligence</span>
+        <span>Connected mobility</span>
+      </div>
+
+      <div class="instructor-actions">
+        <a class="profile-button" href="#experiments">Explore guest session <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"></path></svg></a>
+      </div>
+    </div>
+  </article>
 </section>
 
 <style>
@@ -86,6 +117,25 @@
       radial-gradient(circle at 12% 20%, rgba(197, 240, 77, 0.15), transparent 30%),
       linear-gradient(135deg, #0c2534 0%, #11283a 56%, #0c4749 100%);
     box-shadow: 0 28px 70px rgba(17, 40, 58, 0.16);
+  }
+
+  .guest-speaker-card {
+    margin-top: 24px;
+    grid-template-columns: minmax(180px, 0.52fr) minmax(0, 1.48fr);
+    padding: clamp(14px, 2vw, 24px);
+  }
+
+  .guest-speaker-card .portrait-frame {
+    width: min(100%, 180px);
+  }
+
+  .guest-speaker-card .bio {
+    max-width: 760px;
+    margin: 10px 0;
+  }
+
+  .guest-speaker-card .instructor-actions {
+    margin-top: 12px;
   }
 
   .instructor-card::after {
@@ -289,6 +339,10 @@
       grid-template-columns: 1fr;
     }
 
+    .guest-speaker-card {
+      grid-template-columns: 1fr;
+    }
+
     .portrait-frame {
       width: min(180px, 52vw);
     }
@@ -322,6 +376,11 @@
       gap: 18px;
       padding: 18px 20px;
       border-radius: 20px;
+    }
+
+    .guest-speaker-card {
+      gap: 14px;
+      padding: 16px 18px;
     }
 
     .instructor-details {
