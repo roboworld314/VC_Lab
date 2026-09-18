@@ -513,15 +513,6 @@ const milestoneTwoPhotos = [
 			filter 450ms ease;
 	}
 
-	.milestone-two-carousel:hover,
-	.milestone-two-carousel:focus-within {
-		z-index: 1000;
-		transform: scale(2);
-		filter: drop-shadow(
-			0 2rem 3rem rgba(0, 0, 0, 0.4)
-		);
-	}
-
 	.milestone-two-carousel:focus-visible {
 		outline: 3px solid currentColor;
 		outline-offset: 6px;
@@ -561,10 +552,6 @@ const milestoneTwoPhotos = [
 		height: 100%;
 		object-fit: cover;
 		transition: transform 500ms ease;
-	}
-
-	.milestone-two-slide.is-active:hover img {
-		transform: scale(1.06);
 	}
 
 	.milestone-two-slide figcaption {
@@ -756,12 +743,6 @@ const milestoneTwoPhotos = [
 			aspect-ratio: 16 / 10;
 		}
 
-		.milestone-photo:hover,
-		.milestone-photo:focus-within,
-		.milestone-two-carousel:hover,
-		.milestone-two-carousel:focus-within {
-			transform: scale(1.03);
-		}
 	}
 
 	/* Mobile */
