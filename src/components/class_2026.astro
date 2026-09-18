@@ -398,7 +398,7 @@ const milestoneTwoVideoUrl =
 
 	.milestone-two-content {
 		display: grid;
-		grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: clamp(1.25rem, 2.5vw, 3rem);
 		align-items: stretch;
 	}
@@ -417,7 +417,7 @@ const milestoneTwoVideoUrl =
 	.milestone-two-slides {
 		position: relative;
 		overflow: hidden;
-		min-height: clamp(24rem, 39vw, 48rem);
+		height: clamp(18rem, 27vw, 30rem);
 		background: #121212;
 		border-radius: clamp(1rem, 1.5vw, 1.75rem);
 	}
@@ -554,9 +554,8 @@ const milestoneTwoVideoUrl =
 	}
 
 	.milestone-two-video-frame {
-		flex: 1;
+		height: clamp(18rem, 27vw, 30rem);
 		overflow: hidden;
-		min-height: clamp(24rem, 39vw, 48rem);
 		background: #121212;
 		border-radius: clamp(1rem, 1.5vw, 1.75rem);
 	}
