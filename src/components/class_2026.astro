@@ -46,6 +46,38 @@ const demonstrationPhotos = [
 		caption: 'Live experiment environment',
 	},
 ];
+
+const milestoneTwoPhotos = [
+	{
+		src: driveImage('REPLACE_WITH_PHOTO_1_FILE_ID'),
+		alt: 'Robotic vehicle beginning the campus data-collection drive',
+		caption: 'Preparing the vehicle for campus data collection',
+	},
+	{
+		src: driveImage('REPLACE_WITH_PHOTO_2_FILE_ID'),
+		alt: 'Robotic vehicle collecting sensor data on campus',
+		caption: 'Collecting synchronized camera and LiDAR data',
+	},
+	{
+		src: driveImage('REPLACE_WITH_PHOTO_3_FILE_ID'),
+		alt: 'Campus road observed by the robotic vehicle',
+		caption: 'Recording real-world campus road conditions',
+	},
+	{
+		src: driveImage('REPLACE_WITH_PHOTO_4_FILE_ID'),
+		alt: 'Students monitoring the campus driving experiment',
+		caption: 'Monitoring the live sensor streams',
+	},
+	{
+		src: driveImage('REPLACE_WITH_PHOTO_5_FILE_ID'),
+		alt: 'Digital sensor data collected during the campus drive',
+		caption: 'Transforming the campus drive into digital data',
+	},
+];
+
+const milestoneTwoVideoId = 'REPLACE_WITH_VIDEO_FILE_ID';
+const milestoneTwoVideoUrl =
+	`https://drive.google.com/file/d/${milestoneTwoVideoId}/preview`;
 ---
 
 <section class="milestone section-shell" id="milestone-1">
@@ -156,45 +188,6 @@ const demonstrationPhotos = [
 		</div>
 	</div>
 </section>
-
-
----
-const driveImage = (fileId) =>
-	`https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
-
-const milestoneTwoPhotos = [
-	{
-		src: driveImage('REPLACE_WITH_PHOTO_1_FILE_ID'),
-		alt: 'Robotic vehicle beginning the campus data-collection drive',
-		caption: 'Preparing the vehicle for campus data collection',
-	},
-	{
-		src: driveImage('REPLACE_WITH_PHOTO_2_FILE_ID'),
-		alt: 'Robotic vehicle collecting sensor data on campus',
-		caption: 'Collecting synchronized camera and LiDAR data',
-	},
-	{
-		src: driveImage('REPLACE_WITH_PHOTO_3_FILE_ID'),
-		alt: 'Campus road observed by the robotic vehicle',
-		caption: 'Recording real-world campus road conditions',
-	},
-	{
-		src: driveImage('REPLACE_WITH_PHOTO_4_FILE_ID'),
-		alt: 'Students monitoring the campus driving experiment',
-		caption: 'Monitoring the live sensor streams',
-	},
-	{
-		src: driveImage('REPLACE_WITH_PHOTO_5_FILE_ID'),
-		alt: 'Digital sensor data collected during the campus drive',
-		caption: 'Transforming the campus drive into digital data',
-	},
-];
-
-const milestoneTwoVideoId = 'REPLACE_WITH_VIDEO_FILE_ID';
-const milestoneTwoVideoUrl =
-	`https://drive.google.com/file/d/${milestoneTwoVideoId}/preview`;
----
-
 <section
 	class="milestone-two section-shell"
 	id="milestone-2"
