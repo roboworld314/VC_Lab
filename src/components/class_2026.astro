@@ -1,0 +1,65 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const milestonePhotos = [
+	{ src: 'image1.jpg', alt: 'Robot vehicle prepared for a research milestone', caption: 'Vehicle platform setup' },
+	{ src: 'car.png', alt: 'Autonomous research vehicle', caption: 'Autonomous vehicle platform' },
+	{ src: 'testbed-photo.jpg', alt: 'Outdoor vehicle computing testbed', caption: 'Physical testbed' },
+	{ src: 'instructor-photo.png', alt: 'Instructor working with the vehicle computing system', caption: 'System integration' },
+	{ src: 'PHOTO-2026-06-19-16-22-34.jpg', alt: 'Vehicle computing lab research activity', caption: 'Milestone validation' },
+];
+---
+
+<section class="milestone section-shell" id="milestone-1">
+	<div class="section-heading-row">
+		<div>
+			<p class="section-kicker">Milestone 01</p>
+			<h2>From setup<br />to sensing.</h2>
+		</div>
+		<p>Our first milestone brings the vehicle, sensors, and test environment together as one measurable research system.</p>
+	</div>
+
+	<div class="milestone-gallery">
+		{milestonePhotos.map((photo, index) => (
+			<figure class:list={['milestone-photo', { 'milestone-photo-featured': index === 0 }]}>
+				<img src={`${base}images/${photo.src}`} alt={photo.alt} loading="lazy" />
+				<figcaption><span>0{index + 1}</span>{photo.caption}</figcaption>
+			</figure>
+		))}
+	</div>
+</section>
+
+<section class="demonstration" id="demonstration">
+	<div class="section-shell">
+		<div class="section-heading-row">
+			<div>
+				<p class="section-kicker">Demonstration</p>
+				<h2>Robotic vehicle<br />in motion.</h2>
+			</div>
+			<p>See how the robotic vehicle turns sensor input into decisions as it moves through a controlled environment.</p>
+		</div>
+
+		<div class="demonstration-content">
+			<p class="demonstration-copy">This demonstration connects perception, onboard computation, and vehicle control in one repeatable run. The robot senses its surroundings, processes the stream at the edge, and responds in real time.</p>
+			<div class="demonstration-media">
+				<figure class="demonstration-photo">
+					<img src={`${base}images/car.png`} alt="Robotic vehicle ready for a demonstration" loading="lazy" />
+					<figcaption>Robotic vehicle platform</figcaption>
+				</figure>
+				<figure class="demonstration-photo">
+					<img src={`${base}images/PHOTO-2026-06-19-16-22-34.jpg`} alt="Vehicle computing experiment in the lab" loading="lazy" />
+					<figcaption>Live experiment environment</figcaption>
+				</figure>
+				<figure class="demonstration-video">
+					<video controls preload="metadata" poster={`${base}images/testbed-photo.jpg`}>
+						<source src={`${base}videos/demo.mp4`} type="video/mp4" />
+						Your browser does not support the video element.
+					</video>
+					<figcaption>Vehicle computing demonstration</figcaption>
+				</figure>
+			</div>
+		</div>
+	</div>
+</section>
