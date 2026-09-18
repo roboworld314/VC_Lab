@@ -1,8 +1,4 @@
 ---
-const base = import.meta.env.BASE_URL.endsWith('/')
-	? import.meta.env.BASE_URL
-	: `${import.meta.env.BASE_URL}/`;
-
 const driveImage = (fileId) =>
 	`https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
 
@@ -34,33 +30,28 @@ const milestonePhotos = [
 	},
 ];
 
-const demonstrationPhotos = [
-	{
-		src: driveImage('1sRknQDcbOrGfV-_AeYFp0hRkK9gid1EF'),
-		alt: 'Robotic vehicle ready for a demonstration',
-		caption: 'Robotic vehicle platform',
-	},
-	{
-		src: driveImage('1duJQZkXcQ0zsRRdIJ20Pe5PA1-Wqb0br'),
-		alt: 'Vehicle computing experiment in the lab',
-		caption: 'Live experiment environment',
-	},
-];
-
 const milestoneTwoPhotos = [
 	{
 		src: driveImage('10c5i7vPtG-Sb7IOf3I_A81nzQhquqCsx'),
-		alt: 'Robotic vehicle beginning the campus data-collection drive',
+		alt: 'Students preparing the robotic vehicle for campus data collection',
 		caption: 'Preparing the vehicle for campus data collection',
 	},
 	{
 		src: driveImage('1ZEuUnyxAV_PNs14knJ--0H4itwJ8KeRg'),
-		alt: 'Robotic vehicle collecting sensor data on campus',
+		alt: 'Students collecting synchronized sensor data on campus',
 		caption: 'Collecting synchronized camera and LiDAR data',
 	},
+	{
+		src: driveImage('1vJlJnc8M-FIaBFrlXoYKzaCWd5VIe1Kc'),
+		alt: 'Students walking beside the robotic vehicle during a campus drive',
+		caption: 'Conducting the outdoor campus drive',
+	},
+	{
+		src: driveImage('1vJlJnc8M-FIaBFrlXoYKzaCWd5VIe1Kc'),
+		alt: 'Robotic vehicle collecting outdoor campus data',
+		caption: 'Observing the vehicle during data collection',
+	},
 ];
-
-const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 ---
 
 <section class="milestone section-shell" id="milestone-1">
@@ -79,8 +70,8 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 
 			<p>
 				Students strengthen their hands-on simulation, teamwork,
-				observation, and communication skills while demonstrating vehicle
-				behavior and unexpected results.
+				observation, and communication skills while demonstrating
+				vehicle behavior and unexpected results.
 			</p>
 		</div>
 	</div>
@@ -102,7 +93,10 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 					/>
 
 					<figcaption>
-						<span>{String(index + 1).padStart(2, '0')}</span>
+						<span>
+							{String(index + 1).padStart(2, '0')}
+						</span>
+
 						{photo.caption}
 					</figcaption>
 				</figure>
@@ -110,7 +104,6 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 		}
 	</div>
 </section>
-
 
 <section
 	class="milestone-two section-shell"
@@ -125,13 +118,19 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 		<p class="section-kicker">Milestone 02</p>
 
 		<h2>Turn a Campus Drive into Digital Data</h2>
-		<p>Students collect synchronized camera and LiDAR data during a campus drive and transform real-world observations into structured digital data for perception, analysis, and autonomous-vehicle research.</p>
+
+		<p>
+			Students collect synchronized camera and LiDAR data during a campus
+			drive and transform real-world observations into structured digital
+			data for perception, analysis, and autonomous-vehicle research.
+		</p>
 	</div>
 
 	<div class="milestone-two-content">
 		<div
 			class="milestone-two-carousel"
 			aria-label="Milestone 2 campus-drive photographs"
+			tabindex="0"
 		>
 			<div class="milestone-two-slides" aria-live="polite">
 				{
@@ -174,11 +173,13 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 					<span aria-hidden="true">→</span>
 				</button>
 
-				<div class="milestone-two-counter" aria-hidden="true">
-					<span data-current-slide>
-						01
-					</span>
+				<div
+					class="milestone-two-counter"
+					aria-hidden="true"
+				>
+					<span data-current-slide>01</span>
 					<span>/</span>
+
 					<span>
 						{String(milestoneTwoPhotos.length).padStart(2, '0')}
 					</span>
@@ -209,13 +210,15 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 
 		<figure class="milestone-two-video">
 			<div class="milestone-two-video-frame">
-				<iframe
-					src={milestoneTwoVideoUrl}
-					title="Campus drive data-collection demonstration"
-					loading="lazy"
-					allow="autoplay; encrypted-media; fullscreen"
-					allowfullscreen
-				></iframe>
+				<div class="milestone-two-coming-soon">
+					<span>Video Demonstration</span>
+
+					<strong>Coming Soon</strong>
+
+					<p>
+						Campus drive and synchronized sensor-data collection
+					</p>
+				</div>
 			</div>
 
 			<figcaption>
@@ -231,32 +234,38 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 			'[data-milestone-two]:not([data-carousel-ready])'
 		);
 
-		carousels.forEach((carousel) => {
-			carousel.setAttribute('data-carousel-ready', 'true');
+		carousels.forEach((section) => {
+			section.setAttribute('data-carousel-ready', 'true');
+
+			const carousel = section.querySelector(
+				'.milestone-two-carousel'
+			);
 
 			const slides = Array.from(
-				carousel.querySelectorAll('[data-slide]')
+				section.querySelectorAll('[data-slide]')
 			);
 
 			const dots = Array.from(
-				carousel.querySelectorAll('[data-slide-dot]')
+				section.querySelectorAll('[data-slide-dot]')
 			);
 
-			const previousButton = carousel.querySelector(
+			const previousButton = section.querySelector(
 				'[data-previous-slide]'
 			);
 
-			const nextButton = carousel.querySelector(
+			const nextButton = section.querySelector(
 				'[data-next-slide]'
 			);
 
-			const currentSlideLabel = carousel.querySelector(
+			const currentSlideLabel = section.querySelector(
 				'[data-current-slide]'
 			);
 
-			const slideContainer = carousel.querySelector(
+			const slideContainer = section.querySelector(
 				'.milestone-two-slides'
 			);
+
+			if (!carousel || slides.length === 0) return;
 
 			let currentIndex = 0;
 			let touchStartX = 0;
@@ -270,6 +279,7 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 					const isActive = index === currentIndex;
 
 					slide.classList.toggle('is-active', isActive);
+
 					slide.setAttribute(
 						'aria-hidden',
 						isActive ? 'false' : 'true'
@@ -280,6 +290,7 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 					const isActive = index === currentIndex;
 
 					dot.classList.toggle('is-active', isActive);
+
 					dot.setAttribute(
 						'aria-current',
 						isActive ? 'true' : 'false'
@@ -322,7 +333,8 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 			slideContainer?.addEventListener(
 				'touchstart',
 				(event) => {
-					touchStartX = event.changedTouches[0].screenX;
+					touchStartX =
+						event.changedTouches[0]?.screenX ?? 0;
 				},
 				{ passive: true }
 			);
@@ -330,8 +342,11 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 			slideContainer?.addEventListener(
 				'touchend',
 				(event) => {
-					touchEndX = event.changedTouches[0].screenX;
-					const swipeDistance = touchEndX - touchStartX;
+					touchEndX =
+						event.changedTouches[0]?.screenX ?? 0;
+
+					const swipeDistance =
+						touchEndX - touchStartX;
 
 					if (Math.abs(swipeDistance) < 50) return;
 
@@ -344,7 +359,6 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 				{ passive: true }
 			);
 
-			carousel.setAttribute('tabindex', '0');
 			showSlide(0);
 		});
 	}
@@ -358,16 +372,19 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 </script>
 
 <style>
+	/* Shared timeline */
+
 	.milestone,
 	.milestone-two {
 		position: relative;
+		overflow: visible;
 		border-left: 3px solid #d4d4d4;
 		padding-left: clamp(3.5rem, 6vw, 7rem);
 	}
 
 	.milestone-timeline-marker {
 		position: absolute;
-		z-index: 8;
+		z-index: 10;
 		top: clamp(3.5rem, 6vw, 6rem);
 		left: -1.5px;
 		width: clamp(0.9rem, 1.2vw, 1.15rem);
@@ -375,8 +392,8 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 		border: 3px solid #fff;
 		border-radius: 50%;
 		background: #bfc2c5;
-		transform: translate(-50%, -50%);
 		box-shadow: 0 0 0 1px #d4d4d4;
+		transform: translate(-50%, -50%);
 	}
 
 	.milestone-timeline-marker span {
@@ -391,27 +408,59 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 		transform: translateY(-50%);
 	}
 
-	.milestone-photo,
-	.milestone-two-slide {
-		overflow: hidden;
+	/* Reduced space between milestones */
+
+	#milestone-1 {
+		margin-bottom: 0 !important;
+		padding-bottom: clamp(0.5rem, 1vw, 1rem) !important;
 	}
 
-	.milestone-photo img,
-	.milestone-two-slide img {
-		transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
-		will-change: transform;
+	#milestone-2 {
+		margin-top: 0 !important;
+		padding-top: clamp(0.5rem, 1vw, 1rem) !important;
+		padding-bottom: clamp(4rem, 7vw, 8rem);
+	}
+
+	/* Milestone 1 hover pop-up */
+
+	.milestone-gallery {
+		position: relative;
+		overflow: visible;
+		isolation: isolate;
+	}
+
+	.milestone-photo {
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+		transform: scale(1);
+		transform-origin: center;
+		transition:
+			transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+			box-shadow 450ms ease;
+	}
+
+	.milestone-photo img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 450ms ease;
+	}
+
+	.milestone-photo:hover,
+	.milestone-photo:focus-within {
+		z-index: 1000;
+		transform: scale(2);
+		box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.4);
 	}
 
 	.milestone-photo:hover img,
-	.milestone-photo:focus-within img,
-	.milestone-two-slide.is-active:hover img,
-	.milestone-two-slide.is-active:focus-within img {
-		transform: scale(1.08);
+	.milestone-photo:focus-within img {
+		transform: scale(1.05);
 	}
 
-	.milestone-two {
-		padding-block: clamp(4rem, 7vw, 8rem);
-	}
+	/* Milestone 2 heading */
 
 	.milestone-two-heading {
 		max-width: 76rem;
@@ -428,23 +477,49 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 	}
 
 	.milestone-two-heading > p:last-child {
-		max-width: none;
+		max-width: 75ch;
 		margin: 0;
 		font-size: clamp(1rem, 1.15vw, 1.25rem);
 		line-height: 1.7;
 	}
 
+	/* Milestone 2 layout */
+
 	.milestone-two-content {
+		position: relative;
 		display: grid;
+		overflow: visible;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: clamp(1.25rem, 2.5vw, 3rem);
 		align-items: stretch;
+		isolation: isolate;
 	}
 
 	.milestone-two-carousel,
 	.milestone-two-video {
 		min-width: 0;
 		margin: 0;
+	}
+
+	/* Milestone 2 carousel pop-up */
+
+	.milestone-two-carousel {
+		position: relative;
+		z-index: 1;
+		transform: scale(1);
+		transform-origin: left center;
+		transition:
+			transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+			filter 450ms ease;
+	}
+
+	.milestone-two-carousel:hover,
+	.milestone-two-carousel:focus-within {
+		z-index: 1000;
+		transform: scale(2);
+		filter: drop-shadow(
+			0 2rem 3rem rgba(0, 0, 0, 0.4)
+		);
 	}
 
 	.milestone-two-carousel:focus-visible {
@@ -456,13 +531,14 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 		position: relative;
 		overflow: hidden;
 		height: clamp(18rem, 27vw, 30rem);
-		background: #121212;
 		border-radius: clamp(1rem, 1.5vw, 1.75rem);
+		background: #121212;
 	}
 
 	.milestone-two-slide {
 		position: absolute;
 		inset: 0;
+		overflow: hidden;
 		margin: 0;
 		visibility: hidden;
 		opacity: 0;
@@ -484,6 +560,11 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		transition: transform 500ms ease;
+	}
+
+	.milestone-two-slide.is-active:hover img {
+		transform: scale(1.06);
 	}
 
 	.milestone-two-slide figcaption {
@@ -491,7 +572,9 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 		right: 0;
 		bottom: 0;
 		left: 0;
-		padding: clamp(3.5rem, 8vw, 7rem) clamp(1.25rem, 3vw, 2.5rem)
+		padding:
+			clamp(3.5rem, 8vw, 7rem)
+			clamp(1.25rem, 3vw, 2.5rem)
 			clamp(1.25rem, 2vw, 2rem);
 		color: #fff;
 		font-size: clamp(0.9rem, 1vw, 1.1rem);
@@ -502,9 +585,11 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 		);
 	}
 
+	/* Carousel buttons */
+
 	.milestone-two-arrow {
 		position: absolute;
-		z-index: 5;
+		z-index: 20;
 		top: 50%;
 		display: grid;
 		width: clamp(2.75rem, 4vw, 4rem);
@@ -525,7 +610,7 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 
 	.milestone-two-arrow:hover {
 		background: rgba(0, 0, 0, 0.85);
-		transform: translateY(-50%) scale(1.06);
+		transform: translateY(-50%) scale(1.08);
 	}
 
 	.milestone-two-arrow:focus-visible {
@@ -543,7 +628,7 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 
 	.milestone-two-counter {
 		position: absolute;
-		z-index: 5;
+		z-index: 20;
 		top: clamp(0.75rem, 1.5vw, 1.5rem);
 		right: clamp(0.75rem, 1.5vw, 1.5rem);
 		padding: 0.55rem 0.85rem;
@@ -586,24 +671,65 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 		opacity: 1;
 	}
 
+	/* Coming Soon video box */
+
 	.milestone-two-video {
 		display: flex;
 		flex-direction: column;
 	}
 
 	.milestone-two-video-frame {
+		position: relative;
+		display: grid;
 		height: clamp(18rem, 27vw, 30rem);
 		overflow: hidden;
-		background: #121212;
 		border-radius: clamp(1rem, 1.5vw, 1.75rem);
+		background:
+			radial-gradient(
+				circle at 20% 20%,
+				rgba(35, 189, 180, 0.55),
+				transparent 40%
+			),
+			linear-gradient(
+				135deg,
+				#052d43 0%,
+				#0b6170 55%,
+				#07968f 100%
+			);
+		place-items: center;
 	}
 
-	.milestone-two-video iframe {
-		display: block;
-		width: 100%;
-		height: 100%;
-		min-height: inherit;
-		border: 0;
+	.milestone-two-coming-soon {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		padding: 2rem;
+		color: #fff;
+		text-align: center;
+	}
+
+	.milestone-two-coming-soon span {
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		opacity: 0.7;
+	}
+
+	.milestone-two-coming-soon strong {
+		font-size: clamp(2.5rem, 4vw, 4.5rem);
+		line-height: 1;
+		letter-spacing: -0.04em;
+	}
+
+	.milestone-two-coming-soon p {
+		max-width: 32ch;
+		margin: 0;
+		font-size: clamp(0.9rem, 1vw, 1.05rem);
+		line-height: 1.5;
+		opacity: 0.75;
 	}
 
 	.milestone-two-video figcaption {
@@ -611,6 +737,8 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 		font-size: clamp(0.9rem, 1vw, 1.05rem);
 		line-height: 1.5;
 	}
+
+	/* Tablet */
 
 	@media (max-width: 900px) {
 		.milestone-two-heading h2 {
@@ -623,14 +751,20 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 
 		.milestone-two-slides,
 		.milestone-two-video-frame {
+			height: auto;
 			min-height: auto;
 			aspect-ratio: 16 / 10;
 		}
 
-		.milestone-two-video iframe {
-			min-height: 100%;
+		.milestone-photo:hover,
+		.milestone-photo:focus-within,
+		.milestone-two-carousel:hover,
+		.milestone-two-carousel:focus-within {
+			transform: scale(1.03);
 		}
 	}
+
+	/* Mobile */
 
 	@media (max-width: 540px) {
 		.milestone,
@@ -642,8 +776,13 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 			display: none;
 		}
 
-		.milestone-two {
-			padding-block: 3.5rem;
+		#milestone-1 {
+			padding-bottom: 0.5rem !important;
+		}
+
+		#milestone-2 {
+			padding-top: 0.5rem !important;
+			padding-bottom: 3.5rem;
 		}
 
 		.milestone-two-heading h2 {
@@ -664,9 +803,11 @@ const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 	}
 
 	@media (prefers-reduced-motion: reduce) {
+		.milestone-photo,
 		.milestone-photo img,
-		.milestone-two-slide img,
+		.milestone-two-carousel,
 		.milestone-two-slide,
+		.milestone-two-slide img,
 		.milestone-two-arrow,
 		.milestone-two-dot {
 			transition: none;
