@@ -134,7 +134,6 @@ const milestoneTwoVideoUrl =
 		<p class="section-kicker">Milestone 02</p>
 
 		<h2>Turn a Campus Drive into Digital Data</h2>
-
 		<p>
 			Students collect synchronized camera and LiDAR data during a campus
 			drive and transform real-world observations into structured digital
@@ -382,11 +381,12 @@ const milestoneTwoVideoUrl =
 	}
 
 	.milestone-two-heading h2 {
-		max-width: 18ch;
+		max-width: none;
 		margin: 0 0 1.25rem;
 		font-size: clamp(2rem, 3.4vw, 4.25rem);
 		line-height: 0.98;
 		letter-spacing: -0.045em;
+		white-space: nowrap;
 	}
 
 	.milestone-two-heading > p:last-child {
@@ -575,6 +575,10 @@ const milestoneTwoVideoUrl =
 	}
 
 	@media (max-width: 900px) {
+		.milestone-two-heading h2 {
+			white-space: normal;
+		}
+
 		.milestone-two-content {
 			grid-template-columns: 1fr;
 		}
