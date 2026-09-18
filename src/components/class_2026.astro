@@ -156,3 +156,538 @@ const demonstrationPhotos = [
 		</div>
 	</div>
 </section>
+
+
+---
+const driveImage = (fileId) =>
+	`https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
+
+const milestoneTwoPhotos = [
+	{
+		src: driveImage('REPLACE_WITH_PHOTO_1_FILE_ID'),
+		alt: 'Robotic vehicle beginning the campus data-collection drive',
+		caption: 'Preparing the vehicle for campus data collection',
+	},
+	{
+		src: driveImage('REPLACE_WITH_PHOTO_2_FILE_ID'),
+		alt: 'Robotic vehicle collecting sensor data on campus',
+		caption: 'Collecting synchronized camera and LiDAR data',
+	},
+	{
+		src: driveImage('REPLACE_WITH_PHOTO_3_FILE_ID'),
+		alt: 'Campus road observed by the robotic vehicle',
+		caption: 'Recording real-world campus road conditions',
+	},
+	{
+		src: driveImage('REPLACE_WITH_PHOTO_4_FILE_ID'),
+		alt: 'Students monitoring the campus driving experiment',
+		caption: 'Monitoring the live sensor streams',
+	},
+	{
+		src: driveImage('REPLACE_WITH_PHOTO_5_FILE_ID'),
+		alt: 'Digital sensor data collected during the campus drive',
+		caption: 'Transforming the campus drive into digital data',
+	},
+];
+
+const milestoneTwoVideoId = 'REPLACE_WITH_VIDEO_FILE_ID';
+const milestoneTwoVideoUrl =
+	`https://drive.google.com/file/d/${milestoneTwoVideoId}/preview`;
+---
+
+<section
+	class="milestone-two section-shell"
+	id="milestone-2"
+	data-milestone-two
+>
+	<div class="milestone-two-heading">
+		<p class="section-kicker">Milestone 02</p>
+
+		<h2>Turn a Campus Drive into Digital Data</h2>
+
+		<p>
+			Students collect synchronized camera and LiDAR data during a campus
+			drive and transform real-world observations into structured digital
+			data for perception, analysis, and autonomous-vehicle research.
+		</p>
+	</div>
+
+	<div class="milestone-two-content">
+		<div
+			class="milestone-two-carousel"
+			aria-label="Milestone 2 campus-drive photographs"
+		>
+			<div class="milestone-two-slides" aria-live="polite">
+				{
+					milestoneTwoPhotos.map((photo, index) => (
+						<figure
+							class:list={[
+								'milestone-two-slide',
+								{ 'is-active': index === 0 },
+							]}
+							data-slide
+							aria-hidden={index === 0 ? 'false' : 'true'}
+						>
+							<img
+								src={photo.src}
+								alt={photo.alt}
+								loading={index === 0 ? 'eager' : 'lazy'}
+								referrerpolicy="no-referrer"
+							/>
+
+							<figcaption>{photo.caption}</figcaption>
+						</figure>
+					))
+				}
+
+				<button
+					class="milestone-two-arrow milestone-two-arrow-left"
+					type="button"
+					data-previous-slide
+					aria-label="Show previous photograph"
+				>
+					<span aria-hidden="true">←</span>
+				</button>
+
+				<button
+					class="milestone-two-arrow milestone-two-arrow-right"
+					type="button"
+					data-next-slide
+					aria-label="Show next photograph"
+				>
+					<span aria-hidden="true">→</span>
+				</button>
+
+				<div class="milestone-two-counter" aria-hidden="true">
+					<span data-current-slide>
+						01
+					</span>
+					<span>/</span>
+					<span>
+						{String(milestoneTwoPhotos.length).padStart(2, '0')}
+					</span>
+				</div>
+			</div>
+
+			<div
+				class="milestone-two-dots"
+				aria-label="Select a photograph"
+			>
+				{
+					milestoneTwoPhotos.map((photo, index) => (
+						<button
+							class:list={[
+								'milestone-two-dot',
+								{ 'is-active': index === 0 },
+							]}
+							type="button"
+							data-slide-dot
+							data-slide-index={index}
+							aria-label={`Show photograph ${index + 1}: ${photo.caption}`}
+							aria-current={index === 0 ? 'true' : 'false'}
+						/>
+					))
+				}
+			</div>
+		</div>
+
+		<figure class="milestone-two-video">
+			<div class="milestone-two-video-frame">
+				<iframe
+					src={milestoneTwoVideoUrl}
+					title="Campus drive data-collection demonstration"
+					loading="lazy"
+					allow="autoplay; encrypted-media; fullscreen"
+					allowfullscreen
+				></iframe>
+			</div>
+
+			<figcaption>
+				Campus drive and synchronized sensor-data collection
+			</figcaption>
+		</figure>
+	</div>
+</section>
+
+<script>
+	function initializeMilestoneTwoCarousel() {
+		const carousels = document.querySelectorAll(
+			'[data-milestone-two]:not([data-carousel-ready])'
+		);
+
+		carousels.forEach((carousel) => {
+			carousel.setAttribute('data-carousel-ready', 'true');
+
+			const slides = Array.from(
+				carousel.querySelectorAll('[data-slide]')
+			);
+
+			const dots = Array.from(
+				carousel.querySelectorAll('[data-slide-dot]')
+			);
+
+			const previousButton = carousel.querySelector(
+				'[data-previous-slide]'
+			);
+
+			const nextButton = carousel.querySelector(
+				'[data-next-slide]'
+			);
+
+			const currentSlideLabel = carousel.querySelector(
+				'[data-current-slide]'
+			);
+
+			const slideContainer = carousel.querySelector(
+				'.milestone-two-slides'
+			);
+
+			let currentIndex = 0;
+			let touchStartX = 0;
+			let touchEndX = 0;
+
+			function showSlide(newIndex) {
+				currentIndex =
+					(newIndex + slides.length) % slides.length;
+
+				slides.forEach((slide, index) => {
+					const isActive = index === currentIndex;
+
+					slide.classList.toggle('is-active', isActive);
+					slide.setAttribute(
+						'aria-hidden',
+						isActive ? 'false' : 'true'
+					);
+				});
+
+				dots.forEach((dot, index) => {
+					const isActive = index === currentIndex;
+
+					dot.classList.toggle('is-active', isActive);
+					dot.setAttribute(
+						'aria-current',
+						isActive ? 'true' : 'false'
+					);
+				});
+
+				if (currentSlideLabel) {
+					currentSlideLabel.textContent = String(
+						currentIndex + 1
+					).padStart(2, '0');
+				}
+			}
+
+			previousButton?.addEventListener('click', () => {
+				showSlide(currentIndex - 1);
+			});
+
+			nextButton?.addEventListener('click', () => {
+				showSlide(currentIndex + 1);
+			});
+
+			dots.forEach((dot, index) => {
+				dot.addEventListener('click', () => {
+					showSlide(index);
+				});
+			});
+
+			carousel.addEventListener('keydown', (event) => {
+				if (event.key === 'ArrowLeft') {
+					event.preventDefault();
+					showSlide(currentIndex - 1);
+				}
+
+				if (event.key === 'ArrowRight') {
+					event.preventDefault();
+					showSlide(currentIndex + 1);
+				}
+			});
+
+			slideContainer?.addEventListener(
+				'touchstart',
+				(event) => {
+					touchStartX = event.changedTouches[0].screenX;
+				},
+				{ passive: true }
+			);
+
+			slideContainer?.addEventListener(
+				'touchend',
+				(event) => {
+					touchEndX = event.changedTouches[0].screenX;
+					const swipeDistance = touchEndX - touchStartX;
+
+					if (Math.abs(swipeDistance) < 50) return;
+
+					if (swipeDistance < 0) {
+						showSlide(currentIndex + 1);
+					} else {
+						showSlide(currentIndex - 1);
+					}
+				},
+				{ passive: true }
+			);
+
+			carousel.setAttribute('tabindex', '0');
+			showSlide(0);
+		});
+	}
+
+	initializeMilestoneTwoCarousel();
+
+	document.addEventListener(
+		'astro:page-load',
+		initializeMilestoneTwoCarousel
+	);
+</script>
+
+<style>
+	.milestone-two {
+		padding-block: clamp(4rem, 7vw, 8rem);
+	}
+
+	.milestone-two-heading {
+		max-width: 76rem;
+		margin-bottom: clamp(2rem, 4vw, 4.5rem);
+	}
+
+	.milestone-two-heading h2 {
+		max-width: 18ch;
+		margin: 0 0 1.25rem;
+		font-size: clamp(2.25rem, 4.6vw, 5.75rem);
+		line-height: 0.98;
+		letter-spacing: -0.045em;
+	}
+
+	.milestone-two-heading > p:last-child {
+		max-width: 72ch;
+		margin: 0;
+		font-size: clamp(1rem, 1.15vw, 1.25rem);
+		line-height: 1.7;
+	}
+
+	.milestone-two-content {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+		gap: clamp(1.25rem, 2.5vw, 3rem);
+		align-items: stretch;
+	}
+
+	.milestone-two-carousel,
+	.milestone-two-video {
+		min-width: 0;
+		margin: 0;
+	}
+
+	.milestone-two-carousel:focus-visible {
+		outline: 3px solid currentColor;
+		outline-offset: 6px;
+	}
+
+	.milestone-two-slides {
+		position: relative;
+		overflow: hidden;
+		min-height: clamp(24rem, 39vw, 48rem);
+		background: #121212;
+		border-radius: clamp(1rem, 1.5vw, 1.75rem);
+	}
+
+	.milestone-two-slide {
+		position: absolute;
+		inset: 0;
+		margin: 0;
+		visibility: hidden;
+		opacity: 0;
+		transform: scale(1.02);
+		transition:
+			opacity 450ms ease,
+			transform 650ms ease,
+			visibility 450ms ease;
+	}
+
+	.milestone-two-slide.is-active {
+		visibility: visible;
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	.milestone-two-slide img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.milestone-two-slide figcaption {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding: clamp(3.5rem, 8vw, 7rem) clamp(1.25rem, 3vw, 2.5rem)
+			clamp(1.25rem, 2vw, 2rem);
+		color: #fff;
+		font-size: clamp(0.9rem, 1vw, 1.1rem);
+		background: linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.85),
+			transparent
+		);
+	}
+
+	.milestone-two-arrow {
+		position: absolute;
+		z-index: 5;
+		top: 50%;
+		display: grid;
+		width: clamp(2.75rem, 4vw, 4rem);
+		aspect-ratio: 1;
+		padding: 0;
+		border: 1px solid rgba(255, 255, 255, 0.45);
+		border-radius: 50%;
+		color: #fff;
+		background: rgba(0, 0, 0, 0.55);
+		cursor: pointer;
+		place-items: center;
+		transform: translateY(-50%);
+		transition:
+			background-color 180ms ease,
+			transform 180ms ease;
+		backdrop-filter: blur(8px);
+	}
+
+	.milestone-two-arrow:hover {
+		background: rgba(0, 0, 0, 0.85);
+		transform: translateY(-50%) scale(1.06);
+	}
+
+	.milestone-two-arrow:focus-visible {
+		outline: 3px solid #fff;
+		outline-offset: 3px;
+	}
+
+	.milestone-two-arrow-left {
+		left: clamp(0.75rem, 1.5vw, 1.5rem);
+	}
+
+	.milestone-two-arrow-right {
+		right: clamp(0.75rem, 1.5vw, 1.5rem);
+	}
+
+	.milestone-two-counter {
+		position: absolute;
+		z-index: 5;
+		top: clamp(0.75rem, 1.5vw, 1.5rem);
+		right: clamp(0.75rem, 1.5vw, 1.5rem);
+		padding: 0.55rem 0.85rem;
+		border: 1px solid rgba(255, 255, 255, 0.35);
+		border-radius: 999px;
+		color: #fff;
+		font-size: 0.8rem;
+		letter-spacing: 0.12em;
+		background: rgba(0, 0, 0, 0.55);
+		backdrop-filter: blur(8px);
+	}
+
+	.milestone-two-dots {
+		display: flex;
+		justify-content: center;
+		gap: 0.65rem;
+		margin-top: 1rem;
+	}
+
+	.milestone-two-dot {
+		width: 0.7rem;
+		height: 0.7rem;
+		padding: 0;
+		border: 1px solid currentColor;
+		border-radius: 50%;
+		background: transparent;
+		cursor: pointer;
+		opacity: 0.55;
+		transition:
+			width 180ms ease,
+			border-radius 180ms ease,
+			background-color 180ms ease,
+			opacity 180ms ease;
+	}
+
+	.milestone-two-dot.is-active {
+		width: 2rem;
+		border-radius: 999px;
+		background: currentColor;
+		opacity: 1;
+	}
+
+	.milestone-two-video {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.milestone-two-video-frame {
+		flex: 1;
+		overflow: hidden;
+		min-height: clamp(24rem, 39vw, 48rem);
+		background: #121212;
+		border-radius: clamp(1rem, 1.5vw, 1.75rem);
+	}
+
+	.milestone-two-video iframe {
+		display: block;
+		width: 100%;
+		height: 100%;
+		min-height: inherit;
+		border: 0;
+	}
+
+	.milestone-two-video figcaption {
+		margin-top: 1rem;
+		font-size: clamp(0.9rem, 1vw, 1.05rem);
+		line-height: 1.5;
+	}
+
+	@media (max-width: 900px) {
+		.milestone-two-content {
+			grid-template-columns: 1fr;
+		}
+
+		.milestone-two-slides,
+		.milestone-two-video-frame {
+			min-height: auto;
+			aspect-ratio: 16 / 10;
+		}
+
+		.milestone-two-video iframe {
+			min-height: 100%;
+		}
+	}
+
+	@media (max-width: 540px) {
+		.milestone-two {
+			padding-block: 3.5rem;
+		}
+
+		.milestone-two-heading h2 {
+			font-size: clamp(2rem, 11vw, 3.25rem);
+		}
+
+		.milestone-two-slides {
+			aspect-ratio: 4 / 5;
+		}
+
+		.milestone-two-video-frame {
+			aspect-ratio: 16 / 9;
+		}
+
+		.milestone-two-arrow {
+			width: 2.75rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.milestone-two-slide,
+		.milestone-two-arrow,
+		.milestone-two-dot {
+			transition: none;
+		}
+	}
+</style>
