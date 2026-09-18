@@ -3,12 +3,48 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 	? import.meta.env.BASE_URL
 	: `${import.meta.env.BASE_URL}/`;
 
+const driveImage = (fileId) =>
+	`https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
+
 const milestonePhotos = [
-	{ src: 'https://drive.google.com/uc?export=view&id=1n2xz9FJ154pdeU-Lt7iw3xk5UujvN8P7', alt: 'Robot vehicle prepared for a research milestone', caption: 'Team 01' },
-	{ src: 'https://drive.google.com/uc?export=view&id=1sRknQDcbOrGfV-_AeYFp0hRkK9gid1EF', alt: 'Autonomous research vehicle', caption: 'Team 02' },
-	{ src: 'https://drive.google.com/uc?export=view&id=16mSPEcpeoReLfRCrOz8_FuCJd4GxP-jy', alt: 'Outdoor vehicle computing testbed', caption: 'Team 03' },
-	{ src: 'https://drive.google.com/uc?export=view&id=17ZwRj6Cij2K9zQG-GkC2wINaBw1sNzIR', alt: 'Instructor working with the vehicle computing system', caption: 'Team 04' },
-	{ src: 'https://drive.google.com/uc?export=view&id=1duJQZkXcQ0zsRRdIJ20Pe5PA1-Wqb0br', alt: 'Vehicle computing lab research activity', caption: 'Team 05' },
+	{
+		src: driveImage('1n2xz9FJ154pdeU-Lt7iw3xk5UujvN8P7'),
+		alt: 'Robot vehicle prepared for a research milestone',
+		caption: 'Team 01',
+	},
+	{
+		src: driveImage('1sRknQDcbOrGfV-_AeYFp0hRkK9gid1EF'),
+		alt: 'Autonomous research vehicle',
+		caption: 'Team 02',
+	},
+	{
+		src: driveImage('16mSPEcpeoReLfRCrOz8_FuCJd4GxP-jy'),
+		alt: 'Outdoor vehicle computing testbed',
+		caption: 'Team 03',
+	},
+	{
+		src: driveImage('17ZwRj6Cij2K9zQG-GkC2wINaBw1sNzIR'),
+		alt: 'Instructor working with the vehicle computing system',
+		caption: 'Team 04',
+	},
+	{
+		src: driveImage('1duJQZkXcQ0zsRRdIJ20Pe5PA1-Wqb0br'),
+		alt: 'Vehicle computing lab research activity',
+		caption: 'Team 05',
+	},
+];
+
+const demonstrationPhotos = [
+	{
+		src: driveImage('1sRknQDcbOrGfV-_AeYFp0hRkK9gid1EF'),
+		alt: 'Robotic vehicle ready for a demonstration',
+		caption: 'Robotic vehicle platform',
+	},
+	{
+		src: driveImage('1duJQZkXcQ0zsRRdIJ20Pe5PA1-Wqb0br'),
+		alt: 'Vehicle computing experiment in the lab',
+		caption: 'Live experiment environment',
+	},
 ];
 ---
 
@@ -16,18 +52,43 @@ const milestonePhotos = [
 	<div class="section-heading-row">
 		<div>
 			<p class="section-kicker">Milestone 01</p>
-			<h2>Hands-On Urban Autonomy: Designing and Testing Challenging CARLA Scenarios</h2>
-		<p>Students strengthen their hands-on simulation, teamwork, observation, and communication skills while demonstrating vehicle behavior and unexpected results.</p>
+
+			<h2>
+				Hands-On Urban Autonomy: Designing and Testing Challenging
+				CARLA Scenarios
+			</h2>
+
+			<p>
+				Students strengthen their hands-on simulation, teamwork,
+				observation, and communication skills while demonstrating vehicle
+				behavior and unexpected results.
+			</p>
+		</div>
 	</div>
-    </div>
 
 	<div class="milestone-gallery">
-		{milestonePhotos.map((photo, index) => (
-			<figure class:list={['milestone-photo', { 'milestone-photo-featured': index === 0 }]}>
-				<img src={photo.src.startsWith('http') ? photo.src : `${base}images/${photo.src}`} alt={photo.alt} loading="lazy" />
-				<figcaption><span>0{index + 1}</span>{photo.caption}</figcaption>
-			</figure>
-		))}
+		{
+			milestonePhotos.map((photo, index) => (
+				<figure
+					class:list={[
+						'milestone-photo',
+						{ 'milestone-photo-featured': index === 0 },
+					]}
+				>
+					<img
+						src={photo.src}
+						alt={photo.alt}
+						loading={index === 0 ? 'eager' : 'lazy'}
+						referrerpolicy="no-referrer"
+					/>
+
+					<figcaption>
+						<span>{String(index + 1).padStart(2, '0')}</span>
+						{photo.caption}
+					</figcaption>
+				</figure>
+			))
+		}
 	</div>
 </section>
 
@@ -36,28 +97,60 @@ const milestonePhotos = [
 		<div class="section-heading-row">
 			<div>
 				<p class="section-kicker">Demonstration</p>
-				<h2>Robotic vehicle<br />in motion.</h2>
+
+				<h2>
+					Robotic vehicle<br />
+					in motion.
+				</h2>
 			</div>
-			<p>See how the robotic vehicle turns sensor input into decisions as it moves through a controlled environment.</p>
+
+			<p>
+				See how the robotic vehicle turns sensor input into decisions as
+				it moves through a controlled environment.
+			</p>
 		</div>
 
 		<div class="demonstration-content">
-			<p class="demonstration-copy">This demonstration connects perception, onboard computation, and vehicle control in one repeatable run. The robot senses its surroundings, processes the stream at the edge, and responds in real time.</p>
+			<p class="demonstration-copy">
+				This demonstration connects perception, onboard computation,
+				and vehicle control in one repeatable run. The robot senses its
+				surroundings, processes the stream at the edge, and responds in
+				real time.
+			</p>
+
 			<div class="demonstration-media">
-				<figure class="demonstration-photo">
-					<img src="https://drive.google.com/uc?export=view&id=1sRknQDcbOrGfV-_AeYFp0hRkK9gid1EF" alt="Robotic vehicle ready for a demonstration" loading="lazy" />
-					<figcaption>Robotic vehicle platform</figcaption>
-				</figure>
-				<figure class="demonstration-photo">
-					<img src="https://drive.google.com/uc?export=view&id=1sRknQDcbOrGfV-_AeYFp0hRkK9gid1EF" alt="Vehicle computing experiment in the lab" loading="lazy" />
-					<figcaption>Live experiment environment</figcaption>
-				</figure>
+				{
+					demonstrationPhotos.map((photo) => (
+						<figure class="demonstration-photo">
+							<img
+								src={photo.src}
+								alt={photo.alt}
+								loading="lazy"
+								referrerpolicy="no-referrer"
+							/>
+
+							<figcaption>{photo.caption}</figcaption>
+						</figure>
+					))
+				}
+
 				<figure class="demonstration-video">
-					<video controls preload="metadata" poster={`${base}images/testbed-photo.jpg`}>
-						<source src={`${base}videos/demo.mp4`} type="video/mp4" />
+					<video
+						controls
+						preload="metadata"
+						poster={`${base}images/testbed-photo.jpg`}
+					>
+						<source
+							src={`${base}videos/demo.mp4`}
+							type="video/mp4"
+						/>
+
 						Your browser does not support the video element.
 					</video>
-					<figcaption>Vehicle computing demonstration</figcaption>
+
+					<figcaption>
+						Vehicle computing demonstration
+					</figcaption>
 				</figure>
 			</div>
 		</div>
