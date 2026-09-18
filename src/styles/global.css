@@ -183,10 +183,10 @@ h1 em { display: block; margin-top: 6px; color: var(--lime); font-family: Georgi
 
 .milestone { padding: 120px 0; }
 .milestone .section-heading-row > p, .demonstration .section-heading-row > p { max-width: 430px; margin: 0 0 4px; color: var(--muted); line-height: 1.65; }
-.milestone-gallery { display: grid; grid-template-columns: 1.35fr .85fr .85fr; grid-template-rows: repeat(2, minmax(220px, 1fr)); gap: 16px; }
+.milestone-gallery { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
 .milestone-photo, .demonstration-photo, .demonstration-video { position: relative; min-width: 0; min-height: 0; margin: 0; overflow: hidden; background: var(--ink); }
 .milestone-photo { aspect-ratio: 4 / 3; }
-.milestone-photo-featured { grid-row: 1 / -1; aspect-ratio: auto; }
+.milestone-photo-featured { aspect-ratio: 4 / 3; }
 .milestone-photo img, .demonstration-photo img, .demonstration-video video { width: 100%; height: 100%; display: block; object-fit: cover; }
 .milestone-photo::after, .demonstration-photo::after, .demonstration-video::after { content: ""; position: absolute; inset: 35% 0 0; pointer-events: none; background: linear-gradient(transparent, rgba(6,43,69,.82)); }
 .milestone-photo figcaption, .demonstration-photo figcaption, .demonstration-video figcaption { position: absolute; z-index: 1; right: 18px; bottom: 16px; left: 18px; color: white; font-size: .78rem; font-weight: 700; }
