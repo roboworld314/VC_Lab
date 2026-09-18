@@ -4,7 +4,7 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 	: `${import.meta.env.BASE_URL}/`;
 
 const driveImage = (fileId) =>
-	`https://drive.google.com/uc?export=view&id=${fileId}`;
+	`https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
 
 const milestonePhotos = [
 	{
@@ -54,32 +54,20 @@ const milestoneTwoPhotos = [
 		caption: 'Preparing the vehicle for campus data collection',
 	},
 	{
-		src: driveImage('https://drive.google.com/file/d/1ZEuUnyxAV_PNs14knJ--0H4itwJ8KeRg/preview'),
+		src: driveImage('1ZEuUnyxAV_PNs14knJ--0H4itwJ8KeRg'),
 		alt: 'Robotic vehicle collecting sensor data on campus',
 		caption: 'Collecting synchronized camera and LiDAR data',
 	},
-	{
-		src: driveImage('REPLACE_WITH_PHOTO_3_FILE_ID'),
-		alt: 'Campus road observed by the robotic vehicle',
-		caption: 'Recording real-world campus road conditions',
-	},
-	{
-		src: driveImage('REPLACE_WITH_PHOTO_4_FILE_ID'),
-		alt: 'Students monitoring the campus driving experiment',
-		caption: 'Monitoring the live sensor streams',
-	},
-	{
-		src: driveImage('REPLACE_WITH_PHOTO_5_FILE_ID'),
-		alt: 'Digital sensor data collected during the campus drive',
-		caption: 'Transforming the campus drive into digital data',
-	},
 ];
 
-const milestoneTwoVideoId = 'REPLACE_WITH_VIDEO_FILE_ID';
-const milestoneTwoVideoUrl =`https://share.google/pMkwpFIMEj8mxiGk/preview`;
+const milestoneTwoVideoUrl = 'https://share.google/pMkwpFIMEj8mxiGk';
 ---
 
 <section class="milestone section-shell" id="milestone-1">
+	<div class="milestone-timeline-marker" aria-hidden="true">
+		<span>Milestone 01</span>
+	</div>
+
 	<div class="section-heading-row">
 		<div>
 			<p class="section-kicker">Milestone 01</p>
@@ -129,6 +117,10 @@ const milestoneTwoVideoUrl =`https://share.google/pMkwpFIMEj8mxiGk/preview`;
 	id="milestone-2"
 	data-milestone-two
 >
+	<div class="milestone-timeline-marker" aria-hidden="true">
+		<span>Milestone 02</span>
+	</div>
+
 	<div class="milestone-two-heading">
 		<p class="section-kicker">Milestone 02</p>
 
@@ -366,6 +358,57 @@ const milestoneTwoVideoUrl =`https://share.google/pMkwpFIMEj8mxiGk/preview`;
 </script>
 
 <style>
+	.milestone,
+	.milestone-two {
+		position: relative;
+		border-left: 3px solid #d4d4d4;
+		padding-left: clamp(3.5rem, 6vw, 7rem);
+	}
+
+	.milestone-timeline-marker {
+		position: absolute;
+		z-index: 8;
+		top: clamp(3.5rem, 6vw, 6rem);
+		left: -1.5px;
+		width: clamp(0.9rem, 1.2vw, 1.15rem);
+		aspect-ratio: 1;
+		border: 3px solid #fff;
+		border-radius: 50%;
+		background: #bfc2c5;
+		transform: translate(-50%, -50%);
+		box-shadow: 0 0 0 1px #d4d4d4;
+	}
+
+	.milestone-timeline-marker span {
+		position: absolute;
+		top: 50%;
+		right: clamp(1.25rem, 2vw, 2rem);
+		color: #737373;
+		font-size: clamp(0.8rem, 1vw, 1rem);
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		white-space: nowrap;
+		transform: translateY(-50%);
+	}
+
+	.milestone-photo,
+	.milestone-two-slide {
+		overflow: hidden;
+	}
+
+	.milestone-photo img,
+	.milestone-two-slide img {
+		transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+		will-change: transform;
+	}
+
+	.milestone-photo:hover img,
+	.milestone-photo:focus-within img,
+	.milestone-two-slide.is-active:hover img,
+	.milestone-two-slide.is-active:focus-within img {
+		transform: scale(1.08);
+	}
+
 	.milestone-two {
 		padding-block: clamp(4rem, 7vw, 8rem);
 	}
@@ -590,6 +633,15 @@ const milestoneTwoVideoUrl =`https://share.google/pMkwpFIMEj8mxiGk/preview`;
 	}
 
 	@media (max-width: 540px) {
+		.milestone,
+		.milestone-two {
+			padding-left: 2.25rem;
+		}
+
+		.milestone-timeline-marker span {
+			display: none;
+		}
+
 		.milestone-two {
 			padding-block: 3.5rem;
 		}
@@ -612,6 +664,8 @@ const milestoneTwoVideoUrl =`https://share.google/pMkwpFIMEj8mxiGk/preview`;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
+		.milestone-photo img,
+		.milestone-two-slide img,
 		.milestone-two-slide,
 		.milestone-two-arrow,
 		.milestone-two-dot {
