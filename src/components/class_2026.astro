@@ -4,7 +4,7 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 	: `${import.meta.env.BASE_URL}/`;
 
 const driveImage = (fileId) =>
-	`https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
+	`https://drive.google.com/uc?export=view&id=${fileId}`;
 
 const milestonePhotos = [
 	{
@@ -49,7 +49,7 @@ const demonstrationPhotos = [
 
 const milestoneTwoPhotos = [
 	{
-		src: driveImage('REPLACE_WITH_PHOTO_1_FILE_ID'),
+		src: driveImage('10c5i7vPtG-Sb7IOf3I_A81nzQhquqCsx'),
 		alt: 'Robotic vehicle beginning the campus data-collection drive',
 		caption: 'Preparing the vehicle for campus data collection',
 	},
@@ -76,8 +76,7 @@ const milestoneTwoPhotos = [
 ];
 
 const milestoneTwoVideoId = 'REPLACE_WITH_VIDEO_FILE_ID';
-const milestoneTwoVideoUrl =
-	`https://drive.google.com/file/d/${milestoneTwoVideoId}/preview`;
+const milestoneTwoVideoUrl =`https://drive.google.com/file/d/${milestoneTwoVideoId}/preview`;
 ---
 
 <section class="milestone section-shell" id="milestone-1">
