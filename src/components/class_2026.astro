@@ -674,25 +674,23 @@ const milestoneTwoPhotos = [
 	}
 
 	.milestone-two-video-frame {
-		position: relative;
-		display: grid;
-		height: clamp(18rem, 27vw, 30rem);
-		overflow: hidden;
-		border-radius: clamp(1rem, 1.5vw, 1.75rem);
-		background:
-			radial-gradient(
-				circle at 20% 20%,
-				rgba(35, 189, 180, 0.55),
-				transparent 40%
-			),
-			linear-gradient(
-				135deg,
-				#052d43 0%,
-				#0b6170 55%,
-				#07968f 100%
-			);
-		place-items: center;
-	}
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: clamp(1rem, 1.5vw, 1.75rem);
+  background: #000;
+}
+
+.milestone-two-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 
 	.milestone-two-coming-soon {
 		display: flex;
