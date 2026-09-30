@@ -17,6 +17,11 @@ const fleet = [
   
 ];
 
+const driveThumbnail = (url: string) => {
+  const fileId = url.match(/\/d\/([^/]+)/)?.[1];
+  return fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w1200` : url;
+};
+
 ---
 
 <section class="platforms" id="platforms">
@@ -30,7 +35,7 @@ const fleet = [
         <article class="fleet-card">
           <div class="fleet-media">
             {item.embed ? (
-              <iframe src={item.embed} title={item.name} loading="lazy"></iframe>
+              <img src={driveThumbnail(item.embed)} alt={`${item.name} research platform`} width="1200" height="900" loading="lazy" />
             ) : item.image ? (
               <img src={item.image} alt={`${item.name} research vehicle`} width="1200" height="800" loading="lazy" />
             ) : (
