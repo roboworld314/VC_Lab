@@ -155,9 +155,9 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
     flex-direction: column;
     overflow: hidden;
     border: 1px solid var(--line);
-    border-radius: 24px;
+    border-radius: var(--radius);
     background: var(--white);
-    box-shadow: 0 18px 50px rgba(17, 40, 58, 0.06);
+    box-shadow: none;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
 
@@ -243,7 +243,7 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
     color: white;
     background: rgba(8, 29, 41, 0.72);
     border-radius: 4px;
-    font-size: 0.64rem;
+    font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -308,9 +308,9 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
   h3 {
     max-width: 570px;
     margin: 26px 0 0;
+    color: var(--wm-green-dark);
     font-size: clamp(1.75rem, 2.8vw, 2.65rem);
-    line-height: 1.05;
-    letter-spacing: -0.045em;
+    line-height: 1.08;
   }
 
   .experiment-details > p {
@@ -375,7 +375,7 @@ tags: ["Lane Detection", "Route Planning", "Autonomous Driving"],
   @media (max-width: 600px) {
     .experiment-showcase {
       min-height: 0;
-      border-radius: 18px;
+      border-radius: var(--radius);
     }
 
     .experiment-media {

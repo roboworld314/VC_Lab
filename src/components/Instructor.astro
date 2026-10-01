@@ -127,16 +127,16 @@ const guestSpeaker = {
     align-items: center;
     overflow: hidden;
     padding: clamp(18px, 2.5vw, 32px);
-    border-radius: 28px;
+    border-radius: var(--radius);
     color: white;
     background:
-      radial-gradient(circle at 12% 20%, rgba(197, 240, 77, 0.15), transparent 30%),
-      linear-gradient(135deg, #0c2534 0%, #11283a 56%, #0c4749 100%);
-    box-shadow: 0 28px 70px rgba(17, 40, 58, 0.16);
+      linear-gradient(90deg, #00221a 0%, #004a36 100%);
+    box-shadow: none;
   }
 
   .instructor-card::after {
-    content: "VC";
+    content: none;
+    display: none;
     position: absolute;
     right: -20px;
     bottom: -70px;
@@ -186,7 +186,7 @@ const guestSpeaker = {
     align-items: center;
     gap: 9px;
     color: #dbe7ea;
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -197,7 +197,7 @@ const guestSpeaker = {
     height: 8px;
     border-radius: 50%;
     background: var(--lime);
-    box-shadow: 0 0 0 5px rgba(197, 240, 77, 0.12);
+    box-shadow: none;
   }
 
   .role {
@@ -211,11 +211,8 @@ const guestSpeaker = {
 
   .instructor-copy h3 {
     margin: 8px 0 0;
-    font-family: inherit;
     font-size: clamp(2.6rem, 4vw, 4rem);
-    font-weight: 650;
-    line-height: 0.95;
-    letter-spacing: -0.055em;
+    line-height: 1;
   }
 
   .pronunciation {
@@ -244,9 +241,9 @@ const guestSpeaker = {
   .research-tags span {
     padding: 8px 11px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 999px;
+    border-radius: 4px;
     color: #dbe5e8;
-    font-size: 0.66rem;
+    font-size: 0.72rem;
     font-weight: 700;
   }
 
@@ -263,7 +260,7 @@ const guestSpeaker = {
   .instructor-details dt,
   .guest-event dt {
     color: #849ca6;
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -288,15 +285,15 @@ const guestSpeaker = {
     align-items: center;
     justify-content: center;
     gap: 18px;
-    border-radius: 999px;
-    color: var(--ink);
-    background: var(--lime);
-    font-size: 0.76rem;
-    font-weight: 800;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 4px;
+    color: var(--wm-green-dark);
+    background: var(--wm-gold);
+    font-size: 0.86rem;
+    font-weight: 700;
+    transition: background-color 0.2s ease;
   }
 
-  .profile-button:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(197, 240, 77, 0.18); }
+  .profile-button:hover { background: #cbad75; }
   .profile-button svg { width: 1rem; fill: none; stroke: currentColor; stroke-width: 1.7; }
 
   .university-link,
@@ -319,11 +316,11 @@ const guestSpeaker = {
     gap: clamp(24px, 3vw, 42px);
     align-items: center;
     padding: clamp(24px, 3vw, 38px);
-    border: 1px solid rgba(13, 124, 124, 0.28);
-    border-radius: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
     color: var(--ink);
-    background: rgba(255, 255, 255, 0.82);
-    box-shadow: 0 18px 48px rgba(6, 43, 69, 0.1);
+    background: var(--white);
+    box-shadow: none;
   }
 
   .guest-portrait {
@@ -343,12 +340,12 @@ const guestSpeaker = {
     bottom: -8px;
     transform: translateX(-50%);
     padding: 8px 16px;
-    border-radius: 999px;
-    color: var(--ink);
-    background: var(--lime);
-    box-shadow: 0 8px 18px rgba(6, 43, 69, 0.12);
-    font-size: 0.64rem;
-    font-weight: 900;
+    border-radius: 4px;
+    color: var(--wm-green-dark);
+    background: var(--wm-gold);
+    box-shadow: none;
+    font-size: 0.72rem;
+    font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     white-space: nowrap;
@@ -356,12 +353,12 @@ const guestSpeaker = {
 
   .guest-copy h3 {
     margin: 0;
+    color: var(--wm-green-dark);
     font-size: clamp(2rem, 3vw, 3rem);
-    line-height: 1;
-    letter-spacing: -0.045em;
+    line-height: 1.04;
   }
 
-  .guest-affiliation { margin: 10px 0 22px; color: #087675; font-size: 0.88rem; font-weight: 700; }
+  .guest-affiliation { margin: 10px 0 22px; color: var(--wm-green); font-size: 0.88rem; font-weight: 700; }
   .guest-copy h4 { margin: 0 0 10px; font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.3; }
   .guest-bio { max-width: 670px; margin: 0; color: #53666f; font-size: 0.9rem; line-height: 1.65; text-align: justify; }
 
@@ -406,7 +403,7 @@ const guestSpeaker = {
 
   @media (max-width: 650px) {
     .instructor { width: min(100% - 28px, 1320px); padding: 82px 0; }
-    .instructor-card { gap: 18px; padding: 18px 20px; border-radius: 20px; }
+    .instructor-card { gap: 18px; padding: 18px 20px; border-radius: var(--radius); }
     .instructor-details { grid-template-columns: 1fr; }
     .instructor-details div,
     .instructor-details div + div { padding: 11px 0; border-left: 0; }

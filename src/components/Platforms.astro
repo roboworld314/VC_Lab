@@ -47,10 +47,6 @@ const driveThumbnail = (url: string) => {
             <p>{item.type}</p>
             <h3>{item.name}</h3>
             <small>{item.type === "Simulator equipment" ? "Simulation and validation equipment for repeatable autonomy testing." : "Research vehicle supporting perception, planning, and control experiments."}</small>
-            <div class="fleet-resource-slot">
-              <span>PDF / PPT</span>
-              <small>Demo materials coming soon</small>
-            </div>
             {item.detailsUrl && (
               <a class="fleet-details-link" href={item.detailsUrl} target="_blank" rel="noopener noreferrer">
                 View platform details

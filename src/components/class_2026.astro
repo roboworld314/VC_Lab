@@ -37,7 +37,7 @@ const milestoneTwoPhotos = [
     caption: 'Preparing the vehicle for campus data collection',
   },
   {
-    src: driveImage('1ZEuUnyxAV_PNs14knJ--0H4itwJ8KeRg'),
+    src: `${import.meta.env.BASE_URL}/images/learning-build.jpg`,
     alt: 'Students collecting synchronized sensor data on campus',
     caption: 'Collecting synchronized camera and LiDAR data',
   },
@@ -50,6 +50,16 @@ const milestoneTwoPhotos = [
     src: driveImage('1_fcCpk4ny0Si-F1UZVe6emi7Y5EWe6sS'),
     alt: 'Robotic vehicle collecting outdoor campus data',
     caption: 'Observing the vehicle during data collection',
+  },
+  {
+    src: `${import.meta.env.BASE_URL}/images/campus-drive-5.jpg`,
+    alt: 'A student team with the robotic vehicle outside the Vehicle Computing Lab',
+    caption: 'Getting ready outside the Vehicle Computing Lab',
+  },
+  {
+    src: `${import.meta.env.BASE_URL}/images/campus-drive-6.jpg`,
+    alt: 'Students teleoperating the robotic vehicle on a campus walkway',
+    caption: 'Teleoperating the vehicle along the campus route',
   },
 ];
 ---
@@ -380,11 +390,9 @@ const milestoneTwoPhotos = [
   /* Intro heading and the Milestone 01 title swap styles */
   .milestones-intro h2 {
     margin: 0;
-    color: var(--ink);
-    font-size: clamp(2.3rem, 3.8vw, 3.8rem);
-    font-weight: 700;
-    line-height: 0.98;
-    letter-spacing: -0.06em;
+    color: var(--wm-green-dark);
+    font-size: clamp(2.3rem, 3.6vw, 3.6rem);
+    line-height: 1.04;
   }
 
   #milestone-1 .section-heading-row h2 + p {
@@ -426,11 +434,9 @@ const milestoneTwoPhotos = [
 
   #milestone-1 .section-heading-row h2,
   #milestone-2 .milestone-two-heading h2 {
-    color: #00241b;
-    font-size: clamp(1.7rem, 2.6vw, 2.25rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    color: var(--wm-green-dark);
+    font-size: clamp(1.85rem, 2.7vw, 2.5rem);
+    line-height: 1.08;
   }
 
   @media (max-width: 600px) {
@@ -542,8 +548,7 @@ const milestoneTwoPhotos = [
     max-width: none;
     margin: 0 0 1.25rem;
     font-size: clamp(2rem, 3.4vw, 4.25rem);
-    line-height: 0.98;
-    letter-spacing: -0.045em;
+    line-height: 1.04;
     white-space: nowrap;
   }
 
@@ -584,7 +589,7 @@ const milestoneTwoPhotos = [
     width: 100%;
     height: var(--milestone-media-height);
     overflow: hidden;
-    border-radius: clamp(1rem, 1.5vw, 1.75rem);
+    border-radius: var(--radius);
     background: #121212;
   }
 
