@@ -86,14 +86,15 @@ nav a::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 0;
 nav a:hover::after { width: 100%; }
 
 .hero { position: relative; width: min(1320px, calc(100% - 48px)); height: clamp(540px, 62vh, 640px); min-height: 0; margin: 0 auto; display: block; overflow: hidden; border-radius: 0; background: var(--wm-green-dark); color: white; }
-.hero-copy { position: relative; z-index: 4; container-type: inline-size; width: min(560px, 40%); height: 100%; min-height: 0; padding: 36px 40px 56px; display: flex; flex-direction: column; justify-content: flex-start; }
+.hero-copy { position: relative; z-index: 4; container-type: inline-size; width: min(528px, calc(40% - 32px)); height: 100%; min-height: 0; padding: 36px 8px 56px 40px; display: flex; flex-direction: column; justify-content: flex-start; }
 .eyebrow, .section-kicker { margin: 0 0 24px; text-transform: uppercase; font-size: .74rem; font-weight: 700; letter-spacing: .12em; }
 .eyebrow { margin-bottom: 20px; color: #d5e1e5; display: flex; align-items: center; gap: 10px; }
 .eyebrow span { width: 8px; height: 8px; background: var(--lime); border-radius: 50%; box-shadow: 0 0 0 5px rgba(197,240,77,.1); }
 h1 { margin: 0; max-width: 680px; font-size: clamp(2.8rem, 3.8vw, 4.6rem); font-weight: 600; line-height: 1; letter-spacing: -.015em; }
 h1 em { display: block; margin-top: 8px; color: var(--wm-gold); font-family: var(--font-serif); font-size: .9em; font-weight: 500; }
 .hero-copy h1 em { font-size: min(1em, 11cqi); font-weight: 600; letter-spacing: -.005em; }
-.hero-copy h1 em .nowrap { white-space: nowrap; }
+.hero-copy h1 .nowrap { white-space: nowrap; }
+.hero-copy h1 { font-size: min(clamp(2.8rem, 3.8vw, 4.6rem), 14cqi); }
 .hero-lede { margin: auto 0 0; max-width: 550px; color: #dbe6e0; font-size: clamp(.98rem, 1.15vw, 1.12rem); line-height: 1.55; text-wrap: pretty; }
 .hero-lede + .hero-lede { margin-top: 12px; }
 .hero-actions { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; }
@@ -117,8 +118,8 @@ h1 em { display: block; margin-top: 8px; color: var(--wm-gold); font-family: var
 .photo-chip { position: absolute; top: 12px; right: 12px; max-width: calc(100% - 24px); padding: 8px 13px; display: flex; gap: 8px; align-items: center; border-radius: 999px; color: white; background: rgba(10,29,38,.78); backdrop-filter: blur(10px); font-size: .82rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
 .photo-chip i { flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: var(--wm-gold); box-shadow: 0 0 0 4px rgba(185,151,91,.22); }
 
-.hero-visual { position: absolute; z-index: 1; inset: 0; isolation: isolate; min-height: 100%; overflow: hidden; background: linear-gradient(90deg, #00221a 0%, #004a36 40%) var(--wm-green-dark); }
-.hero-visual img { position: absolute; z-index: 1; inset: 0 0 0 auto; width: 60%; height: 100%; object-fit: cover; object-position: center 58%; }
+.hero-visual { position: absolute; z-index: 1; inset: 0; isolation: isolate; min-height: 100%; overflow: hidden; background: linear-gradient(90deg, #00221a 0%, #004a36 calc(40% - 32px)) var(--wm-green-dark); }
+.hero-visual img { position: absolute; z-index: 1; inset: 0 0 0 auto; width: calc(60% + 32px); height: 100%; object-fit: cover; object-position: center 58%; }
 .hero-copy .eyebrow, .hero-copy h1, .hero-copy .hero-lede { text-shadow: 0 1px 2px rgba(0,20,14,.35); }
 .hero-copy h1 { margin-bottom: 22px; }
 .visual-grid { display: none; position: absolute; z-index: 0; inset: 0; opacity: .3; background-image: linear-gradient(rgba(15,113,107,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(15,113,107,.18) 1px, transparent 1px); background-size: 42px 42px; }
@@ -262,7 +263,7 @@ footer { padding: 90px max(24px, calc((100vw - 1160px)/2)); color: white; backgr
 @media (max-width: 900px) {
   nav { display: none; }
   .hero { height: 600px; min-height: 0; }
-  .hero-copy { width: 70%; height: 100%; min-height: 0; padding-left: 6vw; }
+  .hero-copy { width: 70%; height: 100%; min-height: 0; padding-left: 6vw; padding-right: 40px; }
   .hero-visual img { inset: 0; width: 100%; }
   .hero-visual::after { background: rgba(6,48,38,.78); }
   .mission { grid-template-columns: 1fr; gap: 10px; }
