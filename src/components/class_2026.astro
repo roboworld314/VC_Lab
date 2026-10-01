@@ -3,32 +3,6 @@ const driveImage = (fileId) =>
   `https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
 
 const milestonePhotos = [
-  {
-    src: driveImage('1XobH8Q7LefrfgHxW-igjYKP2WaK3ukI2'),
-    alt: 'Robot vehicle prepared for a research milestone',
-    caption: 'Hands-On Activity',
-  },
-  {
-    src: driveImage('1aZjZ6v6d9qgoUPZ3ycc9GtXedkB0Q1A9'),
-    alt: 'Autonomous research vehicle',
-    caption: 'Communication',
-  },
-  {
-    src: driveImage('1EHWVp1Gw4hgz_1KlttS5hcrD_GBMH1eR'),
-    alt: 'Outdoor vehicle computing testbed',
-    caption: 'Class Activity',
-  },
-  {
-    src: driveImage('1QdpBESh0Zv9mHZU3M9lM5bVYtPiyYpk-'),
-    alt: 'Instructor working with the vehicle computing system',
-    caption: 'Team Work',
-  },
-  {
-    src: driveImage('1NnTtxZKhHsW22nRzfdCf_FfMHay_1aZU'),
-    alt: 'Vehicle computing lab research activity',
-    caption: 'Leadership',
-  },
-
     {
     src: driveImage('1n2xz9FJ154pdeU-Lt7iw3xk5UujvN8P7'),
     alt: 'Robot vehicle prepared for a research milestone',
@@ -81,7 +55,7 @@ const milestoneTwoPhotos = [
 ---
 
 <div class="milestones-intro section-shell">
-  <h2>Five Course Milestones and Expected Outcomes</h2>
+  <h2>Five Course Milestones</h2>
 </div>
 
 <section class="milestone section-shell" id="milestone-1">
@@ -102,12 +76,6 @@ const milestoneTwoPhotos = [
         challenging situations such as congestion, blocked routes,
         near-conflicts, or simulated collisions to observe
         autonomous-vehicle responses.
-      </p>
-
-      <p class="milestone-outcome">
-        <strong>Expected outcome:</strong> Each team presents its customized
-        smart-city simulation, showing the scenario, vehicle behavior,
-        initial prediction, and observed results.
       </p>
     </div>
   </div>
@@ -136,6 +104,12 @@ const milestoneTwoPhotos = [
       ))
     }
   </div>
+
+  <p class="milestone-outcome">
+    <strong>Expected outcome:</strong> Each team presents its customized
+    smart-city simulation, showing the scenario, vehicle behavior,
+    initial prediction, and observed results.
+  </p>
 </section>
 
 <section
@@ -152,10 +126,14 @@ const milestoneTwoPhotos = [
 
     <h2>Turn a Campus Drive into Digital Data</h2>
 
-    <p>
-      Students collect synchronized camera and LiDAR data during a campus
-      drive and transform real-world observations into structured digital
-      data for perception, analysis, and autonomous-vehicle research.
+    <p class="milestone-two-text">
+      Students take turns teleoperating a large robotic vehicle along a
+      designated campus route. The vehicle collects camera and LiDAR data as
+      it moves through the physical environment. Students learn how data are
+      transferred from the robot, organized, and viewed. They examine
+      two-dimensional camera images, view three-dimensional LiDAR
+      visualizations, and observe pretrained AI models applied to the
+      collected data, such as object detection.
     </p>
   </div>
 
@@ -421,7 +399,7 @@ const milestoneTwoPhotos = [
 
   #milestone-1 .milestone-outcome {
     max-width: 52rem;
-    margin: 1.6em 0 0;
+    margin: 22px 0 0;
     line-height: 1.6;
   }
 
@@ -429,11 +407,25 @@ const milestoneTwoPhotos = [
     color: #00241b;
   }
 
-  #milestone-1 .section-kicker {
+  #milestone-1 .section-kicker,
+  #milestone-2 .section-kicker {
     font-size: clamp(0.9rem, 1.1vw, 1.05rem);
   }
 
-  #milestone-1 .section-heading-row h2 {
+  #milestone-2 .milestone-timeline-marker {
+    top: calc(clamp(0.5rem, 1vw, 1rem) + 0.7rem);
+  }
+
+  #milestone-2 .milestone-two-heading .section-kicker {
+    margin-bottom: 14px;
+  }
+
+  #milestone-2 .milestone-two-heading h2 {
+    margin-bottom: 14px;
+  }
+
+  #milestone-1 .section-heading-row h2,
+  #milestone-2 .milestone-two-heading h2 {
     color: #00241b;
     font-size: clamp(1.7rem, 2.6vw, 2.25rem);
     font-weight: 800;
@@ -487,7 +479,7 @@ const milestoneTwoPhotos = [
   #milestone-1 {
     margin-bottom: 0 !important;
     padding-top: clamp(2.5rem, 4vw, 3.5rem) !important;
-    padding-bottom: clamp(0.5rem, 1vw, 1rem) !important;
+    padding-bottom: clamp(2.25rem, 3.5vw, 3rem) !important;
   }
 
   #milestone-1 .milestone-timeline-marker {
@@ -555,11 +547,15 @@ const milestoneTwoPhotos = [
     white-space: nowrap;
   }
 
-  .milestone-two-heading > p:last-child {
+  .milestone-two-heading > .milestone-two-text {
     max-width: none;
     margin: 0;
     font-size: clamp(1rem, 1.15vw, 1.25rem);
     line-height: 1.7;
+  }
+
+  .milestone-two-heading > .milestone-two-text + .milestone-two-text {
+    margin-top: 0.9em;
   }
 
   /* Shared image and video dimensions */
@@ -798,16 +794,12 @@ const milestoneTwoPhotos = [
     }
 
     #milestone-1 {
-      padding-bottom: 0.5rem !important;
+      padding-bottom: 2rem !important;
     }
 
     #milestone-2 {
       padding-top: 0.5rem !important;
       padding-bottom: 3.5rem;
-    }
-
-    .milestone-two-heading h2 {
-      font-size: clamp(2rem, 11vw, 3.25rem);
     }
 
     .milestone-two-arrow {
