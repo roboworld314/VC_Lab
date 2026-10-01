@@ -80,6 +80,10 @@ const milestoneTwoPhotos = [
 ];
 ---
 
+<div class="milestones-intro section-shell">
+  <h2>Five Course Milestones and Expected Outcomes</h2>
+</div>
+
 <section class="milestone section-shell" id="milestone-1">
   <div class="milestone-timeline-marker" aria-hidden="true">
     <span>Milestone 01</span>
@@ -89,14 +93,21 @@ const milestoneTwoPhotos = [
     <div>
       <p class="section-kicker">Milestone 01</p>
 
-      <h2>
-        Hands-On Urban Autonomy: Designing and Testing Challenging
-        CARLA Scenarios
-      </h2>
+      <h2>Design of a Smart City Scenario in CARLA Simulator</h2>
 
       <p>
-        Students strengthen their hands-on simulation, teamwork,
-        observation, leadership, and communication skills.
+        Students use a preconfigured CARLA simulator to create or modify a
+        city scenario by setting routes, traffic, vehicles, pedestrians,
+        obstacles, roadside conditions, and weather. Teams may introduce
+        challenging situations such as congestion, blocked routes,
+        near-conflicts, or simulated collisions to observe
+        autonomous-vehicle responses.
+      </p>
+
+      <p class="milestone-outcome">
+        <strong>Expected outcome:</strong> Each team presents its customized
+        smart-city simulation, showing the scenario, vehicle behavior,
+        initial prediction, and observed results.
       </p>
     </div>
   </div>
@@ -381,6 +392,62 @@ const milestoneTwoPhotos = [
 </script>
 
 <style>
+  /* Milestones intro heading */
+
+  .milestones-intro {
+    border-left: 3px solid #d4d4d4;
+    padding: clamp(4rem, 6vw, 5.5rem) 0 0 clamp(3.5rem, 6vw, 7rem);
+  }
+
+  /* Intro heading and the Milestone 01 title swap styles */
+  .milestones-intro h2 {
+    margin: 0;
+    color: var(--ink);
+    font-size: clamp(2.3rem, 3.8vw, 3.8rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+  }
+
+  #milestone-1 .section-heading-row h2 + p {
+    max-width: 52rem;
+    margin: 14px 0 0;
+    line-height: 1.6;
+  }
+
+  #milestone-1 .section-heading-row {
+    margin-bottom: 20px;
+  }
+
+  #milestone-1 .milestone-outcome {
+    max-width: 52rem;
+    margin: 1.6em 0 0;
+    line-height: 1.6;
+  }
+
+  #milestone-1 .milestone-outcome strong {
+    color: #00241b;
+  }
+
+  #milestone-1 .section-kicker {
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  }
+
+  #milestone-1 .section-heading-row h2 {
+    color: #00241b;
+    font-size: clamp(1.7rem, 2.6vw, 2.25rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  @media (max-width: 600px) {
+    .milestones-intro h2 {
+      font-size: clamp(2rem, 9vw, 3rem);
+      line-height: 1.02;
+    }
+  }
+
   /* Shared timeline */
 
   .milestone,
@@ -419,7 +486,12 @@ const milestoneTwoPhotos = [
 
   #milestone-1 {
     margin-bottom: 0 !important;
+    padding-top: clamp(2.5rem, 4vw, 3.5rem) !important;
     padding-bottom: clamp(0.5rem, 1vw, 1rem) !important;
+  }
+
+  #milestone-1 .milestone-timeline-marker {
+    top: calc(clamp(2.5rem, 4vw, 3.5rem) + 0.45rem);
   }
 
   #milestone-2 {
