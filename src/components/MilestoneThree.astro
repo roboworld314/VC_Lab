@@ -1,0 +1,337 @@
+---
+import PhotoCarousel from './PhotoCarousel.astro';
+import { handsOnWindows, presentationWindows } from '../data/milestoneThreeGallery';
+
+const photoGroups = [
+  { kind: 'hands-on', label: 'Hands-on activities in the lab', windows: handsOnWindows },
+  { kind: 'presentations', label: 'Student presentations', windows: presentationWindows },
+];
+---
+
+<section class="milestone-three section-shell" id="milestone-3" aria-labelledby="milestone-three-title">
+  <div class="milestone-three-marker" aria-hidden="true">
+    <span>Milestone 03</span>
+  </div>
+
+  <header class="milestone-three-heading">
+    <p class="section-kicker">Milestone 03</p>
+    <h2 id="milestone-three-title">Object Detection and Safety-Aware Response</h2>
+  </header>
+
+  <div class="milestone-three-description">
+    <p>
+      What happens when a robot sees a green traffic light, but a person is standing
+      directly in its path? In this highly interactive milestone,
+      <strong>each student works with a dedicated small robotic vehicle</strong> in
+      the Vehicle Computing Lab to explore how intelligent robots recognize objects
+      and make decisions about their surroundings. Using YOLO object detection,
+      students discover how robots identify everyday objects, how confident they
+      are in their predictions, and why they sometimes make mistakes.
+    </p>
+    <p>
+      Through hands-on challenges, students test how changing an object's position,
+      distance, or detection confidence threshold affects the robot's responses.
+      They investigate how robots distinguish obstacles in their path from objects
+      safely outside it, recognize traffic signals, and respond when different
+      visual cues conflict. With instructor-provided code and tutorials, students
+      also make small programming changes and observe how the system's decisions
+      change.
+    </p>
+  </div>
+
+  <div class="milestone-three-photos">
+    {photoGroups.map((group) => (
+      <div class:list={['photo-group', `photo-group-${group.kind}`]} role="group" aria-label={group.label}>
+        {group.kind === 'presentations' && (
+          <div class="presentations-intro">
+            <div class="presentations-heading">
+              <h3>Student presentations</h3>
+              <p>Demonstrate, compare, reflect.</p>
+            </div>
+            <p class="milestone-three-outcome">
+              <strong>Outcome:</strong> Working with their individual robotic vehicles
+              and collaborating in small teams, students present live demonstrations, compare
+              expected and observed results, and explain what worked, what was unexpected,
+              and what could be improved.
+            </p>
+          </div>
+        )}
+        {group.windows.map((window, index) => (
+          <figure id={window.id} class:list={['activity-photo', { 'activity-photo-lead': group.kind === 'hands-on' && index === 0 }]}>
+            <div class="activity-photo-media">
+              <PhotoCarousel id={window.id} label={window.caption} photos={window.photos} counterId={`${window.id}-counter`} />
+            </div>
+            <figcaption>
+              <span>{window.caption}</span>
+              {window.photos.length > 1 && (
+                <span class="activity-photo-counter" id={`${window.id}-counter`} data-photo-counter aria-hidden="true">1 / {window.photos.length}</span>
+              )}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    ))}
+  </div>
+
+</section>
+
+<style>
+  .milestone-three {
+    position: relative;
+    border-left: 3px solid #d4d4d4;
+    padding: clamp(0.5rem, 1vw, 1rem) 0 clamp(2.5rem, 4vw, 3.5rem) clamp(3.5rem, 6vw, 7rem);
+    scroll-margin-top: 2rem;
+  }
+
+  .milestone-three-marker {
+    position: absolute;
+    top: calc(clamp(0.5rem, 1vw, 1rem) + 0.7rem);
+    left: -1.5px;
+    width: clamp(0.9rem, 1.2vw, 1.15rem);
+    aspect-ratio: 1;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: #bfc2c5;
+    box-shadow: 0 0 0 1px #d4d4d4;
+    transform: translate(-50%, -50%);
+  }
+
+  .milestone-three-marker span {
+    position: absolute;
+    top: 50%;
+    right: clamp(1.25rem, 2vw, 2rem);
+    color: var(--muted);
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    transform: translateY(-50%);
+  }
+
+  .milestone-three-heading .section-kicker {
+    margin: 0 0 14px;
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  }
+
+  .milestone-three-heading h2 {
+    margin: 0 0 18px;
+    color: var(--wm-green-dark);
+    font-size: clamp(1.85rem, 2.7vw, 2.5rem);
+    line-height: 1.08;
+  }
+
+  .milestone-three-description {
+    font-size: clamp(1rem, 1.15vw, 1.25rem);
+    line-height: 1.7;
+  }
+
+  .milestone-three-description p {
+    margin: 0;
+  }
+
+  .milestone-three-description p + p {
+    margin-top: 0.9em;
+  }
+
+  .milestone-three-description strong {
+    color: var(--wm-green-dark);
+  }
+
+  .milestone-three-photos {
+    margin-top: 28px;
+  }
+
+  .photo-group {
+    --gallery-column-gap: 20px;
+    --gallery-row-gap: 24px;
+    --gallery-caption-size: 0.875rem;
+    --gallery-caption-height: calc(var(--gallery-caption-size) * 1.4 + 8px);
+
+    display: grid;
+    /* Balance a 13:10 lead against two 4:3 rows, including captions and spacing. */
+    grid-template-columns:
+      calc((100% - 2 * var(--gallery-column-gap)) * 39 / 79 + (var(--gallery-caption-height) + var(--gallery-row-gap)) * 52 / 79)
+      repeat(2, minmax(0, 1fr));
+    gap: var(--gallery-row-gap) var(--gallery-column-gap);
+  }
+
+  .activity-photo {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .activity-photo-lead {
+    grid-row: span 2;
+    align-self: start;
+  }
+
+  .activity-photo-media {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: #e2e7de;
+    border-radius: 4px;
+  }
+
+  .activity-photo-lead .activity-photo-media {
+    flex: none;
+    aspect-ratio: 13 / 10;
+    background: transparent;
+  }
+
+  .activity-photo:nth-child(3) .activity-photo-media,
+  .activity-photo:nth-child(4) .activity-photo-media {
+    background: #e8e5d9;
+  }
+
+  .activity-photo figcaption {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: baseline;
+    padding-top: 8px;
+    color: var(--muted);
+    font-size: var(--gallery-caption-size);
+    line-height: 1.4;
+  }
+
+  .activity-photo-counter {
+    color: #666861;
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .activity-photo-lead figcaption {
+    color: var(--wm-green-dark);
+    font-weight: 600;
+  }
+
+  .photo-group-presentations {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    align-items: stretch;
+  }
+
+  .presentations-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .presentations-heading {
+    display: grid;
+    gap: 4px;
+  }
+
+  .presentations-intro h3 {
+    margin: 0;
+    color: var(--wm-green-dark);
+    font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+    line-height: 1.2;
+  }
+
+  .presentations-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  .photo-group-presentations .activity-photo-media {
+    background: #e7e6df;
+  }
+
+  .presentations-intro .milestone-three-outcome {
+    margin: 0;
+    padding-left: 14px;
+    border-left: 3px solid var(--wm-gold);
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .milestone-three-outcome strong {
+    color: var(--wm-green-dark);
+  }
+
+  @media (min-width: 901px) and (max-width: 1000px) {
+    .photo-group {
+      --gallery-caption-size: 0.75rem;
+    }
+
+    .activity-photo figcaption {
+      column-gap: 4px;
+    }
+  }
+
+  @media (min-width: 1001px) and (max-width: 1100px) {
+    .photo-group {
+      --gallery-caption-size: 0.8125rem;
+    }
+
+    .activity-photo figcaption {
+      column-gap: 6px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .photo-group {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 16px;
+    }
+
+    .activity-photo-lead {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+
+    .activity-photo-lead .activity-photo-media {
+      flex: none;
+      aspect-ratio: 13 / 10;
+    }
+
+    .presentations-intro {
+      grid-column: 1 / -1;
+      gap: 12px;
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .milestone-three {
+      padding-left: 2.25rem;
+      padding-bottom: 2rem;
+    }
+
+    .milestone-three-marker span {
+      display: none;
+    }
+
+    .milestone-three-photos {
+      margin-top: 24px;
+    }
+
+    .photo-group-hands-on {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .activity-photo-lead {
+      grid-column: auto;
+    }
+
+    .photo-group-presentations {
+      gap: 16px 12px;
+    }
+
+    .presentations-intro .milestone-three-outcome {
+      padding-left: 14px;
+    }
+  }
+</style>
