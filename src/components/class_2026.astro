@@ -608,8 +608,6 @@ const milestoneTwoPhotos = [
   /* Shared image and video dimensions */
 
   .milestone-two-content {
-    --milestone-media-height: clamp(18rem, 27vw, 30rem);
-
     position: relative;
     display: grid;
     overflow: visible;
@@ -629,7 +627,9 @@ const milestoneTwoPhotos = [
   .milestone-two-video-frame {
     position: relative;
     width: 100%;
-    height: var(--milestone-media-height);
+    height: auto;
+    aspect-ratio: 8 / 5;
+    max-height: 18rem;
     overflow: hidden;
     border-radius: var(--radius);
     background: #121212;
@@ -845,8 +845,8 @@ const milestoneTwoPhotos = [
 
     .milestone-two-slides,
     .milestone-two-video-frame {
-      height: auto;
       aspect-ratio: 16 / 9;
+      max-height: none;
     }
   }
 
