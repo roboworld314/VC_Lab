@@ -136,16 +136,18 @@ const milestoneTwoPhotos = [
   <div class="milestone-two-heading">
     <p class="section-kicker">Milestone 02</p>
 
-    <h2>Turn a Campus Drive into Digital Data</h2>
+    <h2>From a Campus Drive to Robot Vision</h2>
 
     <p class="milestone-two-text">
-      Students take turns teleoperating a large robotic vehicle along a
-      designated campus route. The vehicle collects camera and LiDAR data as
-      it moves through the physical environment. Students learn how data are
-      transferred from the robot, organized, and viewed. They examine
-      two-dimensional camera images, view three-dimensional LiDAR
-      visualizations, and observe pretrained AI models applied to the
-      collected data, such as object detection.
+      What does the world look like through a robot's cameras and 3D LiDAR sensors?
+      Students take turns teleoperating a large robotic vehicle across campus,
+      exploring how its sensors capture the surrounding environment through 2D
+      camera images and 3D LiDAR point clouds. Back in the lab, students examine
+      what robot sensor data looks like and use real-world driving images from
+      the KITTI dataset to experiment with YOLO object detection. They investigate
+      how AI identifies vehicles and pedestrians, how different training choices
+      affect detection results, and why objects are sometimes missed or
+      incorrectly recognized.
     </p>
   </div>
 
@@ -241,6 +243,13 @@ const milestoneTwoPhotos = [
       </figcaption>
     </figure>
   </div>
+
+  <p class="milestone-two-outcome">
+    <strong>Outcome:</strong> Each team presents an object-detection demonstration
+    using KITTI images, compares results under different model settings, and
+    explains what the detector identified correctly, what it missed, and what
+    could be improved.
+  </p>
 </section>
 
 <MilestoneThree />
@@ -603,6 +612,19 @@ const milestoneTwoPhotos = [
 
   .milestone-two-heading > .milestone-two-text + .milestone-two-text {
     margin-top: 0.9em;
+  }
+
+  .milestone-two-outcome {
+    margin: 22px 0 0;
+    padding-left: 14px;
+    border-left: 3px solid var(--wm-gold);
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .milestone-two-outcome strong {
+    color: var(--wm-green-dark);
   }
 
   /* Shared image and video dimensions */
