@@ -1,0 +1,230 @@
+---
+import { labPhotos, labDemos } from '../data/milestoneFourMedia';
+---
+
+<section class="milestone-four section-shell" id="milestone-4" aria-labelledby="milestone-four-title">
+  <div class="milestone-four-marker" aria-hidden="true"><span>Milestone 04</span></div>
+
+  <header class="milestone-four-heading">
+    <p class="section-kicker">Milestone 04</p>
+    <h2 id="milestone-four-title">Building a Digital Lab That Mirrors the Real World</h2>
+  </header>
+
+  <div class="milestone-four-description">
+    <p>
+      In our Vehicle Computing Lab, students drive real robots through an indoor
+      road network while watching their movements unfold on a matching digital
+      map. As a robot moves through the real lab, its digital counterpart follows
+      the corresponding route, revealing its estimated location, driving path,
+      and surrounding road layout from a bird's-eye view.
+    </p>
+    <p>
+      To bring these two worlds together, students capture camera data from their
+      own robots and use it to help create a scale-matched Digital Lab. They
+      explore how the robot's ground-level camera view can be connected to a
+      detailed digital map showing lane markings, road boundaries, and pedestrian
+      crossings, including features beyond the camera's immediate view. By
+      combining these perspectives, students discover how digital maps can help
+      robots better understand where they are and navigate the physical world
+      more reliably.
+    </p>
+  </div>
+
+  <div class="lab-photos" role="group" aria-label="Students controlling robots and collecting data">
+    {labPhotos.map((photo) => (
+      <figure class="lab-photo" id={photo.id}>
+        {photo.src ? (
+          <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+        ) : (
+          <div class="media-placeholder photo-placeholder">
+            <svg viewBox="0 0 40 40" aria-hidden="true">
+              <rect x="5" y="10" width="30" height="24" rx="3" />
+              <path d="m13 10 3-4h8l3 4" />
+              <circle cx="20" cy="22" r="7" />
+            </svg>
+            <span class="placeholder-title">{photo.label}</span>
+            <span>Lab activity photo coming soon</span>
+          </div>
+        )}
+      </figure>
+    ))}
+  </div>
+
+  <div class="lab-demos">
+    {labDemos.map((demo, index) => (
+      <section class="lab-demo" id={demo.id} aria-labelledby={`${demo.id}-title`}>
+        <header class="demo-heading">
+          <span class="demo-number">Demo {index + 1}</span>
+          <h3 id={`${demo.id}-title`}>{demo.title}</h3>
+        </header>
+        <div class="demo-media">
+          {demo.media ? (
+            demo.media.kind === 'video' ? (
+              <video src={demo.media.src} poster={demo.media.poster} controls playsinline preload="metadata" aria-label={demo.title}>
+                Your browser does not support embedded video. <a href={demo.media.src}>Open the video</a>.
+              </video>
+            ) : (
+              <iframe src={demo.media.src} title={demo.title} loading="lazy" allow="fullscreen" allowfullscreen />
+            )
+          ) : (
+            <div class="media-placeholder video-placeholder">
+              <svg viewBox="0 0 40 40" aria-hidden="true">
+                <rect x="5" y="9" width="30" height="22" rx="2" />
+                <path d="M12 9v22M28 9v22M5 16h7M5 24h7M28 16h7M28 24h7" />
+              </svg>
+              <span class="placeholder-title">Student video demonstration</span>
+              <span>Video coming soon</span>
+            </div>
+          )}
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <p class="milestone-four-outcome">
+    <strong>Outcome:</strong> Each team demonstrates the connection between a real
+    robot and its digital counterpart, showing how its movements can be tracked
+    on a digital map. Students explain how the additional spatial information
+    can support more accurate localization and better-informed navigation.
+  </p>
+</section>
+
+<style>
+  .milestone-four {
+    position: relative;
+    border-left: 3px solid #d4d4d4;
+    padding: clamp(0.5rem, 1vw, 1rem) 0 clamp(2.5rem, 4vw, 3.5rem) clamp(3.5rem, 6vw, 7rem);
+    scroll-margin-top: 2rem;
+  }
+
+  .milestone-four-marker {
+    position: absolute;
+    top: calc(clamp(0.5rem, 1vw, 1rem) + 0.7rem);
+    left: -1.5px;
+    width: clamp(0.9rem, 1.2vw, 1.15rem);
+    aspect-ratio: 1;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: #bfc2c5;
+    box-shadow: 0 0 0 1px #d4d4d4;
+    transform: translate(-50%, -50%);
+  }
+
+  .milestone-four-marker span {
+    position: absolute;
+    top: 50%;
+    right: clamp(1.25rem, 2vw, 2rem);
+    color: var(--muted);
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    white-space: nowrap;
+    transform: translateY(-50%);
+  }
+
+  .milestone-four-heading .section-kicker {
+    margin: 0 0 14px;
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  }
+
+  .milestone-four-heading h2 {
+    margin: 0 0 18px;
+    color: var(--wm-green-dark);
+    font-size: clamp(1.85rem, 2.7vw, 2.5rem);
+    line-height: 1.08;
+  }
+
+  .milestone-four-description {
+    font-size: clamp(1rem, 1.15vw, 1.25rem);
+    line-height: 1.7;
+  }
+
+  .milestone-four-description p { margin: 0; }
+  .milestone-four-description p + p { margin-top: 0.9em; }
+
+  .lab-photos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+  }
+
+  .lab-photo, .demo-media {
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .lab-photo { aspect-ratio: 4 / 3; }
+  .demo-media { aspect-ratio: 16 / 9; }
+
+  .lab-photo img, .demo-media video, .demo-media iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .lab-photo img { object-fit: cover; }
+  .demo-media video { object-fit: contain; background: #121212; }
+
+  .media-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: inherit;
+    background: #ecebe4;
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  .media-placeholder svg {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 8px;
+    flex: none;
+    stroke-width: 1.25;
+  }
+
+  .placeholder-title { color: var(--ink); font-weight: 600; }
+
+  .video-placeholder {
+    background-color: #eeeee7;
+    background-image: linear-gradient(#56655e08 1px, transparent 1px), linear-gradient(90deg, #56655e08 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .lab-demos { display: grid; gap: 24px; margin-top: 24px; }
+  .lab-demo { min-width: 0; }
+  .demo-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; margin-bottom: 10px; }
+  .demo-number { color: var(--muted); font-size: 0.8125rem; white-space: nowrap; }
+  .demo-heading h3 { margin: 0; color: var(--wm-green-dark); font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.2; }
+
+  .milestone-four-outcome {
+    margin: 16px 0 0;
+    padding-left: 14px;
+    border-left: 3px solid var(--wm-gold);
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .milestone-four-outcome strong { color: var(--wm-green-dark); }
+
+  @media (max-width: 700px) {
+    .lab-photos { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  }
+
+  @media (max-width: 540px) {
+    .milestone-four { padding-left: 2.25rem; padding-bottom: 2rem; }
+    .milestone-four-marker span { display: none; }
+    .demo-heading { display: grid; gap: 4px; }
+  }
+</style>
