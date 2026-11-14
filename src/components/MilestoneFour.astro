@@ -60,7 +60,7 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
         <div class="demo-media">
           {demo.media ? (
             demo.media.kind === 'video' ? (
-              <video src={demo.media.src} poster={demo.media.poster} controls playsinline preload="metadata" aria-label={demo.title}>
+              <video src={demo.media.src} poster={demo.media.poster} controls autoplay muted playsinline preload="auto" data-autoplay-demo aria-label={demo.title}>
                 Your browser does not support embedded video. <a href={demo.media.src}>Open the video</a>.
               </video>
             ) : (
@@ -88,6 +88,36 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
     can support more accurate localization and better-informed navigation.
   </p>
 </section>
+
+<script>
+  function initializeLabDemos() {
+    const videos = document.querySelectorAll<HTMLVideoElement>(
+      '#milestone-4 video[data-autoplay-demo]:not([data-demo-ready])'
+    );
+
+    videos.forEach((video) => {
+      video.dataset.demoReady = 'true';
+      video.muted = true;
+
+      const setInitialSpeed = () => {
+        video.defaultPlaybackRate = 3;
+        video.playbackRate = 3;
+      };
+
+      setInitialSpeed();
+      if (video.readyState === HTMLMediaElement.HAVE_NOTHING) {
+        video.addEventListener('loadedmetadata', setInitialSpeed, { once: true });
+      }
+
+      // Try once on page load; native controls remain available if autoplay is blocked.
+      // Do not restart playback when the viewer pauses or seeks.
+      void video.play().catch(() => {});
+    });
+  }
+
+  initializeLabDemos();
+  document.addEventListener('astro:page-load', initializeLabDemos);
+</script>
 
 <style>
   .milestone-four {
