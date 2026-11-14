@@ -28,7 +28,10 @@ export const labPhotos: LabPhoto[] = [
         src: labMedia('Image_20261113174628_125_41.jpg'),
         alt: 'A student using a handheld controller to drive robots on the lab road map',
       },
-      { src: '', alt: 'Second photograph for M4-01, coming soon' },
+      {
+        src: labMedia('Image_20261113174216_104_41.jpg'),
+        alt: 'Students using handheld controllers to drive small robotic vehicles around the lab road network',
+      },
     ],
   },
   {
@@ -39,7 +42,10 @@ export const labPhotos: LabPhoto[] = [
         src: labMedia('Image_20261113174754_138_41.jpg'),
         alt: 'Students coordinating robotic vehicles on the indoor road network',
       },
-      { src: '', alt: 'Second photograph for M4-02, coming soon' },
+      {
+        src: labMedia('Image_20261113173824_95_41.jpg'),
+        alt: 'Two students beside robotic vehicles, with a laptop and printed map in the Vehicle Computing Lab',
+      },
     ],
   },
   {
@@ -50,7 +56,10 @@ export const labPhotos: LabPhoto[] = [
         src: labMedia('Image_20261113174254_107_41.jpg'),
         alt: 'Students controlling robotic vehicles throughout the Vehicle Computing Lab',
       },
-      { src: '', alt: 'Second photograph for M4-03, coming soon' },
+      {
+        src: labMedia('Image_20261113174525_112_41.jpg'),
+        alt: 'A student holding a controller beside robotic vehicles while classmates observe in the lab',
+      },
     ],
   },
 ];
