@@ -40,7 +40,6 @@ const guestSpeaker = {
     <div class="instructor-copy">
       <p class="role">Assistant Professor · Computer Science</p>
       <h3>Sidi Lu</h3>
-      <p class="pronunciation">Pronounced <strong>“see-dee loo”</strong></p>
       <p class="bio">
         Dr. Lu’s research focuses on <em>cyber-physical and intelligent systems</em>, with particular interests in <em>edge computing</em>, <em>autonomous systems</em>, and <em>vehicle computing</em>. Her work develops reliable, scalable, secure, and efficient computing systems for connected vehicles and robots. These technologies enable intelligent decision-making and support safe, responsive, and dependable operation across resource-constrained platforms in dynamic, real-world environments.
       </p>
@@ -116,6 +115,10 @@ const guestSpeaker = {
   .instructor {
     width: min(1320px, calc(100% - 48px));
     padding: 120px 0;
+  }
+
+  .instructor > .section-heading-row {
+    margin-bottom: 22px;
   }
 
   .instructor-card {
@@ -214,14 +217,6 @@ const guestSpeaker = {
     font-size: clamp(2.6rem, 4vw, 4rem);
     line-height: 1;
   }
-
-  .pronunciation {
-    margin: 10px 0 0;
-    color: #a9bcc4;
-    font-size: 0.82rem;
-  }
-
-  .pronunciation strong { color: white; }
 
   .bio {
     max-width: 670px;
