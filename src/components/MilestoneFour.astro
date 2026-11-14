@@ -60,7 +60,7 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
         <div class="demo-media">
           {demo.media ? (
             demo.media.kind === 'video' ? (
-              <video src={demo.media.src} poster={demo.media.poster} controls autoplay muted playsinline preload="auto" data-autoplay-demo aria-label={demo.title}>
+              <video src={demo.media.src} poster={demo.media.poster} controls autoplay loop muted playsinline preload="auto" data-autoplay-demo aria-label={demo.title}>
                 Your browser does not support embedded video. <a href={demo.media.src}>Open the video</a>.
               </video>
             ) : (
