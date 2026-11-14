@@ -42,11 +42,11 @@ export const labDemos: LabDemo[] = [
   {
     id: 'm4-video-01',
     title: 'Tracking a Real Robot in the Digital Lab',
-    media: { kind: 'video', src: labMedia('demo-tracking-web.mp4') },
+    media: { kind: 'video', src: labMedia('demo-tracking-60s.mp4') },
   },
   {
     id: 'm4-video-02',
     title: 'Seeing the Road Beyond the Camera',
-    media: { kind: 'video', src: labMedia('demo-road-vision-web.mp4') },
+    media: { kind: 'video', src: labMedia('demo-road-vision-60s.mp4') },
   },
 ];

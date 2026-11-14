@@ -100,8 +100,9 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
       video.muted = true;
 
       const setInitialSpeed = () => {
-        video.defaultPlaybackRate = 3;
-        video.playbackRate = 3;
+        // The web copies already contain the full demonstration accelerated to one minute.
+        video.defaultPlaybackRate = 1;
+        video.playbackRate = 1;
       };
 
       setInitialSpeed();
@@ -185,7 +186,7 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
   }
 
   .lab-photo { aspect-ratio: 4 / 3; }
-  .demo-media { aspect-ratio: 16 / 9; }
+  .demo-media { aspect-ratio: 8 / 3; }
 
   .lab-photo img, .demo-media video, .demo-media iframe {
     display: block;
@@ -247,6 +248,10 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
   }
 
   .milestone-four-outcome strong { color: var(--wm-green-dark); }
+
+  @media (max-width: 900px) {
+    .demo-media { aspect-ratio: 16 / 9; }
+  }
 
   @media (max-width: 700px) {
     .lab-photos { grid-template-columns: minmax(0, 1fr); gap: 16px; }
