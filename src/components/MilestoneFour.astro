@@ -57,25 +57,38 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
           <span class="demo-number">Demo {index + 1}</span>
           <h3 id={`${demo.id}-title`}>{demo.title}</h3>
         </header>
-        <div class="demo-media">
-          {demo.media ? (
-            demo.media.kind === 'video' ? (
-              <video src={demo.media.src} poster={demo.media.poster} controls autoplay loop muted playsinline preload="auto" data-autoplay-demo aria-label={demo.title}>
-                Your browser does not support embedded video. <a href={demo.media.src}>Open the video</a>.
-              </video>
+        <div class="demo-content">
+          <div class="demo-description" id={`${demo.id}-description`}>
+            <p><strong>Left:</strong> {demo.description.left}</p>
+            <p>
+              <strong>Right:</strong>{' '}
+              {demo.description.right.split(/\b(Orange|blue|green)\b/).map((part) => (
+                /^(Orange|blue|green)$/.test(part)
+                  ? <span class={`map-color-${part.toLowerCase()}`}>{part}</span>
+                  : part
+              ))}
+            </p>
+          </div>
+          <div class="demo-media">
+            {demo.media ? (
+              demo.media.kind === 'video' ? (
+                <video src={demo.media.src} poster={demo.media.poster} controls autoplay loop muted playsinline preload="auto" data-autoplay-demo aria-label={demo.title} aria-describedby={`${demo.id}-description`}>
+                  Your browser does not support embedded video. <a href={demo.media.src}>Open the video</a>.
+                </video>
+              ) : (
+                <iframe src={demo.media.src} title={demo.title} loading="lazy" allow="fullscreen" allowfullscreen />
+              )
             ) : (
-              <iframe src={demo.media.src} title={demo.title} loading="lazy" allow="fullscreen" allowfullscreen />
-            )
-          ) : (
-            <div class="media-placeholder video-placeholder">
-              <svg viewBox="0 0 40 40" aria-hidden="true">
-                <rect x="5" y="9" width="30" height="22" rx="2" />
-                <path d="M12 9v22M28 9v22M5 16h7M5 24h7M28 16h7M28 24h7" />
-              </svg>
-              <span class="placeholder-title">Student video demonstration</span>
-              <span>Video coming soon</span>
-            </div>
-          )}
+              <div class="media-placeholder video-placeholder">
+                <svg viewBox="0 0 40 40" aria-hidden="true">
+                  <rect x="5" y="9" width="30" height="22" rx="2" />
+                  <path d="M12 9v22M28 9v22M5 16h7M5 24h7M28 16h7M28 24h7" />
+                </svg>
+                <span class="placeholder-title">Student video demonstration</span>
+                <span>Video coming soon</span>
+              </div>
+            )}
+          </div>
         </div>
       </section>
     ))}
@@ -186,7 +199,7 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
   }
 
   .lab-photo { aspect-ratio: 4 / 3; }
-  .demo-media { aspect-ratio: 8 / 3; }
+  .demo-media { aspect-ratio: 16 / 9; }
 
   .lab-photo img, .demo-media video, .demo-media iframe {
     display: block;
@@ -232,11 +245,33 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
     background-size: 32px 32px;
   }
 
-  .lab-demos { display: grid; gap: 24px; margin-top: 24px; }
+  .lab-demos { display: grid; gap: 28px; margin-top: 24px; }
   .lab-demo { min-width: 0; }
   .demo-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; margin-bottom: 10px; }
   .demo-number { color: var(--muted); font-size: 0.8125rem; white-space: nowrap; }
   .demo-heading h3 { margin: 0; color: var(--wm-green-dark); font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.2; }
+
+  .demo-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    align-items: start;
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  .demo-description {
+    min-width: 0;
+    color: var(--ink);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .demo-description p { margin: 0; }
+  .demo-description p + p { margin-top: 12px; }
+  .demo-description strong { color: var(--wm-green-dark); }
+  .map-color-orange, .map-color-blue, .map-color-green { font-weight: 700; }
+  .map-color-orange { color: #b45309; }
+  .map-color-blue { color: #1d4ed8; }
+  .map-color-green { color: #15803d; }
 
   .milestone-four-outcome {
     margin: 16px 0 0;
@@ -249,8 +284,9 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
 
   .milestone-four-outcome strong { color: var(--wm-green-dark); }
 
-  @media (max-width: 900px) {
-    .demo-media { aspect-ratio: 16 / 9; }
+  @media (max-width: 600px) {
+    .demo-content { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .demo-description { max-width: 75ch; }
   }
 
   @media (max-width: 700px) {
