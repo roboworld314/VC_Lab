@@ -85,6 +85,8 @@ const trackId = `${id}-slides`;
 </div>
 
 <script>
+  import { registerSynchronizedPhotoAutoplay } from '../scripts/synchronizedPhotoAutoplay';
+
   function initializePhotoCarousels() {
     document.querySelectorAll<HTMLElement>(
       '[data-photo-carousel]:not([data-carousel-ready])'
@@ -100,7 +102,7 @@ const trackId = `${id}-slides`;
       let currentIndex = 0;
       let touchStart: { x: number; y: number } | null = null;
 
-      function showSlide(index: number) {
+      function showSlide(index: number, announce = true) {
         currentIndex = (index + slides.length) % slides.length;
         track!.style.setProperty('--photo-index', String(currentIndex));
 
@@ -114,7 +116,11 @@ const trackId = `${id}-slides`;
         });
 
         if (counter) counter.textContent = `${currentIndex + 1} / ${slides.length}`;
-        if (status) status.textContent = `${label}: Photograph ${currentIndex + 1} of ${slides.length}`;
+        if (status) {
+          status.setAttribute('aria-live', announce ? 'polite' : 'off');
+          status.textContent = `${label}: Photograph ${currentIndex + 1} of ${slides.length}`;
+        }
+        slides[(currentIndex + 1) % slides.length].querySelector('img')?.setAttribute('loading', 'eager');
       }
 
       carousel.querySelector('[data-photo-previous]')?.addEventListener('click', () => {
@@ -158,6 +164,10 @@ const trackId = `${id}-slides`;
 
       track.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
       carousel.setAttribute('data-carousel-ready', 'true');
+      if (slides.length > 1) {
+        slides[1].querySelector('img')?.setAttribute('loading', 'eager');
+        registerSynchronizedPhotoAutoplay(carousel, () => showSlide(currentIndex + 1, false));
+      }
     });
   }
 

@@ -272,6 +272,8 @@ const milestoneTwoPhotos = [
 </div>
 
 <script>
+  import { registerSynchronizedPhotoAutoplay } from '../scripts/synchronizedPhotoAutoplay';
+
   function initializeMilestoneTwoCarousel() {
     const carousels = document.querySelectorAll(
       '[data-milestone-two]:not([data-carousel-ready])'
@@ -314,10 +316,11 @@ const milestoneTwoPhotos = [
       let touchStartX = 0;
       let touchEndX = 0;
 
-      function showSlide(newIndex: number) {
+      function showSlide(newIndex: number, announce = true) {
         currentIndex =
           (newIndex + slides.length) % slides.length;
 
+        slideContainer?.setAttribute('aria-live', announce ? 'polite' : 'off');
         slides.forEach((slide, index) => {
           const isActive = index === currentIndex;
 
@@ -326,6 +329,9 @@ const milestoneTwoPhotos = [
             'aria-hidden',
             isActive ? 'false' : 'true'
           );
+          if (isActive || index === (currentIndex + 1) % slides.length) {
+            slide.querySelector('img')?.setAttribute('loading', 'eager');
+          }
         });
 
         dots.forEach((dot, index) => {
@@ -397,6 +403,9 @@ const milestoneTwoPhotos = [
       );
 
       showSlide(0);
+      if (slides.length > 1) {
+        registerSynchronizedPhotoAutoplay(carousel, () => showSlide(currentIndex + 1, false));
+      }
     });
   }
 
