@@ -82,12 +82,12 @@ export const handsOnWindows: GalleryWindow[] = [
     caption: 'Testing obstacle responses',
     photos: [
       {
-        src: milestonePhoto('Image_20261112095303_39_41.jpg'),
-        alt: 'Students testing how a robotic vehicle responds to objects in its path',
-      },
-      {
         src: milestonePhoto('dd117f6d49998fe6c0dde64c9186ca33.jpg'),
         alt: 'Two students demonstrating a robotic vehicle beside a display of its remote-control interface',
+      },
+      {
+        src: milestonePhoto('Image_20261112095303_39_41.jpg'),
+        alt: 'Students testing how a robotic vehicle responds to objects in its path',
       },
     ],
   },
