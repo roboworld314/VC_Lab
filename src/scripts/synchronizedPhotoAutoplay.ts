@@ -4,7 +4,7 @@ let timer: number | undefined;
 function startPhotoTimer() {
   if (timer !== undefined || photoCarousels.size === 0) return;
 
-  // One timer keeps both milestones on the same three-second schedule.
+  // One timer keeps every photo carousel on the same three-second schedule.
   timer = window.setInterval(() => {
     photoCarousels.forEach((advance, element) => {
       if (element.isConnected) {

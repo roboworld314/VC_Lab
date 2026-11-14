@@ -1,4 +1,5 @@
 ---
+import PhotoCarousel from './PhotoCarousel.astro';
 import { labPhotos, labDemos } from '../data/milestoneFourMedia';
 ---
 
@@ -33,19 +34,7 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
   <div class="lab-photos" role="group" aria-label="Students controlling robots and collecting data">
     {labPhotos.map((photo) => (
       <figure class="lab-photo" id={photo.id}>
-        {photo.src ? (
-          <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
-        ) : (
-          <div class="media-placeholder photo-placeholder">
-            <svg viewBox="0 0 40 40" aria-hidden="true">
-              <rect x="5" y="10" width="30" height="24" rx="3" />
-              <path d="m13 10 3-4h8l3 4" />
-              <circle cx="20" cy="22" r="7" />
-            </svg>
-            <span class="placeholder-title">{photo.label}</span>
-            <span>Lab activity photo coming soon</span>
-          </div>
-        )}
+        <PhotoCarousel id={photo.id} label={photo.label} photos={photo.photos} />
       </figure>
     ))}
   </div>
@@ -198,17 +187,16 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
     border-radius: 4px;
   }
 
-  .lab-photo { aspect-ratio: 4 / 3; }
+  .lab-photo { position: relative; aspect-ratio: 4 / 3; }
   .demo-media { aspect-ratio: 16 / 9; }
 
-  .lab-photo img, .demo-media video, .demo-media iframe {
+  .demo-media video, .demo-media iframe {
     display: block;
     width: 100%;
     height: 100%;
     border: 0;
   }
 
-  .lab-photo img { object-fit: cover; }
   .demo-media video { object-fit: contain; background: #121212; }
 
   .media-placeholder {

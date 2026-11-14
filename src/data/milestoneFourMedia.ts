@@ -1,8 +1,9 @@
+import type { GalleryPhoto } from './milestoneThreeGallery';
+
 export type LabPhoto = {
   id: string;
   label: string;
-  alt: string;
-  src?: string;
+  photos: GalleryPhoto[];
 };
 
 export type LabDemo = {
@@ -22,20 +23,35 @@ export const labPhotos: LabPhoto[] = [
   {
     id: 'm4-01',
     label: 'Photo 01',
-    alt: 'A student using a handheld controller to drive robots on the lab road map',
-    src: labMedia('Image_20261113174628_125_41.jpg'),
+    photos: [
+      {
+        src: labMedia('Image_20261113174628_125_41.jpg'),
+        alt: 'A student using a handheld controller to drive robots on the lab road map',
+      },
+      { src: '', alt: 'Second photograph for M4-01, coming soon' },
+    ],
   },
   {
     id: 'm4-02',
     label: 'Photo 02',
-    alt: 'Students coordinating robotic vehicles on the indoor road network',
-    src: labMedia('Image_20261113174754_138_41.jpg'),
+    photos: [
+      {
+        src: labMedia('Image_20261113174754_138_41.jpg'),
+        alt: 'Students coordinating robotic vehicles on the indoor road network',
+      },
+      { src: '', alt: 'Second photograph for M4-02, coming soon' },
+    ],
   },
   {
     id: 'm4-03',
     label: 'Photo 03',
-    alt: 'Students controlling robotic vehicles throughout the Vehicle Computing Lab',
-    src: labMedia('Image_20261113174254_107_41.jpg'),
+    photos: [
+      {
+        src: labMedia('Image_20261113174254_107_41.jpg'),
+        alt: 'Students controlling robotic vehicles throughout the Vehicle Computing Lab',
+      },
+      { src: '', alt: 'Second photograph for M4-03, coming soon' },
+    ],
   },
 ];
 
