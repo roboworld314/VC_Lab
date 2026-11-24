@@ -62,7 +62,7 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
           <div class="demo-media">
             {demo.media ? (
               demo.media.kind === 'video' ? (
-                <video src={demo.media.src} poster={demo.media.poster} controls autoplay loop muted playsinline preload="auto" data-autoplay-demo aria-label={demo.title} aria-describedby={`${demo.id}-description`}>
+                <video src={demo.media.src} poster={demo.media.poster} controls autoplay loop muted playsinline preload="auto" data-autoplay-demo data-target-duration={demo.media.targetDuration} aria-label={demo.title} aria-describedby={`${demo.id}-description`}>
                   Your browser does not support embedded video. <a href={demo.media.src}>Open the video</a>.
                 </video>
               ) : (
@@ -101,10 +101,14 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
     videos.forEach((video) => {
       video.dataset.demoReady = 'true';
       video.muted = true;
+      const targetDuration = Number(video.dataset.targetDuration);
 
       const setInitialSpeed = () => {
-        video.defaultPlaybackRate = 1;
-        video.playbackRate = 1;
+        const playbackRate = targetDuration > 0 && video.duration > 0 && Number.isFinite(video.duration)
+          ? video.duration / targetDuration
+          : 1;
+        video.defaultPlaybackRate = playbackRate;
+        video.playbackRate = playbackRate;
       };
 
       setInitialSpeed();

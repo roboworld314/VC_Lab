@@ -11,7 +11,7 @@ export type LabDemo = {
   title: string;
   description: { label: string; text: string }[];
   media?:
-    | { kind: 'video'; src: string; poster?: string }
+    | { kind: 'video'; src: string; poster?: string; targetDuration?: number }
     | { kind: 'embed'; src: string };
 };
 
@@ -119,6 +119,7 @@ export const labDemos: LabDemo[] = [
     media: {
       kind: 'video',
       src: `${import.meta.env.BASE_URL.replace(/\/$/, '')}/videos/waypoint.mp4`,
+      targetDuration: 60,
     },
   },
 ];
