@@ -93,7 +93,41 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
 </section>
 
 <script>
+  function initializeDemoThreeTitle() {
+    const title = document.querySelector<HTMLElement>('#m4-video-03-title');
+    if (!title || title.dataset.fitReady) return;
+    title.dataset.fitReady = 'true';
+
+    const desktop = window.matchMedia('(min-width: 960px)');
+    const text = document.createRange();
+    text.selectNodeContents(title);
+
+    const fitTitle = () => {
+      if (!desktop.matches) {
+        title.style.removeProperty('--demo-three-title-size');
+        return;
+      }
+
+      const availableWidth = title.getBoundingClientRect().width - 0.5;
+      const textWidth = text.getBoundingClientRect().width;
+      if (availableWidth <= 0 || textWidth <= 0) return;
+
+      const currentSize = parseFloat(getComputedStyle(title).fontSize);
+      const fittedSize = Math.floor(currentSize * availableWidth / textWidth * 100) / 100;
+      if (Math.abs(fittedSize - currentSize) > 0.005) {
+        title.style.setProperty('--demo-three-title-size', `${fittedSize}px`);
+      }
+    };
+
+    new ResizeObserver(fitTitle).observe(title.parentElement!);
+    desktop.addEventListener('change', fitTitle);
+    document.fonts.addEventListener('loadingdone', fitTitle);
+    void document.fonts.ready.then(fitTitle);
+    fitTitle();
+  }
+
   function initializeLabDemos() {
+    initializeDemoThreeTitle();
     const videos = document.querySelectorAll<HTMLVideoElement>(
       '#milestone-4 video[data-autoplay-demo]:not([data-demo-ready])'
     );
@@ -242,9 +276,9 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
   @media (min-width: 960px) {
     #m4-video-03 .demo-heading { container-type: inline-size; flex-wrap: nowrap; }
     #m4-video-03-title {
-      /* Fit the full title to its row, including before the web font loads. */
+      /* Start safely, then expand to the largest measured size for this row. */
       font-family: "Crimson Pro", "Times New Roman", serif;
-      font-size: clamp(1rem, 1.95cqi, 1.3125rem);
+      font-size: var(--demo-three-title-size, clamp(1rem, 1.95cqi, 1.3125rem));
       white-space: nowrap;
     }
   }
