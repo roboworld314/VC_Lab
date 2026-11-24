@@ -239,6 +239,16 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
   .demo-number { color: var(--muted); font-size: 0.8125rem; white-space: nowrap; }
   .demo-heading h3 { flex: 1; min-width: 0; margin: 0; color: var(--wm-green-dark); font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.2; }
 
+  @media (min-width: 960px) {
+    #m4-video-03 .demo-heading { container-type: inline-size; flex-wrap: nowrap; }
+    #m4-video-03-title {
+      /* Fit the full title to its row, including before the web font loads. */
+      font-family: "Crimson Pro", "Times New Roman", serif;
+      font-size: clamp(1rem, 1.95cqi, 1.3125rem);
+      white-space: nowrap;
+    }
+  }
+
   .demo-content {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
