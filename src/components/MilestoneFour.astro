@@ -48,15 +48,16 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
         </header>
         <div class="demo-content">
           <div class="demo-description" id={`${demo.id}-description`}>
-            <p><strong>Left:</strong> {demo.description.left}</p>
-            <p>
-              <strong>Right:</strong>{' '}
-              {demo.description.right.split(/\b(Orange|blue|green)\b/).map((part) => (
-                /^(Orange|blue|green)$/.test(part)
-                  ? <span class={`map-color-${part.toLowerCase()}`}>{part}</span>
-                  : part
-              ))}
-            </p>
+            {demo.description.map((paragraph) => (
+              <p>
+                <strong>{paragraph.label}:</strong>{' '}
+                {paragraph.text.split(/\b(orange|blue|green)\b/gi).map((part) => (
+                  /^(orange|blue|green)$/i.test(part)
+                    ? <span class={`map-color-${part.toLowerCase()}`}>{part}</span>
+                    : part
+                ))}
+              </p>
+            ))}
           </div>
           <div class="demo-media">
             {demo.media ? (
@@ -102,7 +103,6 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
       video.muted = true;
 
       const setInitialSpeed = () => {
-        // The web copies already contain the full demonstration accelerated to one minute.
         video.defaultPlaybackRate = 1;
         video.playbackRate = 1;
       };
