@@ -49,7 +49,7 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
         <div class="demo-content">
           <div class="demo-description" id={`${demo.id}-description`}>
             {demo.description.map((paragraph) => (
-              <p>
+              <p data-demo-panel={paragraph.label}>
                 <strong>{paragraph.label}:</strong>{' '}
                 {paragraph.text.split(/\b(orange|blue|green)\b/gi).map((part) => (
                   /^(orange|blue|green)$/i.test(part)
@@ -237,7 +237,7 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
   .lab-demo { min-width: 0; }
   .demo-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; margin-bottom: 10px; }
   .demo-number { color: var(--muted); font-size: 0.8125rem; white-space: nowrap; }
-  .demo-heading h3 { margin: 0; color: var(--wm-green-dark); font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.2; }
+  .demo-heading h3 { flex: 1; min-width: 0; margin: 0; color: var(--wm-green-dark); font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.2; }
 
   .demo-content {
     display: grid;
@@ -260,6 +260,11 @@ import { labPhotos, labDemos } from '../data/milestoneFourMedia';
   .map-color-orange { color: #b45309; }
   .map-color-blue { color: #1d4ed8; }
   .map-color-green { color: #15803d; }
+
+  #m4-video-03 [data-demo-panel='Top Left'] .map-color-blue {
+    color: #40beeb;
+    text-shadow: 0 0 1px #07566f, 0 0 4px rgba(64, 190, 235, 0.65), 0 0 8px rgba(64, 190, 235, 0.35);
+  }
 
   .milestone-four-outcome {
     margin: 16px 0 0;

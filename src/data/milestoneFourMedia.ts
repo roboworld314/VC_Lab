@@ -67,7 +67,7 @@ export const labPhotos: LabPhoto[] = [
 export const labDemos: LabDemo[] = [
   {
     id: 'm4-video-01',
-    title: 'Tracking a Real Robot in the Digital Lab',
+    title: 'Tracking a Real Robot in the Digital Lab (Where is the robot? — Localization)',
     description: [
       {
         label: 'Left',
@@ -82,7 +82,7 @@ export const labDemos: LabDemo[] = [
   },
   {
     id: 'm4-video-02',
-    title: 'Mapping the Road Around the Robot in Real Time',
+    title: 'Mapping the Road Around the Robot in Real Time (What surrounds the robot? — HD Mapping)',
     description: [
       {
         label: 'Left',
@@ -97,7 +97,7 @@ export const labDemos: LabDemo[] = [
   },
   {
     id: 'm4-video-03',
-    title: 'From Digital Waypoints to Autonomous Driving',
+    title: 'From Digital Waypoints to Autonomous Driving (Can the robot navigate on its own? — Autonomous Navigation)',
     description: [
       {
         label: 'Top Right',
